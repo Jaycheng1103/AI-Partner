@@ -1,6 +1,6 @@
 # EXPANSIONS — what to add as you grow
 
-The kit ships lean on purpose. Three skills, six folders, one framework reference. That's it. As you use it, you'll outgrow the base — this guide tells you what to add, when, and why.
+The kit ships lean on purpose: four skills and a small set of context and reference files. As you grow, use `/link` to add new sources to the right route, and `/audit` to check that the information remains findable and current.
 
 The AIOS structure should look like a small, well-run business. Not a hoarder's basement.
 
@@ -15,7 +15,7 @@ The AIOS structure should look like a small, well-run business. Not a hoarder's 
 | `decisions/log.md` | Append-only record of what was decided and why. |
 | `archives/` | Old files. Don't delete — move here. |
 | `connections.md` | Registry of every system your AIOS can reach. |
-| `.claude/skills/` | Your skills: `/onboard`, `/audit`, `/level-up`. Add more via `/level-up`. |
+| `.claude/skills/` | Your skills: `/onboard`, `/audit`, `/level-up`, `/link`. Add more only when they solve a real need. |
 | `aios-intake.md` | Source-of-truth for `/onboard`. Edit and re-run any time. |
 | `CLAUDE.md` | Root operating manual. Filled by `/onboard`. Edit when your role/voice changes. |
 

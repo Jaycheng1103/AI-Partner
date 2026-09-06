@@ -1,0 +1,4 @@
+interface:
+  display_name: "AIOS Level Up"
+  short_description: "Turn one AIOS gap into a verified improvement"
+  default_prompt: "Use $level-up to improve one workflow or close an audit gap."

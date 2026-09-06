@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIOS Onboard"
+  short_description: "Set up or refresh personal AIOS context"
+  default_prompt: "Use $onboard to set up or refresh my AIOS context."
+policy:
+  allow_implicit_invocation: false

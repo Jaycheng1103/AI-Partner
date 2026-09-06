@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIOS Link"
+  short_description: "Link a source into the right AIOS route"
+  default_prompt: "Use $link to add this source to my AIOS routing."
+policy:
+  allow_implicit_invocation: false

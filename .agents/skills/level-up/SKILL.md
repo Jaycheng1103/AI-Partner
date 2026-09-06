@@ -33,7 +33,7 @@ First read the applicable operating manual. The paths below are starter-kit defa
 - `connections.md` — what's reachable, by what mechanism
 - `references/3ms-framework.md` — the framework (used to quote principles back)
 - `decisions/log.md` — recent decisions (what's already shipped or considered)
-- `.claude/skills/*/SKILL.md` frontmatter — what capabilities exist
+- `.agents/skills/*/SKILL.md` frontmatter — what capabilities exist
 - Recent `audits/audit-{date}.md` if present
 
 ## Execution — three phases

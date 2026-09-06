@@ -1,0 +1,4 @@
+interface:
+  display_name: "AIOS Audit"
+  short_description: "Find routing gaps and Claude/Codex mismatches"
+  default_prompt: "Run $audit on this project."
