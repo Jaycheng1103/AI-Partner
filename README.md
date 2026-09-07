@@ -2,7 +2,7 @@
 
 A free, MIT-licensed starter kit that turns Claude Code or Codex into your personal **AI Operating System (AI OS)**. Audience: anyone building automations — solopreneurs, small business operators, managers, creators, AI consultants. Pairs with a companion masterclass video.
 
-The kit personalizes itself to you via an `/onboard` interview. Use `/link` to make new information findable, `/audit` to verify the system, `/level-up` to close one useful gap at a time, and `/3d-brain` to explore your saved knowledge as an interactive globe.
+The kit personalizes itself to you via an `/onboard` interview. Use `/grill-me` whenever you want to deepen its understanding of your business, preferences, or plans. Use `/link` to make new information findable, `/audit` to verify the system, `/level-up` to close one useful gap at a time, and `/3d-brain` to explore your saved knowledge as an interactive globe.
 
 > **AIS-OS** stands for **AI Automation Society OS** — the way Nate designed this AI OS to be set up for members of his community, [AI Automation Society](https://www.skool.com/ai-automation-society). The kit is universal (it works for anyone), but the structure mirrors how AIS members run their own businesses on top of it.
 
@@ -71,13 +71,14 @@ Dependency graph: Context is non-skippable. Connections + Capabilities can build
 
 ---
 
-## What ships — 5 skills
+## What ships — 6 skills
 
-The kit includes setup, routing, verification, a weekly improvement workflow, and a working 3D knowledge explorer. You can extend the structure as your AI OS grows.
+The kit includes setup, ongoing context interviews, routing, verification, a weekly improvement workflow, and a working 3D knowledge explorer. You can extend the structure as your AI OS grows.
 
 | Skill | Type | When to run |
 |---|---|---|
 | `/onboard` | Setup wizard (one-time) | Day 1, immediately after clone. 7-question interview. Generates the Day-1 file set and fills the shared `CLAUDE.md` and `AGENTS.md` manuals. |
+| `/grill-me` | Saved context interview | Any time you want to unpack a plan or add more context. Asks one question at a time and saves every answer to `brainstorms/`. |
 | `/audit` | Evidence-based check | After setup, after a meaningful fix, and weekly while building. Checks routing, freshness, and Claude/Codex compatibility, scores verified reliability, and automatically saves a dated report. |
 | `/link` | Routing helper | When adding a project, file, folder, or important source. Adds the smallest useful manual/index route and checks it resolves. |
 | `/level-up` | Recurring thinking skill | Day 14, then weekly. Three Ms interview (Mindset → Method → Machine). One run = one shipped artifact. |
@@ -88,6 +89,8 @@ The kit includes setup, routing, verification, a weekly improvement workflow, an
 **Automatic audit history:** Every `/audit` saves a unique dated Markdown report in `audits/` and compares it with relevant prior reports. Findings retain their IDs and are tracked as new, still open, resolved, reopened, not rechecked, or no longer applicable. Resolution requires fresh evidence. Score comparisons distinguish actual fixes from better evidence and changed coverage. Earlier reports are preserved; the inspected system is unchanged apart from the new local report. Audit reports are gitignored because they may contain private project context. An explicit request not to save overrides this default.
 
 `/link path/to/project "use for this purpose"` makes a new source findable without copying its contents into the manual. It follows the project's existing `AGENTS.md`/`CLAUDE.md` conventions and asks only when the target or intended use is unclear. A hot cache is optional and is never created by these skills.
+
+`/grill-me "help me explain how my business works"` turns what is in your head into saved context. Each answer is checkpointed immediately in a dated Markdown file under `brainstorms/`, so you can pause and resume. When you ask to build or update AI OS context, confirmed facts are added to the appropriate context pages with links back to the interview. Tentative ideas stay labeled. Captures are gitignored by default. Use `/onboard` for initial setup, then `/grill-me` as your business and thinking evolve.
 
 `/level-up` carries the audit evidence into one improvement. A verified repair to an existing workflow counts; another new skill is not always needed. Run `/audit` again after the fix. Repeated-use and scheduled-run credit comes from real execution over time.
 
@@ -113,7 +116,7 @@ The complete [skill package](.claude/skills/3d-brain/README.md) includes source 
 
 ### Using the kit in Codex
 
-The five skills are also installed under `.agents/skills/`. Use the skill picker (`/skills` in Codex CLI or the IDE extension), or type `$` and select `audit`, `link`, `onboard`, `level-up`, or `3d-brain`. Codex normally detects skill updates automatically; restart it if the list does not refresh.
+The six skills are also installed under `.agents/skills/`. Use the skill picker (`/skills` in Codex CLI or the IDE extension), or type `$` and select `audit`, `link`, `onboard`, `level-up`, `grill-me`, or `3d-brain`. Codex normally detects skill updates automatically; restart it if the list does not refresh.
 
 `.claude/skills/` remains the authoring source. After editing a skill, run `bash scripts/sync-codex-skills.sh <skill-name>` to regenerate its Codex copy, supporting files, and menu metadata. The onboard intake template and level-up framework travel with their skills; existing projects retain their own canonical context routes.
 
@@ -124,7 +127,7 @@ The five skills are also installed under `.agents/skills/`. Use the skill picker
 3. **Use it for a week.** Bring real questions. Make real decisions. Ask your assistant to record meaningful decisions in `decisions/log.md`.
 4. **Day 7:** run `/audit`. Read the Four-Cs gap report. Pick one gap to close.
 5. **Day 14:** run `/level-up`. The Three Ms interview surfaces one automation worth building. Build it.
-6. **As you grow:** `/link` new sources, use `/level-up` for one improvement, and rerun `/audit` to verify it.
+6. **As you grow:** use `/grill-me` to capture new context, `/link` new sources, use `/level-up` for one improvement, and rerun `/audit` to verify it.
 
 ---
 
@@ -146,14 +149,16 @@ AIS-OS/
 ├── decisions/
 │   └── log.md                       ← Append-only record of what was decided and why
 ├── archives/                        ← Old stuff. Don't delete. Move here.
+├── brainstorms/                     ← Created by /grill-me; saved interviews (gitignored)
 ├── audits/                          ← Created on first audit; dated private reports (gitignored)
 ├── scripts/sync-codex-skills.sh      ← Regenerates the Codex skill copies
-├── .agents/skills/                  ← Codex copies of all five skills and supporting files
+├── .agents/skills/                  ← Codex copies of all six skills and supporting files
 └── .claude/
     └── skills/
         ├── onboard/SKILL.md
         ├── audit/SKILL.md
         ├── level-up/SKILL.md
+        ├── grill-me/SKILL.md
         ├── 3d-brain/                ← Skill, portable app template, docs, and validation scripts
         └── link/SKILL.md
 ```

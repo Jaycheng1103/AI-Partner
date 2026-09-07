@@ -1,6 +1,6 @@
 # EXPANSIONS — what to add as you grow
 
-The kit ships lean on purpose: four skills and a small set of context and reference files. As you grow, use `/link` to add new sources to the right route, and `/audit` to check that the information remains findable and current.
+The kit ships lean on purpose: six skills and a small set of context and reference files. As you grow, use `/link` to add new sources to the right route, and `/audit` to check that the information remains findable and current.
 
 The AIOS structure should look like a small, well-run business. Not a hoarder's basement.
 
@@ -13,9 +13,10 @@ The AIOS structure should look like a small, well-run business. Not a hoarder's 
 | `context/` | About you, your business, your priorities. Filled by `/onboard`. |
 | `references/` | Frameworks, voice samples, API guides, SOPs as you build them. |
 | `decisions/log.md` | Append-only record of what was decided and why. |
+| `brainstorms/` | Saved `/grill-me` interviews; created on first use. Confirmed context is linked back to its capture. |
 | `archives/` | Old files. Don't delete — move here. |
 | `connections.md` | Registry of every system your AIOS can reach. |
-| `.claude/skills/` | Your skills: `/onboard`, `/audit`, `/level-up`, `/link`. Add more only when they solve a real need. |
+| `.claude/skills/` | Your skills: `/onboard`, `/audit`, `/level-up`, `/link`, `/grill-me`, `/3d-brain`. Add more only when they solve a real need. |
 | `aios-intake.md` | Source-of-truth for `/onboard`. Edit and re-run any time. |
 | `CLAUDE.md` | Root operating manual. Filled by `/onboard`. Edit when your role/voice changes. |
 

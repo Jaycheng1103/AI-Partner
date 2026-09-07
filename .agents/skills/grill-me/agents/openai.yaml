@@ -1,0 +1,6 @@
+interface:
+  display_name: "Grill Me"
+  short_description: "Build context through saved, one-question interviews"
+  default_prompt: "Use $grill-me to explore this topic and save each answer."
+policy:
+  allow_implicit_invocation: false
