@@ -99,9 +99,9 @@ The kit includes setup, routing, verification, a weekly improvement workflow, an
 
 Turn your growing collection of notes, projects, and assistant memories into one place you can explore. See which ideas connect, search for something you remember, open the original note, and spot knowledge that needs attention. The growth replay also gives you a visual way to show someone what your AI OS contains.
 
-[![Watch the 3D Brain grow from one idea into a connected knowledge globe](docs/media/3d-brain-preview.gif)](docs/media/3d-brain-demo.mp4)
+[![Watch the 3D Brain grow from one idea into a connected knowledge globe](docs/media/3d-brain-preview.gif)](https://github.com/nateherkai/AIS-OS/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)
 
-**[Watch the full 36-second demo](docs/media/3d-brain-demo.mp4).** This recording shows Nate's HerkBrain. The skill builds yours with the name, categories, and saved knowledge you choose.
+The preview above plays the full growth sequence. **[Download the original 36-second video](https://github.com/nateherkai/AIS-OS/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)** for full-resolution playback. This recording shows Nate's HerkBrain. The skill builds yours with the name, categories, and saved knowledge you choose.
 
 Run `/3d-brain` in Claude Code or `$3d-brain` in Codex. It asks what to call your brain and which categories to show, with suggested source folders. Then it creates `apps/3d-brain/` using the included application template. Your name, categories, colors, and paths live in a local config.
 
