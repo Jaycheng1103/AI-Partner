@@ -1,6 +1,6 @@
-# 傑少 AI 工作系統｜學員版
+# 傑少AI分身（AIOS）
 
-由傑少提供給學員的 **AI 工作系統（AI OS）起始套件**，支援 Claude Code 與 Codex。你可以透過設定訪談，建立自己的工作背景、工具連線與日常工作流程。套件採 MIT 授權，可免費下載使用。
+**傑少AI分身（AIOS）** 是由傑少提供給學員的 AI 工作系統起始套件，支援 Claude Code 與 Codex。你可以透過設定訪談，建立自己的工作背景、工具連線與日常工作流程。套件採 MIT 授權，可免費下載使用。
 
 The kit personalizes itself to you via an `/onboard` interview. Use `/grill-me` whenever you want to deepen its understanding of your business, preferences, or plans. Use `/link` to make new information findable, `/audit` to verify the system, `/level-up` to close one useful gap at a time, and `/3d-brain` to explore your saved knowledge as an interactive globe.
 
@@ -10,7 +10,7 @@ The kit personalizes itself to you via an `/onboard` interview. Use `/grill-me` 
 
 ## The litmus test
 
-> **"While you're not at your desk, your AIS-OS observes one real-world event and produces an output that's faster and more accurate than what you'd produce yourself."**
+> **"While you're not at your desk, your AIOS observes one real-world event and produces an output that's faster and more accurate than what you'd produce yourself."**
 
 Every design decision in this kit rolls up to that test. If a layer, skill, or template doesn't contribute to it, it doesn't ship.
 
@@ -122,19 +122,19 @@ The six skills are also installed under `.agents/skills/`. Use the skill picker 
 
 ### First-time setup
 
-1. **下載傑少學員版**到電腦上的新資料夾：
+1. **下載傑少AI分身**到電腦上的新資料夾：
 
    ```bash
-   gh repo clone Jaycheng1103/AIS-OS
+   gh repo clone Jaycheng1103/AIS-OS AIOS
    ```
 
    沒有安裝 GitHub CLI，也可以使用 Git：
 
    ```bash
-   git clone https://github.com/Jaycheng1103/AIS-OS.git
+   git clone https://github.com/Jaycheng1103/AIS-OS.git AIOS
    ```
 
-   接著開啟下載的 `AIS-OS` 資料夾。設定訪談請填寫你自己的資料。
+   接著開啟下載的 `AIOS` 資料夾。設定訪談請填寫你自己的資料。
 2. **Open it in Claude Code or Codex.** Run `/onboard` in Claude Code, or select `$onboard` in Codex. Answer the 7 questions honestly. Voice samples must be pasted, not described. Takes ~15 minutes. Day-1 file set drops at the end.
 3. **Use it for a week.** Bring real questions. Make real decisions. Ask your assistant to record meaningful decisions in `decisions/log.md`.
 4. **Day 7:** run `/audit`. Read the Four-Cs gap report. Pick one gap to close.
@@ -146,7 +146,7 @@ The six skills are also installed under `.agents/skills/`. Use the skill picker 
 ## Repo layout
 
 ```
-AIS-OS/
+AIOS/
 ├── README.md
 ├── CLAUDE.md                        ← Shared operating manual for Claude Code
 ├── AGENTS.md                        ← Matching operating manual for Codex
