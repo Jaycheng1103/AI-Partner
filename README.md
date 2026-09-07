@@ -4,8 +4,6 @@
 
 先執行 `/onboard` 訪談，讓套件依照你的情況完成設定。想補充業務、偏好或計畫時，使用 `/grill-me`；用 `/link` 讓新資料可以被找到，用 `/audit` 檢查系統，用 `/level-up` 每次改善一個實際缺口，再用 `/3d-brain` 透過互動式知識球體探索已儲存的資料。
 
-> 本學員版以 [Nate Herk 的 AIS-OS](https://github.com/nateherkai/AIS-OS) 為基礎，保留原始功能、檔案結構與 Git 歷史，調整名稱、下載入口與文件語言。AIS-OS 原名為 AI Automation Society OS。原作者版權、框架歸屬與授權聲明保留於本套件。
-
 ---
 
 ## 系統是否有用的檢驗方式
@@ -52,8 +50,6 @@
 
 完整說明見 `references/3ms-framework.md`。`/level-up` 會透過每週訪談帶你運用這三部分。
 
-> *The Three Ms of AI™ 為 Nate Herk 的商標。© 2026 Nate Herk。*
-
 ### Four Cs：系統架構
 
 | # | 架構層 | 用途 | 如何確認已具備 |
@@ -64,8 +60,6 @@
 | 4 | **Cadence：執行節奏** | 不用每次開口才執行 | 電腦闔上後仍能收到摘要，或隊友傳訊息時能得到有根據的回答 |
 
 **架構口訣：** 背景資料、連線、能力、執行節奏。
-
-> *The Four Cs of an AI OS™ 為 Nate Herk 的商標。© 2026 Nate Herk。*
 
 依賴順序：Context 不能跳過；Connections 與 Capabilities 可以同時建立；Cadence 最後處理。還不能手動順利完成的流程，先不要自動化。
 
@@ -104,7 +98,7 @@
 
 [![觀看 3D 知識球體從一個想法逐步長出關聯](docs/media/3d-brain-preview.gif)](https://github.com/Jaycheng1103/AI-Partner/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)
 
-上方預覽會播放完整成長過程。**[下載約 36 秒的原始影片](https://github.com/Jaycheng1103/AI-Partner/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)**，可用原始解析度觀看。影片展示的是原作者 Nate 的 HerkBrain；實際執行技能時，會使用你選擇的名稱、分類與已保存的知識。
+上方預覽會播放完整成長過程。**[下載約 36 秒的原始影片](https://github.com/Jaycheng1103/AI-Partner/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)**，可用原始解析度觀看。這是原始套件附帶的示範錄影；實際執行技能時，會使用你選擇的名稱、分類與已保存的知識。
 
 在 Claude Code 執行 `/3d-brain`，或在 Codex 執行 `$3d-brain`。技能會詢問名稱、分類，並建議來源資料夾，再用套件內附的應用程式範本建立 `apps/3d-brain/`。名稱、分類、顏色與路徑儲存在本機設定檔。
 
@@ -185,4 +179,4 @@ MIT License. © 2026 Nate Herk.
 
 The Three Ms of AI™ 與 The Four Cs of an AI OS™ 為 Nate Herk 的商標。兩套框架保留作者歸屬，可依授權使用，請勿包裝成自己的原創。
 
-學員版由傑少提供。原始專案與原作者的教學資訊請見 [nateherkai/AIS-OS](https://github.com/nateherkai/AIS-OS)。正式授權以 [LICENSE](LICENSE) 英文原文為準。
+本學員版由傑少提供，以 [Nate Herk 的 AIS-OS](https://github.com/nateherkai/AIS-OS) 為基礎，保留原始功能、檔案結構與 Git 歷史，調整名稱、下載入口與文件語言。AIS-OS 原名為 AI Automation Society OS。示範錄影來自原始套件。正式授權以 [LICENSE](LICENSE) 英文原文為準。
