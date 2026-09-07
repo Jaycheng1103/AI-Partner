@@ -1,0 +1,6 @@
+interface:
+  display_name: "3D Brain"
+  short_description: "Build a personalized, interactive AIOS knowledge globe"
+  default_prompt: "Use $3d-brain to turn my AIOS into a named 3D knowledge globe with categories I choose."
+policy:
+  allow_implicit_invocation: false

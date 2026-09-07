@@ -2,7 +2,7 @@
 
 A free, MIT-licensed starter kit that turns Claude Code or Codex into your personal **AI Operating System (AI OS)**. Audience: anyone building automations — solopreneurs, small business operators, managers, creators, AI consultants. Pairs with a companion masterclass video.
 
-The kit personalizes itself to you via an `/onboard` interview. Use `/link` to make new information findable, `/audit` to verify the system, and `/level-up` to close one useful gap at a time.
+The kit personalizes itself to you via an `/onboard` interview. Use `/link` to make new information findable, `/audit` to verify the system, `/level-up` to close one useful gap at a time, and `/3d-brain` to explore your saved knowledge as an interactive globe.
 
 > **AIS-OS** stands for **AI Automation Society OS** — the way Nate designed this AI OS to be set up for members of his community, [AI Automation Society](https://www.skool.com/ai-automation-society). The kit is universal (it works for anyone), but the structure mirrors how AIS members run their own businesses on top of it.
 
@@ -71,9 +71,9 @@ Dependency graph: Context is non-skippable. Connections + Capabilities can build
 
 ---
 
-## What ships — 4 skills
+## What ships — 5 skills
 
-The kit is intentionally lean. Skills here are ideation prompts and thinking tools, not heavy automations. You hack on top of the structure.
+The kit includes setup, routing, verification, a weekly improvement workflow, and a working 3D knowledge explorer. You can extend the structure as your AI OS grows.
 
 | Skill | Type | When to run |
 |---|---|---|
@@ -81,6 +81,7 @@ The kit is intentionally lean. Skills here are ideation prompts and thinking too
 | `/audit` | Evidence-based check | After setup, after a meaningful fix, and weekly while building. Checks routing, freshness, and Claude/Codex compatibility, scores verified reliability, and automatically saves a dated report. |
 | `/link` | Routing helper | When adding a project, file, folder, or important source. Adds the smallest useful manual/index route and checks it resolves. |
 | `/level-up` | Recurring thinking skill | Day 14, then weekly. Three Ms interview (Mindset → Method → Machine). One run = one shipped artifact. |
+| `/3d-brain` | Interactive knowledge explorer | Choose your brain's name and categories. Builds a local 3D globe from your selected files, with search, note reading, Cinema, and a branching growth replay. |
 
 `/audit` checks whether the AI OS can find its information and perform useful work reliably. Rubric v2 awards points for evidence, not folder counts, API keys, or skills named "daily." Missing or unverified layers cap the total; installed skills cannot compensate for absent connections or execution history. The report includes five retrieval probes, stale-cache and source-authority checks, operating-manual differences, skill-package compatibility, and up to three prioritized improvements. It separates confirmed defects, verification gaps, intentional runtime differences, and optional improvements. The score measures verified operational reliability, not overall usefulness. Old rubric scores need a new baseline.
 
@@ -94,9 +95,25 @@ The kit is intentionally lean. Skills here are ideation prompts and thinking too
 
 ## Quick start
 
+### See your AI OS in 3D
+
+Turn your growing collection of notes, projects, and assistant memories into one place you can explore. See which ideas connect, search for something you remember, open the original note, and spot knowledge that needs attention. The growth replay also gives you a visual way to show someone what your AI OS contains.
+
+[![Watch the 3D Brain grow from one idea into a connected knowledge globe](docs/media/3d-brain-preview.gif)](docs/media/3d-brain-demo.mp4)
+
+**[Watch the full 36-second demo](docs/media/3d-brain-demo.mp4).** This recording shows Nate's HerkBrain. The skill builds yours with the name, categories, and saved knowledge you choose.
+
+Run `/3d-brain` in Claude Code or `$3d-brain` in Codex. It asks what to call your brain and which categories to show, with suggested source folders. Then it creates `apps/3d-brain/` using the included application template. Your name, categories, colors, and paths live in a local config.
+
+Use **Play demo** to watch the brain grow from a single idea into connected branches. You can drag to orbit and scroll to zoom throughout playback. **Cinema** provides a clean presentation view. The replay follows actual note connections; it is not a historical timeline.
+
+Requires Node.js 22 or newer. The renderer is prebuilt, so the app runs with `node serve.mjs` without installing dependencies. It reads local Markdown/text and optional curated Codex memory. Claude memory, meeting notes, and video knowledge can use selected Markdown folders. Other formats or online services require an export or a tested adapter. The app stays on localhost; personal config and generated data are gitignored.
+
+The complete [skill package](.claude/skills/3d-brain/README.md) includes source code, the browser bundle, configuration docs, license notices, and a fictional-data validation script.
+
 ### Using the kit in Codex
 
-The four skills are also installed under `.agents/skills/`. Use the skill picker (`/skills` in Codex CLI or the IDE extension), or type `$` and select `audit`, `link`, `onboard`, or `level-up`. Codex normally detects skill updates automatically; restart it if the list does not refresh.
+The five skills are also installed under `.agents/skills/`. Use the skill picker (`/skills` in Codex CLI or the IDE extension), or type `$` and select `audit`, `link`, `onboard`, `level-up`, or `3d-brain`. Codex normally detects skill updates automatically; restart it if the list does not refresh.
 
 `.claude/skills/` remains the authoring source. After editing a skill, run `bash scripts/sync-codex-skills.sh <skill-name>` to regenerate its Codex copy, supporting files, and menu metadata. The onboard intake template and level-up framework travel with their skills; existing projects retain their own canonical context routes.
 
@@ -131,12 +148,13 @@ AIS-OS/
 ├── archives/                        ← Old stuff. Don't delete. Move here.
 ├── audits/                          ← Created on first audit; dated private reports (gitignored)
 ├── scripts/sync-codex-skills.sh      ← Regenerates the Codex skill copies
-├── .agents/skills/                  ← Codex copies of all four skills and supporting files
+├── .agents/skills/                  ← Codex copies of all five skills and supporting files
 └── .claude/
     └── skills/
         ├── onboard/SKILL.md
         ├── audit/SKILL.md
         ├── level-up/SKILL.md
+        ├── 3d-brain/                ← Skill, portable app template, docs, and validation scripts
         └── link/SKILL.md
 ```
 

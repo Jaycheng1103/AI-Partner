@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3D Brain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <script>
+    // This orbit-only app never needs desktop pointer confinement, including in QA.
+    for (const name of ['requestPointerLock', 'webkitRequestPointerLock', 'setCapture']) {
+      Object.defineProperty(Element.prototype, name, { configurable: true, value: function () {} });
+    }
+  </script>
+  <div id="graph"></div>
+  <div class="scene-vignette" aria-hidden="true"></div>
+
+  <!-- Intro splash -->
+  <div id="splash" class="splash">
+    <div class="splash-inner">
+      <div class="splash-eyebrow">Your knowledge, connected</div>
+      <h1 class="splash-title">3D Brain</h1>
+      <div class="splash-stats" id="splash-stats">Loading the graph…</div>
+      <div class="splash-hint">Drag to orbit · Scroll to zoom · Click anything · Press <kbd>/</kbd> to search</div>
+    </div>
+  </div>
+
+  <!-- Top bar -->
+  <header class="topbar" id="topbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name">3D Brain</span>
+      <span class="brand-meta" id="brand-meta"></span>
+    </div>
+    <div class="search" id="search">
+      <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="text" placeholder="Search notes, people, videos, skills…" autocomplete="off" spellcheck="false" />
+      <kbd class="search-kbd">/</kbd>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn" id="btn-inventory" title="What lives in this brain">What's in here</button>
+      <button class="btn icon" id="btn-rotate" title="Pause / resume auto rotate" aria-pressed="true">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg>
+      </button>
+      <button class="btn icon" id="btn-reset" title="Reset view">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="intro-copy" aria-label="Knowledge overview">
+    <div class="eyebrow"><i></i> A living knowledge system</div>
+    <h1>Every idea.<br><span>Connected.</span></h1>
+    <p>Your business. Your experience.<br>One expanding universe.</p>
+    <div class="brain-stats"><div><strong id="total-notes">0</strong><span>notes</span></div><div><strong id="total-sources">0</strong><span>sources</span></div><div><strong id="total-links">0</strong><span>connections</span></div></div>
+  </section>
+  <div class="scene-status"><i></i><span id="visible-status">Local knowledge · connected</span></div>
+
+  <!-- Legend / filters -->
+  <aside class="legend" id="legend">
+    <div class="legend-title">Sources</div>
+    <div id="legend-items"></div>
+    <div class="legend-divider"></div>
+    <label class="legend-toggle">
+      <input type="checkbox" id="toggle-attention" />
+      <span>Only what needs attention</span>
+    </label>
+    <label class="legend-toggle">
+      <input type="checkbox" id="toggle-labels" />
+      <span>Show all labels</span>
+    </label>
+  </aside>
+
+  <!-- Detail drawer -->
+  <aside class="drawer" id="drawer" hidden>
+    <button class="drawer-close" id="drawer-close" title="Close (Esc)">×</button>
+    <div class="drawer-scroll">
+      <div class="drawer-source" id="d-source"></div>
+      <h2 class="drawer-title" id="d-title"></h2>
+      <div class="drawer-meta" id="d-meta"></div>
+      <div class="drawer-flags" id="d-flags"></div>
+      <p class="drawer-summary" id="d-summary"></p>
+      <div class="drawer-actions">
+        <button class="btn small" id="d-read">Read note</button>
+        <button class="btn small" id="d-transcript" hidden>Read transcript</button>
+        <button class="btn small ghost" id="d-focus">Focus connections</button>
+        <button class="btn small ghost" id="d-reveal">Show file</button>
+        <a class="btn small ghost" id="d-obsidian" target="_blank" rel="noopener" hidden>Open in Obsidian</a>
+        <a class="btn small ghost" id="d-youtube" target="_blank" rel="noopener" hidden>Watch on YouTube</a>
+      </div>
+      <div class="drawer-section">
+        <div class="section-head"><span>Connections</span><span class="count" id="d-conn-count"></span></div>
+        <div id="d-connections"></div>
+      </div>
+      <div class="drawer-section" id="d-broken-wrap" hidden>
+        <div class="section-head"><span>Links that go nowhere</span><span class="count" id="d-broken-count"></span></div>
+        <div class="broken-list" id="d-broken"></div>
+      </div>
+      <div class="drawer-section" id="d-content-wrap" hidden>
+        <div class="section-head"><span>Note</span><span class="count mono" id="d-path"></span></div>
+        <article class="note-body" id="d-content"></article>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Inventory drawer -->
+  <aside class="inventory" id="inventory" hidden>
+    <button class="drawer-close" id="inventory-close" title="Close (Esc)">×</button>
+    <div class="drawer-scroll">
+      <div class="inventory-eyebrow">Knowledge inventory</div>
+      <h2 class="inventory-title">What lives in this brain</h2>
+      <p class="inventory-lede" id="inv-lede"></p>
+      <pre id="inv-notices" class="muted small-text" style="white-space:pre-wrap" hidden></pre><div id="inv-sources"></div>
+      <div class="inventory-block" id="inv-meetings"></div>
+      <div class="inventory-block" id="inv-youtube"></div>
+      <div class="inventory-block">
+        <div class="section-head"><span>Needs attention</span><span class="count" id="inv-attention-count"></span></div>
+        <p class="muted small-text">Stale pages exceed the category's configured age threshold. Orphans have no connections. Broken links have no unambiguous target among the selected sources. Stubs contain fewer than 60 words.</p>
+        <div id="inv-health"></div>
+      </div>
+      <div class="inventory-block">
+        <div class="section-head"><span>Navigation pages (not drawn)</span><span class="count" id="inv-nav-count"></span></div>
+        <div id="inv-nav"></div>
+      </div>
+      <div class="inventory-foot" id="inv-foot"></div>
+    </div>
+  </aside>
+
+  <div class="hover-label" id="hover-label" hidden></div>
+  <div class="toast" id="toast" hidden></div>
+
+  <div class="demo-caption" id="demo-caption" hidden>
+    <div id="demo-source" class="eyebrow"></div>
+    <div class="growth-counter"><strong id="growth-count">1</strong><span>notes in the brain</span></div>
+    <div id="demo-title"></div>
+    <div id="demo-detail"></div>
+    <div id="demo-progress" role="progressbar" aria-label="Brain growth" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
+  </div>
+  <footer class="demo-controls">
+    <span class="orbit-hint">Drag to orbit <b>·</b> Scroll to explore</span>
+    <div class="control-buttons">
+      <button class="btn mobile-sources" id="btn-sources" aria-expanded="false" aria-controls="legend">Sources</button>
+      <button class="btn demo-primary" id="btn-demo" aria-pressed="false" title="Watch the brain grow from one idea (D)">Play demo</button>
+      <button class="btn" id="btn-cinema" aria-pressed="false" title="Toggle cinema view (C)">Cinema</button>
+    </div>
+    <span class="mode-label">3D BRAIN <b>/</b> 3D</span>
+  </footer>
+
+  <script type="module" src="/dist/app.js"></script>
+</body>
+</html>

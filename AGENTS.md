@@ -15,6 +15,7 @@ Read `references/3ms-framework.md` once. It's how {{Your Name}} thinks about AI 
 - `/onboard` — already run if you're seeing this filled in. Re-run any time to refresh from an edited `aios-intake.md`.
 - `/audit`: Evidence-based Four-Cs score, routing and Claude/Codex compatibility checks, and automatic dated reports in `audits/`. Compare prior findings after a meaningful fix and during regular reviews.
 - `/link`: Link a project, file, folder, or source into the right operating-manual route or index.
+- `/3d-brain`: Choose a brain name and categories, then build a local 3D knowledge globe with Cinema and interactive growth replay. Uses selected local files and the bundled app template.
 - `/level-up` — Weekly 3Ms interview. Find one automation, scope it, ship it. One per week.
 
 ## Where things live
