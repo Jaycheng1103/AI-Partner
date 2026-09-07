@@ -1,6 +1,6 @@
 ---
 name: onboard
-description: Use on Day 1 of an AIOS install, when someone says "set me up", "onboard me", "let's get started", "fill in my AIOS", or has just cloned the kit. Combined wizard — runs the 7-question intake AND scaffolds the Day-1 file set at the end. Idempotent — re-run any time after editing aios-intake.md.
+description: Use on Day 1 of an AI Partner install, when someone says "set me up", "onboard me", "let's get started", "fill in my AI Partner", or has just cloned the kit. Combined wizard — runs the 7-question intake AND scaffolds the Day-1 file set at the end. Idempotent — re-run any time after editing aios-intake.md.
 ---
 
 ## What this skill does
@@ -77,7 +77,7 @@ Once the intake is complete, generate these files (or update if re-running). Bac
 Print one screen. Three lines max:
 
 ```
-✓ Day 1 done. Your AIOS knows who you are, what you sell, what matters this quarter, and how you sound.
+✓ Day 1 done. Your AI Partner knows who you are, what you sell, what matters this quarter, and how you sound.
 
 Today: ask me — "what should I focus on this week?"
 Tomorrow: pick one tool from connections.md and wire it up (manual MCP install or write a small API script + save references/{tool}-api.md).
