@@ -1,6 +1,6 @@
 interface:
-  display_name: "AIOS Link"
-  short_description: "Link a source into the right AIOS route"
-  default_prompt: "Use $link to add this source to my AIOS routing."
+  display_name: "連結資料來源"
+  short_description: "將來源加入適當的 AI Partner 索引"
+  default_prompt: "使用 $link 把這個來源加入我的 AI Partner 資料索引。"
 policy:
   allow_implicit_invocation: false

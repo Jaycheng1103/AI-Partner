@@ -1,47 +1,49 @@
-# Decisions Log
+# 決策紀錄
 
-Append-only record of meaningful decisions and why they were made. `/level-up` Phase 2 (Method interview) writes scoped automation specs here. You can also append manually whenever you decide something worth remembering.
+只追加記錄重要決策與原因。`/level-up` 第 2 階段（方法訪談）會把界定範圍的自動化規格寫在這裡；你也可以隨時手動加入值得記住的決定。
 
-**Format per entry:**
+**每筆紀錄格式：**
 
+```markdown
+## YYYY-MM-DD：簡短標題
+
+**決策：** 決定了什麼。
+
+**原因：** 理由、限制，以及什麼條件會讓你改變決定。
+
+**考慮過的替代方案：** 還有哪些選項。
+
+**負責人：** 由誰負責。
 ```
-## YYYY-MM-DD — Short title
 
-**Decision:** what was decided.
-
-**Why:** the reasoning, constraints, and what would change your mind.
-
-**Alternatives considered:** what else was on the table.
-
-**Owner:** who's accountable.
-```
-
-Keep it terse. Future-you will thank present-you for capturing the *why*, not just the *what*.
+保持簡短。未來回頭看時，除了知道做了什麼，也要知道為什麼。
 
 ---
 
-## 2026-09-06 - Audit evidence and routing maintenance
+以下為原始專案既有決策紀錄的繁中翻譯，保留原日期與決策內容。
 
-**Decision:** Ship audit rubric v2 and a small /link skill. Audit scores working evidence across the Four Cs, checks operating-manual routing and freshness, and passes one concrete gap into /level-up. A selected repair can improve an existing workflow instead of creating another skill.
+## 2026-09-06：檢查證據與資料索引維護
 
-**Why:** File counts, configured keys, named rituals, and recent edits do not prove an operational AIOS. Source findability and freshness need explicit checks.
+**決策：** 提供檢查評分規準第 2 版與精簡的 `/link` 技能。依 4C 的實際運作證據評分，檢查操作手冊的索引與時效，再把一個具體缺口交給 `/level-up`。可以修正既有流程，不必另建技能。
 
-**Alternatives considered:** Keeping presence-based scoring or requiring a hot cache. Neither reliably establishes retrieval quality or successful execution.
+**原因：** 檔案數、設定好的憑證、已命名的例行工作與近期編輯，都不足以證明 AI 工作系統能運作。資料能否被找到、是否仍有效，需要明確檢查。
 
-## 2026-09-06 - Portable skills and automatic audit history
+**考慮過的替代方案：** 延用只看是否存在的評分方式，或強制建立快速參考快取；兩者都無法可靠地證明檢索品質或成功執行。
 
-**Decision:** Ship all four skills for Claude Code and Codex, with bundled resources, matching operating manuals, and a script for regenerating Codex copies. Audit reports are saved automatically, preserve previous runs, and track findings across comparable inspections.
+## 2026-09-06：可攜式技能與自動檢查歷史
 
-**Why:** Students need the same shared guidance when switching assistants and evidence of actual improvements over time. Intentional runtime adaptations, unknown verification, and confirmed defects are reported separately.
+**決策：** 為 Claude Code 與 Codex 提供當時的 4 個技能，附帶資源、相同的操作手冊，以及重新產生 Codex 副本的腳本。檢查報告自動儲存、保留先前版本，並在可比較的檢查間追蹤發現事項。
 
-## 2026-09-06 - Portable 3D Brain skill
+**原因：** 學員切換助理時，需要一致的共用指引，也需要能看出實際進步的證據。刻意保留的執行環境差異、尚待驗證的項目與已確認缺陷分開回報。
 
-**Decision:** Add `/3d-brain` for Claude Code and Codex. Ask for a name and categories, map selected local folders, and scaffold a bundled, configurable application with spherical placement, Cinema, and interactive growth replay.
+## 2026-09-06：可攜式 3D 知識球體技能
 
-**Why:** Shipping the working renderer preserves the intended appearance and interactions across AIOS installations. A prose-only prompt would produce inconsistent recreations. User config and graph data remain local; the public package includes only code, documentation, dependency notices, and fictional test inputs.
+**決策：** 為 Claude Code 與 Codex 加入 `/3d-brain`。詢問名稱與分類、對應指定的本機資料夾，再使用內附的可設定應用程式，提供球面排列、Cinema 展示模式與互動式成長重播。
 
-## 2026-09-06 - Add ongoing context interviews
+**原因：** 附上可運作的繪圖程式，能讓不同 AI 工作系統保有預期外觀與互動；只提供文字提示詞，重建成果容易不一致。個人設定與圖譜資料留在本機，公開套件只有程式碼、文件、相依套件聲明及虛構測試輸入。
 
-**Decision:** Adapt Herk-2's grill-me skill for the student kit and ship matching Claude/Codex packages. Save every answer to brainstorms/, preserve resumable Q&A history, and update canonical context only with confirmed facts during requested context-building sessions.
+## 2026-09-06：加入持續背景訪談
 
-**Why:** Onboarding is an initial snapshot. Ongoing interviews capture changing priorities, decisions, and preferences while keeping tentative ideas distinct from current business facts.
+**決策：** 將 Herk-2 的 grill-me 技能改編為學員套件，提供一致的 Claude/Codex 版本。每個回答存入 `brainstorms/`，保留可續接的問答紀錄；只有在使用者要求建立背景資料時，才用已確認事實更新正式資料。
+
+**原因：** 初始設定只反映當下情況。持續訪談能記錄變動中的優先事項、決策與偏好，同時區分暫定想法與目前的業務事實。

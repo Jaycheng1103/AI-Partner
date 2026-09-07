@@ -1,32 +1,32 @@
-# Portable 3D Brain specification
+# 可攜式 3D 知識球體規格
 
-This package preserves a working application rather than relying on a prose-only recreation. The portable runtime has a configurable ingestion layer and the same spherical renderer, growth planner, orbital scene, and interaction behavior as the reference implementation.
+本套件保留可運作的應用，不依賴純文字重新生成。可攜式執行程式有可設定的資料讀取層，並使用與參考實作相同的球面繪圖、成長規劃、軌道場景及互動行為。
 
-## Files and contracts
+## 檔案與責任
 
-- `assets/template/config.mjs`: validates names, category IDs, paths, colors, and limits.
-- `assets/template/build.mjs`: reads only the selected local sources; creates graph nodes, evidence-based edges, health flags, inventory, and an internal file registry.
-- `assets/template/serve.mjs`: zero-dependency Node server. Loopback only; static assets are allowlisted. Note IDs resolve through the file registry, never an arbitrary URL path.
-- `assets/template/codex-memory.mjs`: read-only curated memory importer with exact topic section bounds.
-- `assets/template/src/app.js`: search, graph interactions, source controls, drawers, sanitized note rendering, Cinema, and growth playback.
-- `assets/template/src/constellation.js`: deterministic spherical placement, central orb, and restrained orbital accents.
-- `assets/template/src/growth.js`: a spanning forest using only existing edges, limited branching per step, spring motion, and exact final positions.
-- `assets/template/dist/app.js`: prebuilt renderer. No package installation is necessary to run the generated app.
-- `scripts/discover.mjs`: lists candidate paths without reading their contents.
-- `scripts/scaffold.mjs`: copies an explicit file allowlist into a new app folder, refuses replacement, and writes local config.
+- `assets/template/config.mjs`：驗證名稱、分類 ID、路徑、顏色與限制。
+- `assets/template/build.mjs`：只讀指定本機來源，建立節點、有證據的連線、健康標記、完整清單與內部檔案登錄表。
+- `assets/template/serve.mjs`：無外部相依套件的 Node 伺服器，只使用回環位址，靜態資源採允許清單。筆記 ID 經由檔案登錄表解析，不接受任意 URL 路徑。
+- `assets/template/codex-memory.mjs`：唯讀匯入整理後的記憶，精確限制主題章節範圍。
+- `assets/template/src/app.js`：搜尋、圖譜互動、來源控制、抽屜、經清理的筆記渲染、Cinema 與成長播放。
+- `assets/template/src/constellation.js`：可重現的球面排列、中央球體與低干擾軌道效果。
+- `assets/template/src/growth.js`：只沿既有連線建立生成森林，每步限制分支數，使用彈性動態並還原精確最終位置。
+- `assets/template/dist/app.js`：已建置的繪圖程式，生成應用不用安裝套件即可執行。
+- `scripts/discover.mjs`：只列出候選路徑，不讀取內文。
+- `scripts/scaffold.mjs`：依明確檔案允許清單複製到新應用資料夾，拒絕替換既有目的地，並寫入本機設定。
 
-## Visual and interaction contract
+## 視覺與互動規格
 
-Near-black space, one color per category, a spherical silhouette from every angle, a central wire orb, and two quiet orbital tracks. White particles accent selected paths; background links are sampled. Labels have collision detection and explicit cleanup when graph nodes are removed or rebuilt.
+近黑色空間、每類一種顏色、各角度均呈球形輪廓、中央線框球體，以及兩條低干擾軌道。白色粒子強調選定路徑，背景連線採抽樣。標籤有碰撞偵測，節點移除或重建時明確清除。
 
-Growth begins with one node at the orb and the first real edge. New nodes spring from their actual parent nodes; a limited branching queue creates outward growth instead of a starburst from a single hub. Growth accelerates, finishes in roughly 29 seconds, restores every node to its deterministic globe position, and offers Replay. Disconnected components have independent roots.
+成長從中央球體的一個節點與第一條真實連線開始。新節點由真正的父節點彈出，透過有限分支佇列向外生長，不從單一中心同時放射。速度逐漸加快，約 29 秒結束，各節點回到可重現的球面位置，並提供 Replay。不相連的群組各有獨立根節點。
 
-Camera orbit and zoom continue to work during growth. User input takes over from the automatic pullback without stopping the timeline. The orb is present from frame one; the rings fade and expand in later. Cinema puts the counter beside the globe. Reduced-motion preferences produce a static completed state rather than forced motion.
+成長時仍可旋轉與縮放。使用者操作接管自動拉遠鏡頭，但不停止時間軸。第一幀就有中央球體；圓環稍後淡入並擴張。Cinema 把計數放在球體旁。減少動態偏好會呈現靜態完成狀態，不強迫播放。
 
-The overview draws sampled paths. Selection shows up to 72 paths and 24 particle paths; full graph counts remain available in inventory. Default labels are limited to one hub per category and a small selected neighborhood. Mobile layouts retain filters through the Sources button.
+總覽抽樣繪製路徑，選取時最多顯示 72 條路徑及 24 條粒子路徑；完整數量仍可在清單查看。預設標籤限制為每類一個主要節點及少量選取鄰居。手機版透過 Sources 按鈕保留篩選。
 
-## Data integrity and boundaries
+## 資料完整性與邊界
 
-IDs include category and file identity, so duplicate basenames do not collide. Wikilinks resolve only when unambiguous. Explicit file links take precedence over mention inference. Full-title mentions are labeled separately and are not claims of semantic certainty. The replay represents connectivity, never invented creation dates.
+ID 包含分類及檔案身分，因此同名檔案不衝突。Wikilink 只在無歧義時解析。明確檔案連結優先於文字提及推論；完整標題提及另行標示，不代表語意關係已被確認。重播表現關聯，不虛構建立日期。
 
-No bundled user content, graph snapshots, credentials, API keys, real memory exports, or absolute author-machine paths. User configs and generated data remain local and ignored by git. The skill makes no deployment, universal-format, exact-history, or virality promise.
+不包含個人內容、圖譜快照、憑證、API key、真實記憶匯出或原作者機器絕對路徑。個人設定與生成資料留在本機，由 Git 忽略。技能不承諾部署、支援所有格式、還原精確歷史或帶來爆紅。

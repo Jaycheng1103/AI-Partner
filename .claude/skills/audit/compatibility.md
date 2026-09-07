@@ -1,76 +1,76 @@
-# Routing and cross-runtime compatibility
+# 索引與跨執行環境相容性
 
-Required for every audit. Keep checks bounded and read-only. Inspect the runtimes actually used or explicitly targeted for migration; a single-runtime project does not need duplicate installations to pass. Treat a potential future migration as an optional opportunity unless requested. Never install, synchronize, rename, or run project workflows merely to audit them.
+每次檢查都要執行，限制範圍並保持唯讀。只檢查實際使用或明確指定遷移的環境；單一環境不必重複安裝才能通過。未要求的未來遷移，只列為選用機會。不要為了檢查而安裝、同步、改名或執行專案流程。
 
-## 1. Establish the comparison contract
+## 1. 確認比較依據
 
-- Read applicable manuals, scoped overrides, bridge documentation, and sync configuration. Identify the canonical source, generated copies, intentional independent implementations, and declared sharing rules. Do not assume the newest file or the Claude copy is authoritative.
-- Inventory actual project skill locations, including `.claude/skills`, `.agents/skills`, and `.codex/skills` when present or referenced. A literal `.agent/skills` directory is a candidate typo/custom location, not automatically a discovered skill root. Verify it against the installed runtime.
-- Include relevant user-level roots, linked directories, runtime overrides, and duplicate names when available through discovery/configuration. Do not crawl unrelated personal files or expose configuration secrets. If user-level discovery is unavailable, report that limit.
-- Establish discovery and precedence using the installed runtime's read-only listing/configuration, or current official documentation if needed. Folder presence alone proves neither availability nor precedence. Record the runtime/version when available. Do not assume every listed location works in every version.
-- Report scope numerically: manuals read, roots inventoried, skills compared, skills whose discovery was checked, resources checked, and workflows exercised. State what was sampled or omitted. A metadata check is not an execution test.
+- 讀適用手冊、局部覆寫、橋接文件及同步設定，確認主要來源、生成副本、刻意獨立實作與共用規則。不假設最新檔案或 Claude 副本就是正式來源。
+- 盤點實際技能位置，包括存在或被引用的 `.claude/skills`、`.agents/skills`、`.codex/skills`。`.agent/skills` 可能是拼錯或自訂位置，不能直接視為有效技能根目錄，需對照已安裝環境。
+- 可從探索／設定取得時，納入相關使用者層根目錄、連結目錄、環境覆寫與同名技能。不掃描無關私人檔案或揭露設定憑證；無法查使用者層時，說明限制。
+- 用已安裝環境的唯讀清單／設定，必要時以目前官方文件確認技能發現及優先順序。資料夾存在不證明可用性或優先度；可取得時記錄環境／版本，不假設各版本都支援所有路徑。
+- 以數字回報讀過手冊數、盤點根目錄數、比較技能數、驗證可發現技能數、檢查資源數、實際執行流程數，說明抽樣與略過範圍。metadata 檢查不等於執行測試。
 
-## 2. Compare operating instructions
+## 2. 比較操作規則
 
-1. Compare root `AGENTS.md` and `CLAUDE.md` when present, then sampled scoped overrides. Compare purpose, user preferences, source authority, routes, output locations, permissions, and workflow instructions.
-2. Classify each meaningful difference as shared guidance that agrees, an intentional runtime adaptation, a confirmed conflict/omission, or an unresolved difference. Whitespace and line endings are not behavioral conflicts. Enforce exact synchronization only when the project explicitly promises it; report harmless formatting drift as such.
-3. A missing manual is a migration defect only if the target runtime consequently lacks required guidance and no verified bridge/equivalent supplies it. Do not demand duplicate manuals from a single-runtime setup.
-4. Show both file/line references, the differing rules, the runtime affected, and the likely behavior. For omissions, cite the source rule plus the inspected destination section/file. Never invent a destination line for absent text.
-5. Check that bridges preserve shared instructions without pretending unsupported runtime-specific fields or tools are enforced. Different model/tool names may be valid adaptations; losing an approval boundary or source route is substantive.
+1. 先比較存在的根目錄 `AGENTS.md`、`CLAUDE.md`，再抽樣局部覆寫，涵蓋用途、偏好、來源權威性、入口、輸出位置、權限及流程。
+2. 重要差異分為共用指引一致、刻意環境調整、確認衝突／缺失、未解差異。空白與換行不是行為衝突；只有專案明定完全同步才強制一致，無害格式差異如實標示。
+3. 只有目標環境因缺手冊而缺少必要指引，且無已驗證橋接／替代方式，才算遷移缺陷。單環境不必有兩份手冊。
+4. 提供雙方檔案／行號、差異規則、影響環境與可能行為。缺失內容引用來源規則與實際檢查的目的檔案／章節，不為不存在文字虛構行號。
+5. 確認橋接保留共用規則，不假裝不支援的環境欄位或工具也會生效。模型／工具名稱不同可能合理；遺失核准邊界或資料入口則是實質差異。
 
-## 3. Check routes in both directions
+## 3. 雙向檢查入口
 
-- **Route to target:** resolve concrete paths from the correct base (repository, containing file, declared working directory, user home, or separate host). Verify existence and intended destination. Distinguish concrete references from placeholders, examples, globs, URLs, and remote-host paths. A remote path unavailable locally is unverified, not automatically broken.
-- **Important target to route:** compare the relevant indexes/manuals with immediate project, knowledge, and skill inventories. Follow index chains; a nested project can be properly routed without a direct root-manual link. Identify useful active material with no usable entry route, using evidence of its relevance. An unclassified folder is a candidate for review, not automatically an orphan.
-- Check obsolete usernames, moved folders, platform-specific absolute paths, wrong folder spelling/case where material, stale aliases/counts, archived material shown as active, and links pointing at the wrong valid destination. An existing path can still be wrong.
-- Do not flag every unlinked file. Scratch, generated files, dependencies, archives, and intentionally private/specialist material may be correctly excluded. Distinguish stale factual content from an old file whose contents remain accurate.
+- **入口到目標：** 依正確基準解析路徑，例如 repo、所在檔案、指定工作目錄、家目錄或另一台主機，確認存在且目標正確。區分實際路徑、占位、範例、glob、網址與遠端主機路徑。本機無法開遠端路徑應標未驗證，不直接判定壞掉。
+- **重要目標到入口：** 比較相關索引／手冊與直接的專案、知識、技能清單，沿索引鏈確認。巢狀專案不一定需要根手冊直接連結。有證據顯示重要且使用中的資料，卻無有效入口時才列缺口；未分類資料夾先列待確認，不直接當孤立資料。
+- 檢查舊使用者名稱、搬移資料夾、平台絕對路徑、重要的拼字／大小寫、過期別名／數量、被當作現行的封存內容，以及存在但指錯目標的連結。路徑存在也可能不正確。
+- 不把每個未連結檔案都當問題。暫存、生成、依賴、封存及刻意私密／專門資料可能本來就應排除。區分內容已過期與檔案雖舊但仍正確。
 
-## 4. Compare skill packages and actual availability
+## 4. 比較技能套件與真正可用性
 
-Match skills by declared identity, purpose, and documented aliases, not folder name alone. Inventory broadly by metadata, then inspect required resources for the selected workflows and any suspected mismatch.
+依宣告身分、用途與明定別名比對，不只看資料夾名稱。先用 metadata 廣泛盤點，再檢查選定流程及疑似差異的必要資源。
 
-1. **Presence:** required source/target copy or intentional runtime-specific scope.
-2. **Content:** shared workflow steps, inputs, outputs, boundaries, and behavior. For declared mirrors, compare after only documented transforms. Never blanket-strip runtime text or path differences to manufacture a match.
-3. **Resources:** required scripts, templates, examples, assets, dependency instructions, and agent references resolve from the target environment. Include extra obsolete mirror files as potential drift; a source-to-target-only comparison misses these. Broken symlinks and targets outside the checkout need explicit evidence.
-4. **Discovery:** distinguish present on disk, runtime-listed, disabled, and not checked. Detect duplicate identities across project/user roots and determine effective resolution where supported. Report ambiguity if precedence cannot be verified. Do not assume presence in a menu means successful execution.
-5. **Behavior:** check incompatible tool calls, unsupported instructions, wrong working directories, platform commands, missing environment-variable names without revealing values, and undocumented dependencies. Use safe existing evidence for actual execution; leave paid, posting, or other side-effecting workflows untested in a read-only audit.
+1. **存在：** 必要來源／目標副本，或刻意限定的環境範圍。
+2. **內容：** 共用流程、輸入、輸出、邊界與行為。宣告為副本時，只套用明定轉換後比較，不能任意去除環境文字或路徑差異來製造一致。
+3. **資源：** 必要腳本、範本、範例、素材、依賴說明與代理參照，需在目標環境可解析。副本多出的退役檔案也可能是偏差；只從來源往目標比會漏掉。壞符號連結與 checkout 外目標需明確證據。
+4. **發現：** 區分磁碟存在、環境已列出、停用、未檢查。找專案／使用者根目錄的同名技能，能確認時查實際優先解析。無法確認就回報歧義，不把出現在選單當成功執行。
+5. **行為：** 檢查不相容工具呼叫、不支援指令、錯工作目錄、平台命令、缺少的環境變數名稱（不揭露值）及未記錄依賴。實際執行採安全既有證據；付費、發布或其他副作用流程，在唯讀檢查中保留未測。
 
-## 5. Communicate the result
+## 5. 溝通結果
 
-Use these finding classes:
+使用以下分類：
 
-- **Confirmed defect:** evidence shows a missing required route/resource, conflicting instruction, broken path, or unavailable required skill.
-- **Verification gap:** discovery, remote access, intent, or execution was not established. State the smallest check that would resolve it.
-- **Intentional difference:** a documented and appropriate runtime adaptation. No repair needed.
-- **Improvement opportunity:** a useful simplification or extension without a demonstrated failure. Explain the benefit without calling it broken.
+- **已確認缺陷：** 證據顯示必要入口／資源缺失、指令衝突、壞路徑或必要技能無法使用。
+- **待驗證項目：** 可發現性、遠端存取、意圖或執行尚未確認，列出最小必要檢查。
+- **刻意差異：** 有文件且適當的環境調整，不需修正。
+- **改善機會：** 尚無失敗證據，但可以簡化或擴充；說明好處，不稱為故障。
 
-Show a compact compatibility matrix, using actual paths/runtime names:
+以實際路徑／環境提供精簡比較表：
 
-| Item | Claude evidence | Codex evidence | Finding / ID | Practical consequence |
+| 項目 | Claude 證據 | Codex 證據 | 發現／ID | 實際影響 |
 |---|---|---|---|---|
-| Shared operating guidance | File/section | File/section or verified bridge | Agrees / intentional difference / conflict / not checked | What changes for the user |
-| Sampled skill | Canonical/package status | Mirror/discovery status | Equivalent / missing / drift / disabled / not checked | What works or fails after switching |
-| Required resource or route | Resolved source | Resolved target | Valid / broken / unlinked / not checked | Effect on retrieval or execution |
+| 共用操作指引 | 檔案／章節 | 檔案／章節或已驗證橋接 | 一致／刻意差異／衝突／未查 | 對使用者有何改變 |
+| 抽樣技能 | 主要套件狀態 | 副本／可發現狀態 | 等效／缺失／偏差／停用／未查 | 切換後能否工作 |
+| 必要資源或入口 | 來源解析結果 | 目標解析結果 | 有效／損壞／未連結／未查 | 對檢索或執行的影響 |
 
-Follow with only actionable findings, grouped by class:
+接著按類別列出可採取行動的發現：
 
-| ID / class / priority | Evidence and affected runtime | User impact | Proposed change or verification | Completion check |
+| ID／類別／優先度 | 證據與影響環境 | 使用者影響 | 建議改動或驗證 | 完成檢查 |
 |---|---|---|---|---|
-| Stable ID; repair, verify, or opportunity | Exact file/line pairs or dated runtime result | Concrete failure or uncertainty | Canonical edit/sync/route addition/read-only check | Observable result |
+| 固定 ID；修正／驗證／機會 | 精確檔案行號對照或日期結果 | 具體失敗或不確定性 | 正式版本編輯／同步／索引／唯讀檢查 | 可觀察結果 |
 
-Prioritize wrong answers, lost instructions, unavailable workflows, and unsafe permission drift over cosmetic differences. Use one ID for an underlying issue across manual, routing, and skill sections. Do not hide a confirmed lower-priority defect because only three actions are recommended.
+錯誤答案、遺失指引、流程無法使用及危險權限偏差，優先於格式。根本問題在手冊、索引、技能章節使用同一 ID。即使只推薦三項行動，也不隱藏其他已確認的低優先缺陷。
 
-Conclude **blocked in the sampled migration** only for a confirmed defect that prevents a required migrated behavior; **needs verification** for unresolved evidence or a nonblocking confirmed mismatch; **passed inspected checks** when the stated checks passed without unresolved applicable findings. Optional opportunities do not block a pass. Always name unchecked execution/coverage. No fifth score, no migration percentage, no score bonus for duplicate files. No automatic repairs.
+只有確認缺陷阻止必要遷移行為時，結論才是**抽樣遷移受阻**。證據未解或非阻斷性差異為**需要驗證**；受檢項目通過且無未解適用發現時，才是**通過受檢項目**。選用機會不阻止通過。必須說明未測執行與覆蓋範圍。不新增第五項分數、遷移百分比，也不為重複檔案加分。不自動修正。
 
-## Calibration cases
+## 校準案例
 
-- Manuals share all rules but use different supported tool names: intentional adaptation, no conflict.
-- Project explicitly promises identical manuals; only newline encoding differs: formatting-only, not a behavioral blocker.
-- A shared permission rule exists only in the source manual, with no target bridge: confirmed omission; cite the source and inspected destination.
-- A single-runtime project has one manual and skill tree: no missing-copy penalty.
-- A requested target runtime lists a same-name skill through a verified user-level installation: not missing solely because its project mirror is absent; inspect the effective package.
-- A mirror matches the documented path rewrite but lacks a required template: confirmed package defect despite matching SKILL.md.
-- Duplicate project/user skills exist but effective precedence is unknown: ambiguity/verification gap, not an assumed overwrite.
-- A referenced remote host is unavailable during inspection: verification gap, not a broken local path.
-- A relevant project is reachable through a domain index: routed; scratch with no incoming link is not a defect.
-- A skill is listed and enabled but was not run: discovery verified, execution unverified.
+- 規則相同，工具名稱依環境不同且受支援：刻意調整，非衝突。
+- 承諾手冊完全同步，但只差換行編碼：格式差異，非行為阻礙。
+- 共用權限規則只在來源，目標沒有橋接：確認缺失，引用雙方檔案。
+- 單一環境只有一份手冊與技能樹：不因缺副本扣分。
+- 目標環境透過已驗證的使用者層安裝找到同名技能：不能只因專案無副本就說缺失，需檢查實際套件。
+- 副本符合路徑轉換，但缺必要範本：即使 `SKILL.md` 相同，仍是套件缺陷。
+- 專案／使用者技能重名但優先順序未知：待驗證，不假設覆寫。
+- 遠端主機檢查時無法連線：待驗證，不是本機壞路徑。
+- 專案可經領域索引到達：已有入口；暫存無連結不算缺陷。
+- 技能已列出並啟用但未執行：已驗證發現，執行仍未驗證。

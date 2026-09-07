@@ -1,6 +1,6 @@
 interface:
-  display_name: "Grill Me"
-  short_description: "Build context through saved, one-question interviews"
-  default_prompt: "Use $grill-me to explore this topic and save each answer."
+  display_name: "深入訪談"
+  short_description: "一次一題補充背景，保存每個回答"
+  default_prompt: "使用 $grill-me 探討這個主題，並儲存每個回答。"
 policy:
   allow_implicit_invocation: false

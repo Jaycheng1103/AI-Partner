@@ -2,125 +2,125 @@
 
 **傑少AI分身（AI Partner）** 是由傑少提供給學員的 AI 工作系統起始套件，支援 Claude Code 與 Codex。你可以透過設定訪談，建立自己的工作背景、工具連線與日常工作流程。套件採 MIT 授權，可免費下載使用。
 
-The kit personalizes itself to you via an `/onboard` interview. Use `/grill-me` whenever you want to deepen its understanding of your business, preferences, or plans. Use `/link` to make new information findable, `/audit` to verify the system, `/level-up` to close one useful gap at a time, and `/3d-brain` to explore your saved knowledge as an interactive globe.
+先執行 `/onboard` 訪談，讓套件依照你的情況完成設定。想補充業務、偏好或計畫時，使用 `/grill-me`；用 `/link` 讓新資料可以被找到，用 `/audit` 檢查系統，用 `/level-up` 每次改善一個實際缺口，再用 `/3d-brain` 透過互動式知識球體探索已儲存的資料。
 
-> 本學員版以 [Nate Herk 的 AIS-OS](https://github.com/nateherkai/AIS-OS) 為基礎，保留原始功能、檔案結構與 Git 歷史，調整首頁名稱與下載入口。AIS-OS 原名為 AI Automation Society OS。原作者版權、框架歸屬與授權聲明保留於本套件。
-
----
-
-## The litmus test
-
-> **"While you're not at your desk, your AI Partner observes one real-world event and produces an output that's faster and more accurate than what you'd produce yourself."**
-
-Every design decision in this kit rolls up to that test. If a layer, skill, or template doesn't contribute to it, it doesn't ship.
+> 本學員版以 [Nate Herk 的 AIS-OS](https://github.com/nateherkai/AIS-OS) 為基礎，保留原始功能、檔案結構與 Git 歷史，調整名稱、下載入口與文件語言。AIS-OS 原名為 AI Automation Society OS。原作者版權、框架歸屬與授權聲明保留於本套件。
 
 ---
 
-## How you'll know it's working
+## 系統是否有用的檢驗方式
 
-Three felt **success indicators** tell you the AI OS is actually changing how you work. Not KPIs — there's no objective metric. These are lived experiences that show up in your week.
+> **「你不在電腦前時，AI Partner 能觀察一個真實發生的事件，並產出比你自己處理更快、更準確的結果。」**
 
-**1. Team-reaches-out:**
-
-> *"A teammate messages you with a question. You realize your AI OS would answer it better, faster, and with exact sources — even if you were awake and free. So you ask your AI OS too. That's the moment you stop being a bottleneck for your own knowledge."*
-
-**2. Context-switching reduction:**
-
-> *"You stop opening new tabs. You stop launching the desktop app. When something new lands, your first move is to ask the AI OS, not to open six things. The default surface for thought work shifts. Silent. Compounding."*
-
-**3. Knowledge-leaves-your-head:**
-
-> *"You stop trying to remember business facts. You don't rehearse what you decided last quarter or what your customer said in that meeting. You trust the retrieval. The AI OS holds the truth, you hold the questions."*
-
-**Personal foundation → company AI-readiness.** Once these indicators show up for one person, the same data architecture powers everything else. Custom dashboards on the data you already collect. Automations on top of the connections you already wired. Team rollout where everyone has theirs. *A company where every operator runs a personal AI OS is a company that's actually AI-ready.*
-
-The kit teaches personal AI OS first. Everything scales from there.
+這是本套件的設計目標。任何架構層、技能或範本，都應該有助於達成這個目標。
 
 ---
 
-## Two frameworks
+## 怎麼知道系統開始發揮作用
 
-The kit teaches two complementary frameworks. **Three Ms first, Four Cs second.** Without the brain rewire, the architecture is just a folder structure.
+以下三種**使用感受**，可以幫你觀察 AI 工作系統是否改變了日常工作。它們不是客觀 KPI，而是可能在一週工作中出現的情境。
 
-### The Three Ms — operator brain (how you think)
+**1. 團隊來找你時：**
 
-| M | One-liner |
+> 「同事傳訊息問你一個問題。你發現，自己的 AI 工作系統能回答得更好、更快，還能附上精確來源。就算你醒著、有空，也會先問它。這時候，知識就不再只能透過你本人取得。」
+
+**2. 切換工具的次數減少：**
+
+> 「你不再一直開新分頁，也不再每次都先打開桌面應用程式。有新事情進來時，第一步是詢問 AI 工作系統，不必先開六個工具。你處理思考工作的習慣，就這樣慢慢改變。」
+
+**3. 知識不再只放在腦中：**
+
+> 「你不再努力記住所有業務細節，也不用反覆回想上季做了什麼決定，或客戶在上次會議說了什麼。你相信系統能找回資料。系統保存事實，你負責提出問題。」
+
+**個人的基礎，能延伸成公司的 AI 應用能力。** 當一個人開始出現上述使用感受，同一套資料架構也能支援其他工作：用已蒐集的資料做儀表板、在已接通的工具上建立自動化，或讓團隊成員各自建立工作系統。每位工作者都有自己的 AI 工作系統，是公司準備好運用 AI 的一種方式。
+
+本套件先從個人的 AI 工作系統教起，再逐步延伸。
+
+---
+
+## 兩套框架
+
+套件使用兩套互補的框架：先學 **Three Ms（3M）**，再學 **Four Cs（4C）**。先調整思考方式，檔案架構才有實際用途。
+
+### Three Ms：執行者的思考方式
+
+| M | 核心內容 |
 |---|---|
-| **Mindset** | Default Shift, Function Breakdown, Curiosity Rule. *To what extent can AI be leveraged here?* |
-| **Method** | Find Constraint → EAD (Eliminate, Automate, Delegate) → Map Process → Pick Autonomy Level → Tie to KPI. |
-| **Machine** | Lego Principle, Validation Chain, Bike Method, Intern Rule, Kill Switch. *Boring is beautiful. Workflows beat agents.* |
+| **Mindset：思維** | 預設先想 AI、拆解功能、保持好奇。這件事有多少部分可以交給 AI？ |
+| **Method：方法** | 找出限制 → EAD（刪除、 自動化、委派）→ 畫出流程 → 選擇自主程度 → 連結 KPI。 |
+| **Machine：系統** | 樂高原則、驗證鏈、腳踏車法、實習生原則、停止開關。可靠的工作流程優先於複雜的代理。 |
 
-Full breakdown in `references/3ms-framework.md`. The `/level-up` skill walks you through all three weekly.
+完整說明見 `references/3ms-framework.md`。`/level-up` 會透過每週訪談帶你運用這三部分。
 
-> *The Three Ms of AI™ is a trademark of Nate Herk. © 2026 Nate Herk.*
+> *The Three Ms of AI™ 為 Nate Herk 的商標。© 2026 Nate Herk。*
 
-### The Four Cs — architecture (what you build)
+### Four Cs：系統架構
 
-| # | Layer | One-liner | "This layer is in place" test |
+| # | 架構層 | 用途 | 如何確認已具備 |
 |---|---|---|---|
-| 1 | **Context** | Knows your business | Fresh assistant session answers "what does this business do and who works here?" without browsing |
-| 2 | **Connections** | Reaches your stuff | "What's on my calendar tomorrow and what tasks are due?" → live data, no paste |
-| 3 | **Capabilities** | Knows how to do the work | A short phrase triggers a multi-step workflow that produces an artifact |
-| 4 | **Cadence** | Runs without being asked | Laptop closed. A brief lands in the inbox. A teammate messages it and gets a real answer |
+| 1 | **Context：背景資料** | 了解你的業務 | 開啟新的助理對話，不上網也能回答「這家公司做什麼？有哪些成員？」 |
+| 2 | **Connections：連線** | 存取你的工具與資料 | 詢問「明天有哪些行程、哪些工作到期？」時，能取得即時資料，不必手動貼上 |
+| 3 | **Capabilities：能力** | 知道怎麼完成工作 | 一句指令能啟動多步驟流程，產出實際成果 |
+| 4 | **Cadence：執行節奏** | 不用每次開口才執行 | 電腦闔上後仍能收到摘要，或隊友傳訊息時能得到有根據的回答 |
 
-**Brand line:** Context. Connections. Capabilities. Cadence.
+**架構口訣：** 背景資料、連線、能力、執行節奏。
 
-> *The Four Cs of an AI OS™ is a trademark of Nate Herk. © 2026 Nate Herk.*
+> *The Four Cs of an AI OS™ 為 Nate Herk 的商標。© 2026 Nate Herk。*
 
-Dependency graph: Context is non-skippable. Connections + Capabilities can build in parallel. Cadence is last — don't automate workflows that don't work manually.
+依賴順序：Context 不能跳過；Connections 與 Capabilities 可以同時建立；Cadence 最後處理。還不能手動順利完成的流程，先不要自動化。
 
 ---
 
-## What ships — 6 skills
+## 套件包含的 6 個技能
 
-The kit includes setup, ongoing context interviews, routing, verification, a weekly improvement workflow, and a working 3D knowledge explorer. You can extend the structure as your AI OS grows.
+套件包含初始設定、持續訪談、資料索引、系統檢查、每週改善流程，以及可運作的 3D 知識探索器。系統成長時，也可以擴充架構。
 
-| Skill | Type | When to run |
+| 技能 | 類型 | 使用時機 |
 |---|---|---|
-| `/onboard` | Setup wizard (one-time) | Day 1, immediately after clone. 7-question interview. Generates the Day-1 file set and fills the shared `CLAUDE.md` and `AGENTS.md` manuals. |
-| `/grill-me` | Saved context interview | Any time you want to unpack a plan or add more context. Asks one question at a time and saves every answer to `brainstorms/`. |
-| `/audit` | Evidence-based check | After setup, after a meaningful fix, and weekly while building. Checks routing, freshness, and Claude/Codex compatibility, scores verified reliability, and automatically saves a dated report. |
-| `/link` | Routing helper | When adding a project, file, folder, or important source. Adds the smallest useful manual/index route and checks it resolves. |
-| `/level-up` | Recurring thinking skill | Day 14, then weekly. Three Ms interview (Mindset → Method → Machine). One run = one shipped artifact. |
-| `/3d-brain` | Interactive knowledge explorer | Choose your brain's name and categories. Builds a local 3D globe from your selected files, with search, note reading, Cinema, and a branching growth replay. |
+| `/onboard` | 初始設定精靈 | 第 1 天下載後立即執行。透過 7 個問題，建立初始檔案並填入 `CLAUDE.md` 與 `AGENTS.md` 的共用指引。 |
+| `/grill-me` | 可保存的背景訪談 | 想整理計畫或補充資料時使用。一次問一題，每個回答都儲存到 `brainstorms/`。 |
+| `/audit` | 依證據檢查系統 | 初始設定後、重要修正後，以及建置期間每週執行。檢查索引、資料時效與 Claude/Codex 相容性，依驗證結果評分並自動儲存日期報告。 |
+| `/link` | 資料索引助手 | 新增專案、檔案、資料夾或重要來源時使用。建立最少且足夠的手冊或索引入口，並確認可以找到來源。 |
+| `/level-up` | 定期思考與改善 | 第 14 天起每週執行。透過 3M 訪談（思維 → 方法 → 系統），每次完成一項實際成果。 |
+| `/3d-brain` | 互動式知識探索器 | 選擇知識球體名稱與分類，從指定檔案建立本機 3D 球體，支援搜尋、閱讀筆記、Cinema 展示模式與分支成長重播。 |
 
-`/audit` checks whether the AI OS can find its information and perform useful work reliably. Rubric v2 awards points for evidence, not folder counts, API keys, or skills named "daily." Missing or unverified layers cap the total; installed skills cannot compensate for absent connections or execution history. The report includes five retrieval probes, stale-cache and source-authority checks, operating-manual differences, skill-package compatibility, and up to three prioritized improvements. It separates confirmed defects, verification gaps, intentional runtime differences, and optional improvements. The score measures verified operational reliability, not overall usefulness. Old rubric scores need a new baseline.
+`/audit` 檢查系統能否找到資料、可靠地完成有用的工作。評分規準第 2 版依據證據給分，不看資料夾數量、API key，或技能名稱是否包含「daily」。缺少或尚未驗證的架構層會限制總分；安裝再多技能，也不能抵銷連線或執行紀錄的不足。報告包含 5 次檢索測試、快取過期與來源權威性檢查、操作手冊差異、技能套件相容性，以及最多 3 項依優先順序排列的改善建議。它會區分已確認缺陷、待驗證項目、刻意保留的執行環境差異與選擇性改善。分數代表已驗證的運作可靠度，不代表整體用途；舊版分數需要重新建立比較基準。
 
-**Automatic audit history:** Every `/audit` saves a unique dated Markdown report in `audits/` and compares it with relevant prior reports. Findings retain their IDs and are tracked as new, still open, resolved, reopened, not rechecked, or no longer applicable. Resolution requires fresh evidence. Score comparisons distinguish actual fixes from better evidence and changed coverage. Earlier reports are preserved; the inspected system is unchanged apart from the new local report. Audit reports are gitignored because they may contain private project context. An explicit request not to save overrides this default.
+**自動保留檢查歷史：** 每次 `/audit` 都會在 `audits/` 儲存具唯一名稱及日期的 Markdown 報告，並與相關舊報告比較。發現事項保留固定 ID，標示為新增、仍未解決、已解決、重新出現、未重新檢查或不再適用。必須有新證據才能判定已解決。分數比較會區分實際修正、證據改善與檢查範圍改變。既有報告保留；除了新增本機報告，受檢查的系統不會被修改。報告可能包含私人專案資料，因此預設由 Git 忽略。若使用者明確要求不儲存，則依使用者指示處理。
 
-`/link path/to/project "use for this purpose"` makes a new source findable without copying its contents into the manual. It follows the project's existing `AGENTS.md`/`CLAUDE.md` conventions and asks only when the target or intended use is unclear. A hot cache is optional and is never created by these skills.
+`/link path/to/project "這個來源的用途"` 會讓新來源可被找到，不把內文複製進操作手冊。它遵守既有的 `AGENTS.md`／`CLAUDE.md` 慣例，只有目標或用途不明確時才詢問。快速參考快取是選用功能，這些技能不會自行建立。
 
-`/grill-me "help me explain how my business works"` turns what is in your head into saved context. Each answer is checkpointed immediately in a dated Markdown file under `brainstorms/`, so you can pause and resume. When you ask to build or update AI OS context, confirmed facts are added to the appropriate context pages with links back to the interview. Tentative ideas stay labeled. Captures are gitignored by default. Use `/onboard` for initial setup, then `/grill-me` as your business and thinking evolve.
+`/grill-me "幫我說清楚我的業務怎麼運作"` 會把你腦中的想法轉成可保存的背景資料。每次回答後，立即寫入 `brainstorms/` 中帶日期的 Markdown 檔，可隨時暫停與續接。當你要求建立或更新背景資料時，已確認的事實會加入對應頁面，並連回訪談。尚未確定的想法保留標示。訪談紀錄預設由 Git 忽略。初始設定使用 `/onboard`，後續變化用 `/grill-me` 持續補充。
 
-`/level-up` carries the audit evidence into one improvement. A verified repair to an existing workflow counts; another new skill is not always needed. Run `/audit` again after the fix. Repeated-use and scheduled-run credit comes from real execution over time.
+`/level-up` 會把檢查證據轉成一項改善。修好既有流程也算成果，不必每次新增技能。修正後再執行 `/audit`；重複使用與排程執行的分數，必須來自一段時間內的真實執行紀錄。
 
 ---
 
-## Quick start
+## 快速開始
 
-### See your AI OS in 3D
+### 用 3D 探索你的 AI 工作系統
 
-Turn your growing collection of notes, projects, and assistant memories into one place you can explore. See which ideas connect, search for something you remember, open the original note, and spot knowledge that needs attention. The growth replay also gives you a visual way to show someone what your AI OS contains.
+把持續增加的筆記、專案與助理記憶放進同一個探索介面。查看想法之間的連結、搜尋記得的內容、開啟原始筆記，以及找出需要整理的知識。成長重播也能用來向別人展示系統包含哪些資料。
 
-[![Watch the 3D Brain grow from one idea into a connected knowledge globe](docs/media/3d-brain-preview.gif)](https://github.com/Jaycheng1103/AI-Partner/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)
+[![觀看 3D 知識球體從一個想法逐步長出關聯](docs/media/3d-brain-preview.gif)](https://github.com/Jaycheng1103/AI-Partner/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)
 
-The preview above plays the full growth sequence. **[Download the original 36-second video](https://github.com/Jaycheng1103/AI-Partner/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)** for full-resolution playback. This recording shows Nate's HerkBrain. The skill builds yours with the name, categories, and saved knowledge you choose.
+上方預覽會播放完整成長過程。**[下載約 36 秒的原始影片](https://github.com/Jaycheng1103/AI-Partner/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)**，可用原始解析度觀看。影片展示的是原作者 Nate 的 HerkBrain；實際執行技能時，會使用你選擇的名稱、分類與已保存的知識。
 
-Run `/3d-brain` in Claude Code or `$3d-brain` in Codex. It asks what to call your brain and which categories to show, with suggested source folders. Then it creates `apps/3d-brain/` using the included application template. Your name, categories, colors, and paths live in a local config.
+在 Claude Code 執行 `/3d-brain`，或在 Codex 執行 `$3d-brain`。技能會詢問名稱、分類，並建議來源資料夾，再用套件內附的應用程式範本建立 `apps/3d-brain/`。名稱、分類、顏色與路徑儲存在本機設定檔。
 
-Use **Play demo** to watch the brain grow from a single idea into connected branches. You can drag to orbit and scroll to zoom throughout playback. **Cinema** provides a clean presentation view. The replay follows actual note connections; it is not a historical timeline.
+使用 **Play demo（播放示範）**，觀看知識從單一想法長成互相關聯的分支。播放時可拖曳旋轉、捲動縮放。**Cinema（展示模式）** 提供簡潔的展示畫面。重播依據實際筆記連結，並不是歷史時間軸。
 
-Requires Node.js 22 or newer. The renderer is prebuilt, so the app runs with `node serve.mjs` without installing dependencies. It reads local Markdown/text and optional curated Codex memory. Claude memory, meeting notes, and video knowledge can use selected Markdown folders. Other formats or online services require an export or a tested adapter. The app stays on localhost; personal config and generated data are gitignored.
+需要 Node.js 22 或更新版本。繪圖程式已預先建置，因此不用安裝相依套件，直接執行 `node serve.mjs` 即可。可讀取本機 Markdown／文字與選定的 Codex 記憶；Claude 記憶、會議筆記與影片知識可使用指定的 Markdown 資料夾。其他格式或線上服務需先匯出，或使用已測試的轉接程式。應用程式只在 localhost 執行；個人設定與生成資料預設由 Git 忽略。
 
-The complete [skill package](.claude/skills/3d-brain/README.md) includes source code, the browser bundle, configuration docs, license notices, and a fictional-data validation script.
+完整的[技能套件](.claude/skills/3d-brain/README.md)包含原始碼、瀏覽器程式包、設定文件、授權聲明與使用虛構資料的驗證腳本。
 
-### Using the kit in Codex
+### 在 Codex 使用套件
 
-The six skills are also installed under `.agents/skills/`. Use the skill picker (`/skills` in Codex CLI or the IDE extension), or type `$` and select `audit`, `link`, `onboard`, `level-up`, `grill-me`, or `3d-brain`. Codex normally detects skill updates automatically; restart it if the list does not refresh.
+6 個技能也已放在 `.agents/skills/`。使用技能選單（Codex CLI 或 IDE 擴充套件中的 `/skills`），或輸入 `$` 選擇 `audit`、`link`、`onboard`、`level-up`、`grill-me`、`3d-brain`。Codex 通常會自動偵測技能更新；清單沒更新時可重新啟動。
 
-`.claude/skills/` remains the authoring source. After editing a skill, run `bash scripts/sync-codex-skills.sh <skill-name>` to regenerate its Codex copy, supporting files, and menu metadata. The onboard intake template and level-up framework travel with their skills; existing projects retain their own canonical context routes.
+`.claude/skills/` 是技能的主要編輯來源。修改技能後，執行 `bash scripts/sync-codex-skills.sh <skill-name>`，重新產生 Codex 副本、支援檔案與選單資料。初始訪談範本與 3M 框架會隨技能一起複製；既有專案仍使用自己的正式背景資料入口。
 
-### First-time setup
+### 第一次設定
 
 1. **下載傑少AI分身**到電腦上的新資料夾：
 
@@ -135,54 +135,54 @@ The six skills are also installed under `.agents/skills/`. Use the skill picker 
    ```
 
    接著開啟下載的 `AI-Partner` 資料夾。設定訪談請填寫你自己的資料。
-2. **Open it in Claude Code or Codex.** Run `/onboard` in Claude Code, or select `$onboard` in Codex. Answer the 7 questions honestly. Voice samples must be pasted, not described. Takes ~15 minutes. Day-1 file set drops at the end.
-3. **Use it for a week.** Bring real questions. Make real decisions. Ask your assistant to record meaningful decisions in `decisions/log.md`.
-4. **Day 7:** run `/audit`. Read the Four-Cs gap report. Pick one gap to close.
-5. **Day 14:** run `/level-up`. The Three Ms interview surfaces one automation worth building. Build it.
-6. **As you grow:** use `/grill-me` to capture new context, `/link` new sources, use `/level-up` for one improvement, and rerun `/audit` to verify it.
+2. **在 Claude Code 或 Codex 開啟。** Claude Code 執行 `/onboard`；Codex 選擇 `$onboard`。如實回答 7 個問題。語氣範例必須貼上原文，不能只描述。原作者估計約需 15 分鐘，完成後會建立初始檔案。
+3. **先使用一週。** 帶入真實問題、做出真實決定，並請助理把重要決策記錄到 `decisions/log.md`。
+4. **第 7 天：** 執行 `/audit`，閱讀 4C 缺口報告，選一個缺口處理。
+5. **第 14 天：** 執行 `/level-up`，透過 3M 訪談找出一項值得建立的自動化，並完成它。
+6. **持續擴充：** 用 `/grill-me` 補充背景資料、`/link` 加入來源、`/level-up` 改善，再用 `/audit` 驗證。
 
 ---
 
-## Repo layout
+## 檔案結構
 
-```
+```text
 AI-Partner/
 ├── README.md
-├── CLAUDE.md                        ← Shared operating manual for Claude Code
-├── AGENTS.md                        ← Matching operating manual for Codex
-├── EXPANSIONS.md                    ← What to add as you grow
+├── CLAUDE.md                        ← Claude Code 操作手冊
+├── AGENTS.md                        ← 與其保持一致的 Codex 操作手冊
+├── EXPANSIONS.md                    ← 逐步擴充指南
 ├── LICENSE
 ├── .gitignore
-├── aios-intake.md                   ← Source-of-truth for /onboard. Edit + re-run any time.
-├── connections.md                   ← Registry of every system your AI OS can reach
-├── context/                         ← About you, your business (filled by /onboard)
+├── aios-intake.md                   ← 初始訪談的正式來源，可編輯後重新執行
+├── connections.md                   ← 系統可存取的工具清單
+├── context/                         ← 個人、業務與優先事項，由 /onboard 填入
 ├── references/
-│   └── 3ms-framework.md             ← The operator brain
+│   └── 3ms-framework.md             ← 執行者的思考框架
 ├── decisions/
-│   └── log.md                       ← Append-only record of what was decided and why
-├── archives/                        ← Old stuff. Don't delete. Move here.
-├── brainstorms/                     ← Created by /grill-me; saved interviews (gitignored)
-├── audits/                          ← Created on first audit; dated private reports (gitignored)
-├── scripts/sync-codex-skills.sh      ← Regenerates the Codex skill copies
-├── .agents/skills/                  ← Codex copies of all six skills and supporting files
+│   └── log.md                       ← 只追加的決策與理由紀錄
+├── archives/                        ← 舊資料移到這裡，不直接刪除
+├── brainstorms/                     ← /grill-me 建立的訪談紀錄，由 Git 忽略
+├── audits/                          ← 首次檢查時建立的日期報告，由 Git 忽略
+├── scripts/sync-codex-skills.sh      ← 重新產生 Codex 技能副本
+├── .agents/skills/                  ← 6 個技能的 Codex 副本與支援檔案
 └── .claude/
     └── skills/
         ├── onboard/SKILL.md
         ├── audit/SKILL.md
         ├── level-up/SKILL.md
         ├── grill-me/SKILL.md
-        ├── 3d-brain/                ← Skill, portable app template, docs, and validation scripts
+        ├── 3d-brain/                ← 技能、可攜式應用範本、文件與驗證腳本
         └── link/SKILL.md
 ```
 
-See `EXPANSIONS.md` for what to add as you grow (`projects/`, `templates/`, `scripts/`, `.claude/agents/`, sub-OS folders, etc.).
+何時加入 `projects/`、`templates/`、`scripts/`、`.claude/agents/` 或子系統資料夾，請見 `EXPANSIONS.md`。
 
 ---
 
-## License + attribution
+## 授權與來源
 
 MIT License. © 2026 Nate Herk.
 
-The Three Ms of AI™ and The Four Cs of an AI OS™ are trademarks of Nate Herk. Both frameworks ship in this repo with attribution. Use freely; don't repackage as your own.
+The Three Ms of AI™ 與 The Four Cs of an AI OS™ 為 Nate Herk 的商標。兩套框架保留作者歸屬，可依授權使用，請勿包裝成自己的原創。
 
-學員版由傑少提供。原始專案與原作者的教學資訊請見 [nateherkai/AIS-OS](https://github.com/nateherkai/AIS-OS)。
+學員版由傑少提供。原始專案與原作者的教學資訊請見 [nateherkai/AIS-OS](https://github.com/nateherkai/AIS-OS)。正式授權以 [LICENSE](LICENSE) 英文原文為準。

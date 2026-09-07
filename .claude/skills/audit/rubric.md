@@ -1,91 +1,91 @@
-# Four Cs rubric v2
+# 4C 評分規準 v2
 
-## Scoring rules
+## 評分規則
 
-There are five criteria per C, each worth 5 points. Use **0, 1, 3, or 5 only**: select the highest anchor fully supported by evidence. **0** means absent, contradicted, or not evidenced at even the 1-point level. Higher anchors retain the substantive checks below them; numerical coverage bands (such as N1) are alternatives, not simultaneous requirements. Never interpolate, start with full points and deduct, award points for irrelevant infrastructure, or replace missing evidence with optimism.
+每個 C 有五個條件，各 5 分。**只能給 0、1、3、5 分**，選擇證據完整支持的最高錨點。**0 分**代表不存在、有反證，或連 1 分條件的證據都不足。較高錨點仍需符合較低層級的實質檢查；N1 等數值涵蓋區間是替代選項，不需同時成立。不能插值、先給滿分再扣、為無關設施加分，或用樂觀推測補缺證據。
 
-For multi-part anchors, all parts are required. A bounded sample can establish the stated sample criterion, but does not prove whole-system coverage. Name the sample and unresolved scope. If no relevant workflows or connections can be identified, those evidence-dependent criteria are 0, not vacuously complete. Documentation may earn 1 where specified; it is not a working result.
+一個錨點有多項條件時，全部都需成立。限定樣本可支持樣本條件，不代表全系統已涵蓋；需列樣本與未解範圍。無法辨識相關流程或連線時，依賴證據的條件是 0 分，不可當作沒有缺漏而滿分。明定情況下，文件可得 1 分，但不等於運作成果。
 
-## Context: can a fresh session understand and retrieve? (25)
+## Context：新對話能理解並找到資料嗎？（25 分）
 
-| ID | Criterion | 1 point | 3 points | 5 points |
+| ID | 條件 | 1 分 | 3 分 | 5 分 |
 |---|---|---|---|---|
-| C1 | Personalized operating context | Non-placeholder identity and purpose exist | Identity, audience/stakeholders, priorities, and collaboration preferences have specific usable sources | All of those are consistent across the sampled current sources, with meaningful priorities and clear completion expectations |
-| C2 | Routing and findability | A manual or equivalent gives at least one specific usable route | At least 3 of the 5 probes succeed through declared routes, and the important project/knowledge indexes exist where needed | All 5 succeed through declared routes; immediate-folder comparison finds no unexplained important omissions or broken sampled routes |
-| C3 | Freshness | Changing facts have source/as-of dates | Sampled changing facts have appropriate refresh rules and current evidence, or are explicitly historical with a working current-source route | All sampled current facts are verified within their expected interval; optional caches are consistent, maintained, and optional, or absent |
-| C4 | Source authority | At least one canonical source is identified | Rules distinguish stable context, current status/metrics, and original records; sampled claims link to supporting sources | All sampled authority chains resolve; duplicates have explicit roles, and no unresolved material source/manual conflicts remain |
-| C5 | Continuity | An actual decision or project-state record exists | The sampled active project has a current deliverable, decision rationale, and next step accessible from its entry point | A second relevant project or knowledge thread can also be resumed from durable records, with current status and useful source links |
+| C1 | 個人化操作背景 | 有非占位的身分與用途 | 身分、受眾／利害關係人、優先事項、協作偏好都有可用具體來源 | 抽樣現行來源中的上述資料一致，優先事項有意義，完成期待清楚 |
+| C2 | 索引與可查找性 | 手冊或等效來源至少有一條具體有效入口 | 五題中至少三題經正式入口成功，必要的重要專案／知識索引存在 | 五題均經正式入口成功；比較直接子資料夾後，無無法解釋的重要遺漏或抽樣壞路徑 |
+| C3 | 時效 | 變動事實有來源／截至日期 | 抽樣變動事實有適當更新規則與新證據，或明確標歷史且有有效目前來源入口 | 抽樣的全部目前事實都在預期區間內驗證；選用快取一致、有維護且非必需，或根本沒有快取 |
+| C4 | 來源權威性 | 至少確認一個正式來源 | 規則區分穩定背景、即時狀態／數字、原始紀錄；抽樣主張有佐證連結 | 所有抽樣權威來源鏈可解析；重複資料角色清楚，無未解的重要來源／手冊衝突 |
+| C5 | 可續接性 | 有真實決策或專案狀態紀錄 | 抽樣中的進行專案，可從入口找到最新成果、決策理由及下一步 | 第二個相關專案或知識主題也能從長期紀錄續接，有目前狀態與有效來源連結 |
 
-A hot cache, particular wiki layout, memory folder, long manual, or extra project count is not required. For a genuinely single-project setup, C5's second thread can be a distinct prior decision within that project.
+不強制快速參考快取、特定知識庫架構、記憶資料夾、長手冊或更多專案。確實只有單一專案時，C5 第二條主題可用同專案內另一項既有決策。
 
-## Connections: can it reach the information it needs? (25)
+## Connections：能取得需要的資訊嗎？（25 分）
 
-Inventory applicable domains before scoring. Mark irrelevant domains with a reason grounded in the user's role/context. Do not reward connecting tools the user does not need.
+評分前盤點適用領域。依角色／背景說明不適用理由，不為連上不需要的工具加分。
 
-| ID | Criterion | 1 point | 3 points | 5 points |
+| ID | 條件 | 1 分 | 3 分 | 5 分 |
 |---|---|---|---|---|
-| N1 | Relevant domain access | At least one relevant domain has successful-read evidence, but fewer than half do | At least half, but not all, applicable domains have successful-read evidence | Every applicable domain has successful-read evidence within its expected interval |
-| N2 | Useful retrieval | A specific query and expected answer are documented | One actual priority-related query returns the right record, date range, and source | Two distinct priority-related queries return adequate results, with pagination/completeness or documented export limits checked |
-| N3 | Reproducible access routes | One connection has a tool/script path and purpose documented | All applicable domains have a documented route or explicit missing-connection status, and connected routes include safe auth instructions and query examples | The documented sampled access route is successfully reproduced without relying on hidden chat context; all connected domains have usable guides |
-| N4 | Appropriate action boundaries | Required read/write scopes and approval boundaries are documented | For a needed write workflow, a prior authorized successful write or faithful sandbox result is recorded; alternatively, the user's deliberately read-only scope is documented and verified | Sampled operations respect intended permissions and have verified failure/duplicate safeguards; do not perform a live write just to earn points |
-| N5 | Freshness and failure visibility | Source timestamps and freshness expectations are documented | Sampled reads/exports are within those expectations and failures are surfaced rather than replaced by unlabeled old data | Every applicable domain has recent success evidence plus demonstrated expired-auth/stale-data handling for at least one representative connection |
+| N1 | 相關領域存取 | 至少一個適用領域有成功讀取證據，但不到一半 | 至少一半、尚未全部適用領域有成功讀取證據 | 所有適用領域都有預期時效內的成功讀取證據 |
+| N2 | 有用的檢索 | 有具體查詢與預期答案文件 | 一次與優先事項相關的真實查詢，回傳正確紀錄、日期範圍與來源 | 兩個不同的優先事項查詢都有足夠結果，並檢查分頁／完整性或記錄匯出限制 |
+| N3 | 可重現存取入口 | 至少一個連線記錄工具／腳本路徑與用途 | 所有適用領域有入口或明確缺連線狀態；已連線入口有安全授權說明與查詢範例 | 抽樣的文件入口能不靠隱藏聊天背景成功重現，全部已連線領域有可用指南 |
+| N4 | 適當行動邊界 | 記錄所需讀寫範圍與核准邊界 | 需要寫入的流程有先前授權成功寫入或忠實沙盒結果；或刻意唯讀範圍已記錄且驗證 | 抽樣操作遵守預期權限，並驗證失敗／重複防護；不為加分做即時寫入 |
+| N5 | 時效與失敗可見性 | 記錄來源時間與時效期待 | 抽樣讀取／匯出符合期待，失敗會呈現，不用未標示舊資料替代 | 所有適用領域有近期成功證據，且至少一個代表性連線展示過期授權／過期資料處理 |
 
-N1: if there is exactly one applicable domain, its successful read meets the 5-point coverage anchor, not the other criteria automatically. Local files and exports can satisfy relevant domains when they are the real source and sufficiently current. No hidden bonus for MCPs, API keys, provider count, or write access the user does not need.
+N1 若只適用一個領域，成功讀取可達 5 分涵蓋錨點，但不自動滿足其他條件。本機檔案或匯出若是真正來源且夠新，也能滿足條件。不因 MCP、API key、供應商數量或不需要的寫入權限額外加分。
 
-## Capabilities: do relevant workflows produce usable results? (25)
+## Capabilities：相關流程能產生可用成果嗎？（25 分）
 
-Use up to three priority workflows chosen before inspecting their outputs. If only one exists, assess it honestly; do not require unnecessary skills. If an identified priority needs a missing workflow, retain that gap in the sample.
+先選最多三個優先流程，再看輸出。只有一個也如實評估，不強制多建技能。已確認優先事項需要卻缺少的流程，保留在樣本中作為缺口。
 
-| ID | Criterion | 1 point | 3 points | 5 points |
+| ID | 條件 | 1 分 | 3 分 | 5 分 |
 |---|---|---|---|---|
-| P1 | Fit and invocation | A workflow has a clear trigger tied to a stated need | One sampled workflow has a successful invocation with the intended inputs | All sampled priority workflows have successful invocation evidence, with clear boundaries between overlapping triggers |
-| P2 | Output quality | An example output and acceptance criteria exist | One actual output was checked against meaningful acceptance criteria | All sampled workflows have usable outputs verified against their acceptance criteria, not merely self-reported completion |
-| P3 | Failure handling | Expected missing-input/error cases and side effects are documented | At least one relevant missing-input, stale-source, or dependency-failure case was tested and handled correctly | Every sampled workflow has a relevant boundary-case result and respects authorization/side-effect limits |
-| P4 | Portability and discoverability | Required files/dependencies and invocation route are documented | Sampled entry points, references, and runtime registrations resolve; generated mirrors match required transforms where used | A recorded clean-session or equivalent isolated run reproduces the sampled workflow without hidden conversation state or undocumented dependencies |
-| P5 | Repeated useful use | At least one dated real use is evidenced | One sampled workflow has two distinct successful real uses with output references | All sampled workflows have repeated successful real uses; corrections are reflected in the current workflow with subsequent validation |
+| P1 | 需求對應與啟動 | 流程有對應明確需求的觸發方式 | 一個抽樣流程以預期輸入成功啟動 | 所有抽樣優先流程都有成功啟動證據，重疊觸發之間的邊界清楚 |
+| P2 | 輸出品質 | 有範例輸出與驗收條件 | 一份真實成果通過有意義的驗收 | 所有抽樣流程都有依驗收確認可用的成果，不只是自稱完成 |
+| P3 | 失敗處理 | 有缺輸入／錯誤情況與副作用說明 | 至少一次相關缺輸入、過期來源或依賴失敗測試，處理正確 | 每個抽樣流程都有相關邊界情況結果，且遵守授權／副作用限制 |
+| P4 | 可攜性與可發現性 | 記錄必要檔案／依賴與啟動入口 | 抽樣進入點、參照及環境註冊可解析；使用生成副本時符合必要轉換 | 有紀錄的新對話或等效隔離執行，能不靠隱藏聊天狀態或未記錄依賴重現抽樣流程 |
+| P5 | 重複有效使用 | 至少一次帶日期的真實使用證據 | 一個抽樣流程有兩次不同的成功真實使用及成果參照 | 所有抽樣流程均重複成功真實使用，修正已反映在目前流程並有後續驗證 |
 
-Skill/agent count and file recency score zero by themselves. A deterministic script or simple prompt can score as highly as a complex agent. A newly created skill cannot prove repeated real use by running synthetic tests twice.
+技能／代理數量與檔案近期修改本身不加分。固定規則腳本或簡單提示詞也能得到與複雜代理相同的分數。新技能連跑兩次合成測試，不能當作重複真實使用。
 
-## Cadence: does useful work happen reliably over time? (25)
+## Cadence：有用工作能長期可靠發生嗎？（25 分）
 
-Use actual schedules and expected due times. A manually invoked ritual is useful but is not unattended execution. Configuration alone does not establish a successful run.
+依實際排程及應執行時間評估。人工例行工作有用，但不等於無人執行；只有設定不能證明成功跑過。
 
-| ID | Criterion | 1 point | 3 points | 5 points |
+| ID | 條件 | 1 分 | 3 分 | 5 分 |
 |---|---|---|---|---|
-| D1 | Real trigger | An explicit human ritual or actual scheduler/trigger configuration exists | At least one enabled trigger has a verified runtime/host and expected output | That trigger has demonstrably run in its intended unattended environment, including runtime availability requirements |
-| D2 | Due executions | A dated manual completion or incomplete/failed automatic attempt is recorded | One due automatic execution completed with its expected output | At least two distinct due automatic executions completed; no unexplained missed due runs remain in the inspected period |
-| D3 | Observability | Run status/logging and failure-notification behavior are documented | Inspected executions have durable timestamps, outcomes, and a verified failure-reporting path | A real or safely simulated failure reached the intended reporting mechanism, and recovery is evidenced |
-| D4 | Control and recovery | Stop/disable, ownership, permissions, and recovery instructions exist | Configuration confirms those controls plus protection against inappropriate duplicate/overlapping actions | A prior or safe isolated test demonstrates stop/recovery and duplicate prevention without unintended side effects |
-| D5 | Maintenance loop | Review frequency and freshness/cleanup responsibilities are defined | One completed review repaired a real issue or verified no action was needed, with evidence | Two distinct scheduled review cycles are recorded, with follow-up verification of any fixes and maintained routing/context |
+| D1 | 真實觸發 | 有明確人工例行工作或實際排程／觸發設定 | 至少一個啟用觸發有已驗證主機／環境與預期成果 | 該觸發在預期無人環境實際執行，包含環境可用性需求的證據 |
+| D2 | 到期執行 | 記錄帶日期的人工完成，或未完成／失敗自動嘗試 | 一次應執行的自動工作完成，產出預期成果 | 至少兩次不同的到期自動執行完成，受檢期間無未解釋漏跑 |
+| D3 | 可觀察性 | 記錄執行狀態／日誌與失敗通知行為 | 受檢執行有可保存的時間、結果及已驗證失敗回報入口 | 真實或安全模擬失敗到達預期回報機制，並有復原證據 |
+| D4 | 控制與復原 | 有停止／停用、負責人、權限及復原指引 | 設定確認上述控制，以及不當重複／重疊行動防護 | 先前或安全隔離測試證明停止／復原及防重複，不造成未預期副作用 |
+| D5 | 維護循環 | 定義檢查頻率及更新／整理責任 | 完成一次檢查，修正真實問題或驗證不需行動，附證據 | 記錄兩次不同的排定檢查周期，修正有後續驗證，索引／背景持續維護 |
 
-Do not trigger jobs, change schedules, send test alerts, or disable automation during a read-only audit. Use prior evidence or label the test unverified. A manual-only system has a maximum **10/25 for Cadence**, even if its review discipline is strong. A newly enabled routine must wait for due-run evidence; back-to-back manual test runs are not two due executions.
+唯讀檢查不啟動工作、不改排程、不發測試通知、不停用自動化；用舊證據或標未驗證。只有人工執行的系統，**Cadence 最高 10／25**，即使維護紀律很好也一樣。新啟用流程需等真實到期執行證據，連續兩次手動測試不算兩次到期執行。
 
-## Gates and stages
+## 上限與階段
 
-1. Sum criterion points within each C. If the five retrieval probes cannot recover either the user's main purpose or any authoritative priority/status source, **Context is capped at 10**. Show its raw subtotal and the cap.
-2. Apply the manual-only Cadence cap of 10 when no enabled automatic trigger is verified. This includes a system with no triggers at all; the cap never awards points.
-3. Sum the four resulting C subtotals as the **raw total**.
-4. Apply every relevant total cap; the lowest wins:
-   - Any C below 10: total capped at **49**.
-   - Any C below 15, or fewer than two verified due automatic successes: total capped at **69**.
-   - Any C below 20, or a material unresolved routing/source-authority conflict: total capped at **84**.
-5. Final score = min(raw total, applicable caps). Report each applied cap and why; never silently alter arithmetic.
+1. 各 C 內先加總。五題檢索無法找回使用者主要用途，或找不到任何正式優先事項／狀態來源時，**Context 上限 10**；列原始小計與上限。
+2. 未驗證任何啟用自動觸發時，Cadence 套人工上限 10；完全沒有觸發也適用。上限只限制，不自動給分。
+3. 四個套用單項上限後的小計相加，得到**原始總分**。
+4. 套所有適用總分上限，以最低者為準：
+   - 任一 C 低於 10：總分最高 **49**。
+   - 任一 C 低於 15，或少於兩次已驗證到期自動成功：最高 **69**。
+   - 任一 C 低於 20，或有重要未解索引／來源權威衝突：最高 **84**。
+5. 最終分數為原始總分與適用上限的最小值。列每個上限及理由，不默默改算式。
 
-| Final score | Stage |
+| 最終分數 | 階段 |
 |---|---|
-| 0-24 | Unproven |
-| 25-49 | Foundation |
-| 50-69 | Working, with gaps |
-| 70-84 | Dependable in the verified scope |
-| 85-100 | Maintained and evidenced |
+| 0–24 | 尚未證明（Unproven） |
+| 25–49 | 基礎建立中（Foundation） |
+| 50–69 | 可運作，但仍有缺口（Working, with gaps） |
+| 70–84 | 在已驗證範圍內可靠（Dependable in the verified scope） |
+| 85–100 | 持續維護且證據充分（Maintained and evidenced） |
 
-Never label a high score universally autonomous, safe, or complete. State what was sampled. Unknown evidence is a verification gap, not proof that a system is broken. These gates intentionally prevent a large skill library from compensating for absent connections or cadence.
+高分不代表普遍自主、安全或完整，需說明抽樣範圍。未知證據是待驗證，不是故障證明。這些上限是為避免大量技能抵銷缺少連線或固定執行的問題。
 
-## Calibration checks
+## 校準檢查
 
-- Fresh template, named daily skills, API keys, and recent file timestamps: no execution/output/domain-access credit. A fresh clone should remain Unproven, not jump to 70+.
-- Personalized manual, useful references, 60 skills, and 10 agents but no observed outputs or runs: presence cannot earn full Capabilities or Cadence.
-- Excellent Context/Connections/Capabilities at 25 each and manual-only Cadence at 10: raw 85, final 69. No automatic success evidence means the 69 cap applies.
-- All Cs at 21 with two due successes and no material conflicts: raw/final 84. At 23 each under the same conditions: raw/final 92.
-- A stale required hot cache that contradicts a canonical source lowers freshness/authority credit and prevents a score above 84 until resolved. No hot cache incurs no penalty.
-- A monthly routine with two evidenced due executions can earn repeat-run credit; a newly configured daily job with no executions cannot.
+- 新範本、命名好的每日技能、API key、新時間戳：不能得到執行／輸出／領域存取分。剛下載應仍為尚未證明，不直接跳到 70 以上。
+- 有個人化手冊、參考資料、60 個技能、10 個代理，但無成果或執行證據：存在本身不能讓能力與執行節奏滿分。
+- 背景／連線／能力各 25，人工執行節奏 10：原始 85、最終 69，因自動成功證據不足套 69 上限。
+- 四項各 21，有兩次到期成功且無重要衝突：原始與最終 84。同條件各 23 時：原始與最終 92。
+- 必須使用的舊快取與正式來源衝突，降低時效／權威分，未解前不得超過 84。沒有快取不扣分。
+- 月度工作有兩次真實到期執行，可得重複執行分；新設定的每日工作沒有執行證據則不行。

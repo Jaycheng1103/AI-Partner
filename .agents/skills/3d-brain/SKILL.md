@@ -1,90 +1,90 @@
 ---
 name: 3d-brain
-description: Use when someone asks to build a 3D brain, visualize their AIOS or second brain, turn their knowledge into an interactive graph, or run /3d-brain or /3D brain.
+description: 當使用者想建立 3D 知識球體、視覺化 AI 工作系統或第二大腦、把知識轉成互動圖譜，或執行 /3d-brain、/3D brain 時使用。
 disable-model-invocation: true
-argument-hint: "[brain name] [categories or existing app path]"
+argument-hint: "[知識球體名稱] [分類或既有應用程式路徑]"
 ---
 
-# 3D Brain
+# 3D 知識球體
 
-Turn the user's actual AIOS files into a personalized, local 3D knowledge globe. Use the bundled working application, not a new interpretation of its appearance. Preserve its spherical composition, colored categories, central orb, restrained connection particles, Cinema mode, and interactive growth replay.
+把使用者真實的 AI 工作系統檔案，轉成個人化的本機 3D 知識球體。使用內附的可運作應用程式，不重新猜測或設計外觀。保留球形構圖、分類配色、中央球體、適量連線粒子、Cinema 展示模式與互動式成長重播。
 
-The command is `/3d-brain` in Claude Code. In Codex, select the `3d-brain` skill or use `$3d-brain`. Interpret the natural-language phrase “3D brain” the same way. Input comes from `$ARGUMENTS` and the conversation. Work in the current assistant; no subagents, external services, API keys, paid assets, or deployment are required.
+Claude Code 使用 `/3d-brain`；Codex 選擇 `3d-brain` 技能或輸入 `$3d-brain`。自然語言「3D brain」視為相同請求。輸入來自 `$ARGUMENTS` 與目前對話。在目前助理中完成，不需要子代理、外部服務、API key、付費素材或部署。
 
-## 1. Find the AIOS and the package
+## 1. 找到工作系統與套件
 
-Read the applicable local operating manual and relevant index. Establish the actual AIOS root; do not scan an unrelated ancestor or all of the user's home directory. Resolve this skill's own directory from the loaded `SKILL.md`; all package paths below are relative to it, regardless of whether it lives in `.claude/skills`, `.agents/skills`, or a plugin.
+先讀取適用的本機操作手冊及相關索引，確認實際根目錄。不要掃描無關的上層資料夾或整個家目錄。從已載入的 `SKILL.md` 確認技能所在位置；下列套件路徑均相對於該位置，不論安裝在 `.claude/skills`、`.agents/skills` 或外掛中。
 
-Read [the portable spec](references/portable-spec.md) and [the config guide](references/config.md). Check Node.js 22 or newer. Use the user's existing Node runtime. If unavailable, explain that Node is required and follow the host's installation/approval policy.
+閱讀[可攜式規格](references/portable-spec.md)與[設定指南](references/config.md)。確認有 Node.js 22 或更新版本，優先使用既有執行環境；若沒有，說明需求並依主機安裝與核准規則處理。
 
-Run the path-only discovery helper:
+執行只列出路徑的探索工具：
 
 ```text
 node <skill-directory>/scripts/discover.mjs --root <AIOS-root>
 ```
 
-It lists candidate folders, not their contents. Also use explicit routes in the operating manual to find custom wiki, meeting, video, or project folders. Do not assume the author's folder names or accounts exist on this machine.
+它只列出候選資料夾，不讀取內文。也要依操作手冊的明確入口，找出自訂知識庫、會議、影片或專案資料夾。不要假設原作者的資料夾名稱或帳號在本機存在。
 
-## 2. Ask for the name and categories
+## 2. 詢問名稱與分類
 
-Use the host's question tool when available, otherwise ask in plain language. Reuse information already supplied; do not repeat answered questions.
+若有主機提供的提問工具就使用，否則直接詢問。沿用使用者已提供的資訊，不重問已回答的問題。
 
-1. **Name:** “What would you like to call your 3D brain?” Accept the exact display name, such as “Atlas Brain,” “Studio Mind,” or “Maya's Second Brain.” Do not silently choose the author's name or brand. A supplied argument can answer this question.
-2. **Categories:** “Which main categories would you like to see?” Offer the categories actually found, each beside its proposed file/folder path. Examples are Business knowledge, Meetings, Video knowledge, Claude memory, Codex Memory, Projects, and Skills. Let the user rename, omit, or add categories. Suggest three to seven for visual clarity; support one to twelve.
+1. **名稱：**「你想把 3D 知識球體叫什麼名字？」依使用者指定的顯示名稱，例如「Atlas Brain」、「Studio Mind」或「Maya 的第二大腦」。不可自行套用原作者姓名或品牌；指令參數也可以作為答案。
+2. **分類：**「你想看到哪些主要分類？」提出實際找到的分類，並附上建議檔案／資料夾路徑，例如業務知識、會議、影片知識、Claude 記憶、Codex 記憶、專案、技能。讓使用者改名、刪減或新增。為保持清楚，建議 3–7 類；支援 1–12 類。
 
-The category answer also approves its listed source paths. For a custom category with an unknown path, ask where those files live. Do not guess external memory roots. Codex's curated memory store can cover multiple projects; state that scope when offering it. Include it only if chosen. Claude memory should point to this AIOS's matching memory folder, not every Claude project.
+使用者選擇分類，也代表同意列出的來源路徑。自訂分類路徑不明時，詢問檔案位置，不要猜外部記憶根目錄。Codex 的整理後記憶可能包含多個專案，提供選項時必須說明範圍，只有選取後才納入。Claude 記憶應指向目前工作系統對應的記憶資料夾，不要包含所有 Claude 專案。
 
-Show the compact name/category/path mapping in your progress update. Once these choices are supplied, continue building without another generic confirmation. Ask only about unresolved paths, replacing an existing app, or another material ambiguity.
+在進度更新中列出精簡的名稱／分類／路徑對照。選項確定後直接繼續，不再要求籠統確認；只有路徑未定、需替換既有應用或其他重大歧義時才詢問。
 
-## 3. Scaffold the exact experience
+## 3. 使用原始範本建立體驗
 
-Default output: `<AIOS-root>/apps/3d-brain/`. If it already exists, inspect its `brain.config.json` and reuse the app. Do not overwrite it blindly. For a requested replacement, archive the existing version first within the same project. If unrelated files occupy the destination, choose a new folder or ask the user.
+預設輸出到 `<AIOS-root>/apps/3d-brain/`。若已存在，先檢查 `brain.config.json` 並沿用，不直接覆寫。使用者要求替換時，先在同專案封存舊版；目的地有無關檔案時，改用新資料夾或詢問。
 
-Create a setup JSON file in an ignored scratch folder under the user's AIOS, using the schema in [config.md](references/config.md). Do not include actual note bodies. Use relative paths for sources inside the AIOS and explicit approved paths for outside sources. Give each category a unique ID, label, color, adapter, and one or more real paths.
+依[設定格式](references/config.md)，在工作系統內由 Git 忽略的暫存資料夾建立設定 JSON，不放入真實筆記內文。系統內來源用相對路徑，外部來源用已核准的明確路徑。每個分類設定唯一 ID、名稱、顏色、轉接方式與至少一個真實路徑。
 
 ```text
 node <skill-directory>/scripts/scaffold.mjs --root <AIOS-root> --config <setup-json> --out apps/3d-brain
 ```
 
-This copies an explicit allowlist of application files and writes the personalized local config. It refuses an existing destination. The renderer is prebuilt: `node serve.mjs` works without npm installation. Do not copy `node_modules`, another user's config, a graph snapshot, screenshots, memory files, or session logs into the app or skill.
+此工具只複製明確允許的應用程式檔案，並寫入個人化本機設定；目的地已存在時會拒絕。繪圖程式已預先建置，`node serve.mjs` 不需先安裝 npm 套件即可執行。不要把 `node_modules`、別人的設定、圖譜快照、截圖、記憶或對話日誌複製到應用或技能中。
 
-In the generated app folder:
+在生成的應用資料夾執行：
 
 ```text
 node build.mjs
 node serve.mjs
 ```
 
-Start the server through the host's normal background/launch mechanism. On Windows, background launches must be hidden. Default port is 4640. If occupied, pick an available port, update this app's config, and start there. Never stop an unrelated service. Keep the bind address at `127.0.0.1`.
+使用主機標準的背景啟動方式。Windows 的背景啟動必須隱藏視窗。預設連接埠為 4640；若已被占用，找可用連接埠、更新本應用設定後啟動。不要停止無關服務，綁定位址保持 `127.0.0.1`。
 
-Read the build's real counts and warnings. A missing folder is a configuration issue to resolve, not a reason to invent nodes. Empty categories are allowed and shown honestly. For an entirely empty AIOS, explain that it needs saved notes; do not inflate it with synthetic content unless the user separately asks for a labeled example.
+讀取真實建置數量與警告。資料夾缺失是需要解決的設定問題，不能用虛構節點補足。允許空分類，並如實呈現。若整個系統沒有內容，說明需要先保存筆記；除非使用者另行要求明確標示的範例，不加入合成資料。
 
-## 4. Preserve behavior and honest connections
+## 4. 保留互動與真實連線
 
-The supplied renderer is the visual contract. Retain:
+內附繪圖程式是外觀標準，需保留：
 
-- A stable spherical layout, distinct source colors, dark background, glowing central orb, and quiet orbital accents.
-- Real explicit Markdown links and wikilinks, with exact-title mentions distinguished from explicit relationships. Ambiguous links remain unresolved.
-- Search, source solo/toggle, inventory, health flags, note reading, and local file reveal.
-- **Play demo:** one central idea, the first real connection, branches springing from parent nodes, accelerating growth, and the full brain after about 29 seconds. Disconnected notes join without invented edges. This is a connectivity replay, not a historical chronology.
-- The central orb is visible from the first frame. Dragging, zooming, or clicking the canvas does not stop growth. Camera input takes over from automatic pullback. Replay resets cleanly.
-- **Cinema:** clean presentation with the growth counter beside the scene. Pause motion, reduced-motion support, responsive source controls, and no stale labels after replay.
+- 穩定球面排列、明確來源配色、深色背景、發光中央球體與低干擾軌道效果。
+- 真實 Markdown 連結及 wikilink；完整標題提及與明確關係分開標示。模糊連結保留未解析狀態。
+- 搜尋、來源單獨顯示／切換、完整清單、健康標記、筆記閱讀與本機檔案顯示。
+- **Play demo：** 從一個核心想法與第一條真實連線開始，分支從父節點長出，速度逐漸加快，約 29 秒後呈現完整球體。不相連的筆記可加入，但不虛構邊。這是關聯重播，不是歷史時間軸。
+- 第一幀就看得到中央球體。拖曳、縮放或點擊畫布不停止成長；手動操作鏡頭會接管自動拉遠。重播必須乾淨重置。
+- **Cinema：** 乾淨展示畫面，成長計數在場景旁。支援暫停動態、減少動態偏好、響應式來源控制，重播後不殘留舊標籤。
 
-All name-bearing UI comes from `brain.config.json`. Do not regenerate the visuals with an image model or replace the scene with a generic force graph. If code changes are needed, use `npm ci`, edit `src/`, and run `npm run build:js`. Keep dependency license notices with the bundle.
+所有個人名稱由 `brain.config.json` 取得。不要用圖片模型重生畫面，也不要替換成通用力導向圖。需要改程式時，使用 `npm ci`，編輯 `src/`，執行 `npm run build:js`，並保留相依套件授權聲明。
 
-The default adapters read Markdown/text and curated Codex memory. For Google Drive, Notion, raw meeting JSON, databases, PDFs, or another unsupported source, explain the gap and use an explicitly approved local export or build and test an adapter. Do not claim those systems are connected merely because their names appear in a category.
+預設轉接器讀取 Markdown／文字及整理後的 Codex 記憶。Google Drive、Notion、原始會議 JSON、資料庫、PDF 或其他未支援來源，應說明缺口，使用經明確授權的本機匯出，或建立並測試轉接器。分類出現某系統名稱，不代表已連線。
 
-## 5. Verify and deliver
+## 5. 驗證與交付
 
-Follow [the acceptance checklist](references/acceptance.md). Check the actual generated app, not just the template:
+依[驗收清單](references/acceptance.md)檢查真正生成的應用，不只檢查範本：
 
-1. Graph API has the requested name/categories, unique IDs, valid endpoints, and counts matching the source scan.
-2. Read at least one real note from each nonempty category, including exact topic sections for Codex memory. Originals remain unchanged.
-3. Confirm the personal name on the page and test search, a source solo filter, restoration, and the inventory.
-4. Watch early, middle, and complete growth. Drag and zoom while the count increases. Check the initial orb, clean labels, complete final count, and replay reset. Test Cinema and pause/resume.
-5. Inspect desktop and a narrow viewport. Do not manipulate the user's physical mouse; native Pointer Lock is disabled in the supplied app. Browser automation must remain virtual/headless.
-6. Check console errors. If browser verification is unavailable, say exactly which checks remain unverified rather than claiming a visual pass.
+1. 圖譜 API 的名稱／分類符合要求，ID 唯一、連線端點有效，數量與來源掃描一致。
+2. 每個非空分類至少讀回一筆真實筆記；Codex 記憶需精確到主題章節。原始檔案保持不變。
+3. 確認頁面上的個人名稱，測試搜尋、單一來源篩選、還原與完整清單。
+4. 查看成長初期、中期與完成狀態；數量增加時拖曳與縮放。檢查初始球體、乾淨標籤、最終完整數量及重播重置，測試 Cinema 與暫停／繼續。
+5. 檢查桌面與窄螢幕，不操作使用者的實體滑鼠。內附應用已停用原生 Pointer Lock，瀏覽器自動化需使用虛擬／無頭操作。
+6. 檢查主控台錯誤。無法做瀏覽器驗證時，精確列出未驗證項目，不宣稱視覺通過。
 
-Add a small route to the new app's README in the AIOS's existing project index or operating manual, following its conventions. Synchronize `AGENTS.md`/`CLAUDE.md` when required. Avoid storing private configs, graph data, or note content in a public repository. Do not deploy or push without the user's authorization.
+依既有慣例，在專案索引或操作手冊加入應用 README 的精簡入口；必要時同步 `AGENTS.md`／`CLAUDE.md`。不要把私人設定、圖譜資料或筆記內容放進公開 repo；未經使用者授權，不部署或推送。
 
-Finish with the brain name, local link, app folder, actual note/category counts, and the shortest useful instructions: **Play demo**, **Cinema**, drag to orbit, scroll to zoom. Mention source gaps if present. Never promise virality.
+結尾提供球體名稱、本機連結、應用資料夾、真實筆記／分類數量，以及最少必要操作：**Play demo**、**Cinema**、拖曳旋轉、捲動縮放。如有來源缺口需說明，不承諾爆紅。

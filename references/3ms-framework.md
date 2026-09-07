@@ -1,236 +1,239 @@
-# The Three Ms of AI™ — Mindset, Method, Machine
+# The Three Ms of AI™：思維、方法、系統
 
-> *Adapted from The Three Ms of AI™. © 2026 Nate Herk. All rights reserved.*
-> *The Three Ms of AI™ is a trademark of Nate Herk.*
+> *改編自 The Three Ms of AI™。© 2026 Nate Herk。保留所有權利。*
+> *The Three Ms of AI™ 為 Nate Herk 的商標。*
 
-> *"The best automation is the one you barely notice. Start by eliminating what doesn't need to exist, then automate what's left with the least amount of AI possible."*
+> *「好的自動化，往往不需要你時時注意。先刪除不需要存在的工作，再用盡可能少的 AI，自動化剩下的部分。」*
 
-**Boring is Beautiful.**
+**簡單可靠，就是好設計（Boring is Beautiful）。**
 
----
-
-## Why this is in your kit
-
-This framework is the operator brain you'll use every time you run `/level-up`. Three layers, each one builds on the last. Read it once, refer back as needed.
-
-Here's the thing most people get wrong: they think AI automation is about tools. It's not. Tools change every six months. The platform you're using today might not exist next year. What doesn't change is how you THINK about automation, how you DECIDE what to automate, and how you BUILD and OPERATE the thing once it's running. That's what The Three Ms of AI™ gives you. A way to think that works regardless of platform, model, or hype cycle.
-
-This framework is for everyone. Business owners hearing about AI for the first time. Engineers exploring automation. Consultants who need a methodology they can hand to a client. It scales.
+本文為原作者框架的繁中翻譯。以下案例、比例與成效說法保留原作者觀點，不是傑少的個人經驗或成果保證。
 
 ---
 
-## Layer 1 — MINDSET (How to Think)
+## 為什麼套件包含這份框架
 
-Before you touch a single tool, you need to rewire how you approach work. The way you think about tasks determines whether you'll spot automation opportunities or walk past them every day.
+這是每次執行 `/level-up` 都會使用的思考方式，共三層，後一層建立在前一層之上。先讀一次，需要時再回來參考。
 
-### 1. The Default Shift
+AI 自動化的工具可能每隔六個月就改變，今天使用的平台，明年可能已不在。比較能長期使用的，是如何思考自動化、決定自動化什麼，以及建置後如何維運。The Three Ms of AI™ 提供的是不依賴特定平台、模型或熱門趨勢的思考方法。
 
-The core habit: before doing any task the old way, ask "How could AI do this?"
-
-If the answer is "it can't do all of it," the follow-up: "How could AI assist with the first 30%?"
-
-It's never binary. The real question is always **"to what extent can AI be leveraged here?"** Maybe 80%. Maybe 10%. You don't know until you ask.
-
-**Real example.** Updating tracking links across 300+ YouTube video descriptions. The old way: open each video in YouTube Studio, find the link, replace it, save, next. Hours of mind-numbing work. The new way: describe the problem to Claude Code and walk to the kitchen for water. By the time you come back, it's researched the YouTube Data API, figured out quota limits, written a script, and laid out a plan. Approve, run, done. Now you have a reusable system.
-
-The Default Shift is like learning to type instead of writing by hand. Once it clicks, you physically cannot go back. Every manual task starts to itch.
-
-**One thing to internalize:** AI is better than you think, and improving faster than you think. Client needed infographic visuals; models couldn't deliver. Three months later, new model dropped. Shipped the work. *If AI can't do something today, try again next month. Seriously.*
-
-### 2. The Function Breakdown
-
-Your role is a set of functions. Your job description has about five bullet points. Each breaks into dozens of tiny tasks. **You don't automate your whole job. You automate one tiny piece. Then another. Then chain them.**
-
-Think "automate a YouTube video." Sounds impossible. Break it down: ideation, scripting, title generation, thumbnail generation, description writing, comment replies, timestamps, analytics. Each piece is its own automation. Build one, get it working, move on.
-
-One small task per day. Six months later, hundreds automated. Compounding is real.
-
-### 3. The Curiosity Rule
-
-Never accept AI output without asking why. Ask for three alternatives. Ask which one it thinks is best and why. Push back. Dig in.
-
-This is the antidote to "dark code" — automations or code you don't understand. **If you build something and you can't explain how it works, you've built a liability, not an asset.** When it breaks (and it will), you'll have no idea where to start.
-
-Treat AI as a mentor, not a vending machine. The vending machine gives you output. The mentor gives you understanding.
-
-### Expect the Dip
-
-Productivity dip at the start: ~20% less output for the first week or two. New workflows, new prompting cadence. That's normal. Within two weeks, baseline doubles. But you have to push through.
-
-**Fail fast, learn faster.** Get to your first 10 mistakes as safely and quickly as possible. That's where the real learning lives, not in your first 10 successes.
+適用對象包括初次接觸 AI 的企業主、探索自動化的工程師，以及需要把方法交給客戶的顧問，可隨需求擴充。
 
 ---
 
-## Layer 2 — METHOD (How to Decide)
+## 第 1 層：MINDSET，思維
 
-Mindset tells you how to think. Method tells you what to do with that thinking. The operational core — turning "I should probably automate something" into "here's exactly what I'm building and why."
+使用工具之前，先調整看待工作的方式。你怎麼思考任務，會影響你能否發現每天出現的自動化機會。
 
-### 1. Find the Constraint
+### 1. 預設先想 AI（The Default Shift）
 
-Two power questions surface everything:
+核心習慣：沿用舊方法前，先問「AI 可以怎麼處理這件事？」
 
-**Q1:** *"If 500 new clients showed up tomorrow, what would break first?"* — finds bottlenecks (clogs in the pipe). Onboarding? Invoicing? Support response times?
+如果做不到全部，再問「AI 可以先協助前面 30% 嗎？」
 
-**Q2:** *"What would give you 500 more clients tomorrow?"* — finds growth opportunities (untapped pipe). Content you're not creating? Outreach you're not doing? Leads you're not following up on?
+不用只有全做或不做兩種選項。要問的是：**「這件事有多少部分可以交給 AI？」** 可能 80%，也可能 10%，需要實際探索。
 
-One finds what's broken. The other finds what could scale. Start with the constraint.
+**原作者案例：** 更新 300 多支 YouTube 影片說明中的追蹤連結。舊方法是逐一開啟 YouTube Studio、找連結、更換、儲存，耗費數小時。原作者描述的新方法，是把問題交給 Claude Code，去廚房喝水；回來時，它已研究 YouTube Data API、配額、腳本與執行計畫。核准並執行後，也留下可重複使用的系統。
 
-### 2. EAD: Eliminate, Automate, Delegate
+這種習慣像從手寫轉成打字；一旦習慣，每遇到手動工作就會想到其他做法。
 
-For every process, run EAD — in this order.
+**原作者提醒：** AI 能力可能比預期好，也進步得快。原文另舉客戶需要資訊圖表、當時模型做不到，三個月後新模型完成工作的例子。因此，今天做不到的需求，可以隔一段時間再測試。
 
-**Eliminate first.** *"What happens if we just stop doing this?"* You'd be surprised how many processes exist because they always have. Reports nobody reads. Approval steps that add no value. **If nobody would notice it disappeared, kill it. Don't automate waste.**
+### 2. 拆解功能（The Function Breakdown）
 
-**Automate second.** Apply the **60/30/10 Golden Rule:**
-- ~60% fully automated (no human touch)
-- ~30% AI-assisted (AI does the work, human reviews before it goes out)
-- ~10% stays manual (too nuanced, too risky, or too rare)
+一個職位包含多種功能，工作說明中的幾個項目，又能拆成許多小任務。**先自動化一小部分，確認可用，再做下一部分，最後串接。**
 
-This ratio normalizes expectations. **Full automation is rarely the goal.** If someone promises 100% on anything meaningful, they're selling you something.
+例如「自動化一支 YouTube 影片」看起來很大；拆開後有選題、腳本、標題、縮圖、說明、留言回覆、時間戳記、數據分析。每一項都可以獨立建立，完成一項再往下。
 
-**Delegate third.** If a process can't hit 60/30/10 — too complex, too variable, too judgment-dependent — delegate to a person. Not everything should be automated.
+原作者以每天一項小任務、半年累積數百項的方式說明累積效果；實際數量取決於任務與投入。
 
-The key: nothing stays as-is. Every process gets killed, automated, or handed off.
+### 3. 保持好奇（The Curiosity Rule）
 
-### 3. Map the Process
+拿到 AI 結果時追問理由，請它提供三個替代方案、說明最推薦哪個及原因，也要提出不同意見。
 
-Before you touch any tool, write every step on paper. Five elements per process:
+這能減少你不理解的「黑箱程式」。**如果建好卻無法解釋如何運作，出問題時就可能無從處理。**
 
-- **Trigger** — what kicks it off (form submission, calendar event, email, time of day)
-- **Data Sources** — where information comes from (CRM, spreadsheet, inbox)
-- **Data Transformations** — how data changes shape (reformatting, filtering, combining)
-- **Decision Points** — where it branches (if qualified, do X; if not, do Y)
-- **Destination** — where output goes (back to CRM, email, Slack, document)
+把 AI 當成能幫你理解的導師，不只當成產出答案的工具。
 
-**Rule:** *if you can't explain it to a person, you can't explain it to an AI.* The map forces clarity. Skip this step and you'll build something that sort of works but breaks in weird ways.
+### 接受初期的適應期
 
-### 4. The Autonomy Spectrum
+原文描述：初期一兩週可能因新流程與新提問方式，產出先下降約 20%，並主張兩週內基準產能可能加倍。這是原作者的說法，本套件沒有提供普遍適用的成效證據，不能視為每位使用者的預期成果。
 
-Each step gets an autonomy level:
-
-| Level | Name | What Happens |
-|-------|------|-------------|
-| L0 | Manual | No AI. Human does it. |
-| L1 | Suggested | AI suggests, human decides every step. |
-| L2 | Drafted | AI drafts, human reviews and edits. |
-| L3 | Supervised | Rules set, AI runs, human validates. |
-| L4 | Autonomous | AI handles end-to-end. |
-
-**Governing principle: default to the LOWEST level that works.**
-
-Most people get this backwards. They hear "AI automation" and jump to L4. That's where things go wrong. Boring is Beautiful. Deterministic beats non-deterministic. **Workflows beat agents.** If a decision doesn't HAVE to be made by AI, don't let AI make it.
-
-Push autonomy up only when you've proven the lower level works.
-
-### 5. Tie It to a KPI
-
-If your automation doesn't move a number, why are you building it?
-
-**The Three Buckets** (every business metric falls into one):
-
-1. **Get more customers** — content, prospecting, outreach, ads, lead gen
-2. **Make each customer worth more** — premium services at lower cost, upselling, retention
-3. **Cut costs** — eliminate drudgery, reduce errors, boost productivity
-
-**Specific KPIs** are tied to the individual automation: response time, error rate, tickets per month, conversion rate, time-to-completion.
-
-If your automation doesn't improve a metric in one of the three buckets, stop. *"Because it's cool"* isn't a business case.
+**儘早嘗試、快速學習。** 在安全範圍內盡快經歷前 10 個錯誤，從錯誤中理解系統，而非只看成功結果。
 
 ---
 
-## Layer 3 — MACHINE (How to Build and Operate)
+## 第 2 層：METHOD，方法
 
-You've got the thinking (Mindset) and the decisions (Method). Now you build and run the thing. Two halves: BUILD and OPERATE.
+把「應該找些工作來自動化」轉成「要建立什麼、為什麼值得做」。
 
-### BUILD
+### 1. 找限制（Find the Constraint）
 
-#### 1. The Lego Principle
+兩個問題分別找出瓶頸與成長機會：
 
-Smallest possible steps. One input, one output per block. Output of block 1 becomes input of block 2.
+**Q1：**「如果明天多 500 位客戶，哪裡先撐不住？」例如客戶導入、開立帳單、客服回應時間。
 
-Start with **zero-AI steps first**. Get the deterministic pieces working — data fetching, formatting, routing. Then layer in AI where actually needed.
+**Q2：**「做什麼能讓明天多 500 位客戶？」例如尚未產出的內容、未進行的開發聯繫、沒有追蹤的潛在客戶。
 
-This makes the project less overwhelming and lets you validate as you go. If block 3 produces garbage, you know exactly where to look. **Modularity is freedom.**
+一個找目前的阻塞，一個找可擴大的機會，先從限制開始。
 
-#### 2. The Assembly Line
+### 2. EAD：刪除、自動化、委派
 
-Each AI step does one specialized job. Like workers on an assembly line.
+每個流程按此順序思考。
 
-**Don't build a generalist.** One model call for copywriting. Another for reasoning. Another for classification. Keep them separate. Easier to debug, swap models, adjust prompts.
+**先刪除。** 問「如果直接不做，會發生什麼事？」不少流程只是一直沿用，例如沒人看的報表、沒有增加價值的審核。**沒有必要的工作先移除，不要把浪費自動化。**
 
-#### 3. The Validation Chain
+**再自動化。** 參考 **60／30／10 原則**：
 
-Validate each step's output before chaining. **Do NOT build the whole pipeline and test end-to-end.** That's a recipe for "it doesn't work and I have no idea why."
+- 約 60% 完全自動化，不需人工介入。
+- 約 30% AI 輔助，AI 處理後由人審核再送出。
+- 約 10% 保留手動，因為太細膩、風險太高或太少發生。
 
-Build step 1. Run it. Confirm output. Build step 2. Run with step 1's actual output. Confirm. Chain. Add step 3. This is how POCs actually work.
+這是設定期待的參考比例，不是固定實測結果。完全自動化通常不是唯一目標，對重要工作的 100% 自動化承諾需要仔細檢驗。
 
-#### 4. The Iteration Mindset
+**最後委派。** 太複雜、變動太多或高度依賴判斷，無法適用上述安排時，交給人處理。不是每件事都適合自動化。
 
-There's no finished product — especially with AI. Deterministic scripts CAN be done (a CSV reformatter, sure). AI steps are always evolving. New models. New capabilities. The prompt that was optimal six months ago is verbose and expensive today.
+每個流程都重新評估：移除、自動化，或交接，不只是照舊執行。
 
-Ship the POC. Get real-usage feedback. Expand. Iterate. **Perfectionism is the enemy of deployment.**
+### 3. 畫流程（Map the Process）
 
-### OPERATE
+用工具前，先把每步寫在紙上，包含五項：
 
-#### 5. The Bike Method
+- **觸發條件：** 表單送出、行事曆事件、Email 或特定時間。
+- **資料來源：** CRM、試算表、收件匣等。
+- **資料轉換：** 重新格式化、篩選、合併。
+- **決策點：** 符合條件做 X，不符合做 Y。
+- **目的地：** 回寫 CRM、Email、Slack 或文件。
 
-Roll out in phases, like teaching a kid to ride.
+**原則：** 要先能說清楚給人聽，才能說清楚給 AI。畫流程能找出模糊處，避免做出看似能動、卻在意外情況失敗的系統。
 
-- **Phase 1 — Training wheels.** Run manually. Watch everything. Correct mistakes by hand.
-- **Phase 2 — Guided.** Automation runs but you review every output. It drafts, doesn't send.
-- **Phase 3 — Watched.** Runs autonomously. You monitor. Alerts for anomalies. Periodic batch review.
-- **Phase 4 — Hands-off.** Helmet on, go ride.
+### 4. 自主程度（The Autonomy Spectrum）
 
-Even at 90% confidence, roll out 10% of volume first. Watch a week. Add 20% more. Like drug trials — not full dose to everyone day one.
+每步都選適合的自主等級：
 
-Use confidence thresholds: high → auto-send, medium → draft queue, low → escalate to human. Tighten or loosen as data accumulates.
+| 等級 | 名稱 | 運作方式 |
+|---|---|---|
+| L0 | 手動 | 不用 AI，由人完成。 |
+| L1 | 建議 | AI 建議，每步由人決定。 |
+| L2 | 草稿 | AI 起草，人審閱與修改。 |
+| L3 | 監督 | 先定規則，AI 執行，人驗證。 |
+| L4 | 自主 | AI 全程處理。 |
 
-#### 6. The Intern Rule
+**預設採用能解決問題的最低等級。**
 
-Treat AI like a brand-new hire on day one.
+不要一聽到自動化就跳到 L4。優先選可預期的固定規則，可靠流程優先於複雜代理。不必由 AI 做的決策，就不用 AI。
 
-- **Own identity.** Its own email, accounts, credentials. Never yours.
-- **Read-only by default.** View-only until you've proven write access is needed.
-- **Never impersonates you.** Signs off as "[your name]'s AI assistant."
-- **No personal credentials.** No passwords, bank info, personal logins.
-- **Full audit trail.** Visibility into everything it did, spent, created, deleted.
-- **Scoped permissions.** API keys with minimal scope. Exactly what's needed, nothing more.
+確認較低等級有效後，才逐步提高自主程度。
 
-*"You wouldn't trust someone you just met with your bank account."*
+### 5. 連結 KPI
 
-#### 7. The Kill Switch
+先說清楚，自動化要改變哪個數字。
 
-Monitor what's running. If an automation consistently needs patches, produces low-quality output, or costs more to maintain than it saves — **tear it down.** Dismantle. Delete.
+**三類業務成果：**
 
-Don't fall into the sunk cost trap. *"But I spent three weeks building this"* is not a reason to keep something running that doesn't work. **Good operators know when to build AND when to destroy.** The kill switch is just as important as the launch button.
+1. **增加客戶：** 內容、開發名單、聯繫、廣告、取得潛在客戶。
+2. **提高每位客戶價值：** 以較低成本提供進階服務、加購、留存。
+3. **降低成本：** 減少重複勞務、錯誤與時間耗費。
 
----
+**具體 KPI** 依流程選擇，例如回應時間、錯誤率、每月客服案件數、轉換率、完成時間。
 
-## Governing Principles
-
-Three principles that sit above everything else. When in doubt, return to these.
-
-1. **Boring is beautiful.** Predictable beats clever. Default to the simplest, most deterministic approach that gets the job done.
-2. **Deterministic steps can be finished. AI steps are always evolving.** Set expectations — yours and your client's — accordingly. A rule-based filter is done. An AI classifier needs tuning forever.
-3. **Fail fast, learn faster.** Get to your first 10 mistakes safely and quickly. Real learning lives there, not in planning, not in your first 10 successes.
-
----
-
-## Branch Frameworks (future hooks)
-
-The 3Ms is the mothership. Specific topics go deeper in dedicated frameworks. Most aren't built into this kit yet. They'll grow into `references/` over time:
-
-- **The Data Retrieval Hierarchy** — Filters, SQL, Full Context, RAG: when to use which
-- **The Integration Ladder** — API, CLI, Browser Automation, Scraping: hierarchy of reliability
-- **The Error Handling Playbook** — What to do when things break (and they will)
-- **The Model Selection Guide** — How to pick the right model for the right job
-- **The Context Engineering Framework** — How to feed AI the right information at the right time
-- **The Discovery Playbook** — How to run discovery with a client or team before building
-- **The Security and Permissions Playbook** — Access control, audit trails, risk management
-
-Each plugs into the 3Ms at specific points. Start here, branch out as you need depth.
+如果沒有改善其中一類的指標，先停止釐清；「很酷」不足以成為業務理由。
 
 ---
 
-> *Adapted from The Three Ms of AI™. © 2026 Nate Herk. All rights reserved.*
-> *Full breakdown with diagrams and examples: [insert link to YouTube companion video / public-facing page when published].*
+## 第 3 層：MACHINE，建置與維運
+
+有了思維與決策，再分成建置、維運兩部分執行。
+
+### 建置
+
+#### 1. 樂高原則（The Lego Principle）
+
+拆成最小步驟，每個積木只有一個輸入與一個輸出。第一個輸出接到第二個輸入。
+
+先完成**不用 AI 的固定規則部分**：抓資料、格式化、分流；確實需要時才加入 AI。
+
+拆小後容易逐步驗證。第三步產出不對，就知道從哪裡查。模組化讓替換與修正更容易。
+
+#### 2. 生產線（The Assembly Line）
+
+每個 AI 步驟只處理一項專門工作。
+
+文案、推理、分類分開呼叫，不把所有工作塞給一個泛用模型流程。這樣較容易除錯、更換模型與調整提示詞。
+
+#### 3. 驗證鏈（The Validation Chain）
+
+**每步先驗證再串接，不要整條流程做完才第一次測試。**
+
+先建第一步、執行、確認輸出；再把真實輸出交給第二步、執行確認後串起；最後才加入第三步。這樣問題才容易定位。
+
+#### 4. 反覆改善（The Iteration Mindset）
+
+固定規則腳本可能有明確完成點，例如 CSV 格式轉換；AI 步驟則會隨模型、能力與提示方式變動。半年前合適的提示，之後可能顯得冗長或昂貴。
+
+先完成概念驗證（POC），取得真實使用回饋，再擴充、調整，不因追求完美而一直不開始使用。
+
+### 維運
+
+#### 5. 腳踏車法（The Bike Method）
+
+像學騎車一樣分階段導入。
+
+- **第 1 階段，輔助輪：** 手動執行，觀察全部流程，人工修正錯誤。
+- **第 2 階段，引導：** 自動化執行，但每份輸出都審閱，只產草稿、不直接送出。
+- **第 3 階段，監督：** 自主執行，持續監看，異常時通知，定期批次審閱。
+- **第 4 階段，放手：** 在既有保護措施下獨立運作。
+
+原作者建議，即使有 90% 信心，也先導入 10% 工作量，觀察一週，再增加 20%；以小範圍逐步擴大，而非第一天全面上線。
+
+可設定信心門檻：高信心自動送出，中等進草稿佇列，低信心交給人。隨資料累積調整門檻。
+
+#### 6. 實習生原則（The Intern Rule）
+
+把 AI 當成第一天上班的新同事。
+
+- **獨立身分：** 自己的 Email、帳號與憑證，不共用你的個人身分。
+- **預設唯讀：** 確認需要寫入後才授權。
+- **不冒充本人：** 以「[你的姓名] 的 AI 助理」署名。
+- **不使用個人憑證：** 不提供個人密碼、銀行資訊或私人登入。
+- **完整稽核紀錄：** 看得到做了什麼、花了多少、建立或刪除了什麼。
+- **限定權限：** API key 只開完成工作所需的最小範圍。
+
+> 「你不會把銀行帳戶交給剛認識的人。」
+
+#### 7. 停止開關（The Kill Switch）
+
+持續監看正在執行的自動化。若總要修補、輸出品質低，或維護成本高於省下的成本，就評估停止、拆除或移除。
+
+不要因為「已經花三週建好了」就繼續維持無效流程。好的執行者知道何時建置，也知道何時停止；停止開關與啟動按鈕同樣重要。
+
+---
+
+## 上位原則
+
+有疑問時回到三個原則：
+
+1. **簡單可靠。** 優先選能完成工作的最簡單、最可預期做法。
+2. **固定規則有完成點，AI 步驟持續變動。** 自己與客戶都應有相應期待：規則篩選器可能完成，AI 分類器需要持續調整。
+3. **儘早嘗試、快速學習。** 安全地經歷前 10 個錯誤，從實際執行學習，不只停留在計畫或順利案例。
+
+---
+
+## 延伸框架（未來擴充）
+
+3M 是主架構，特定主題可以再深入。以下多數尚未內建，可按需求逐步加入 `references/`：
+
+- **資料檢索層級：** 篩選、SQL、完整上下文、RAG，何時使用哪一種。
+- **整合階梯：** API、CLI、瀏覽器自動化、爬取的可靠度順序。
+- **錯誤處理手冊：** 出問題時如何處理。
+- **模型選擇指南：** 依工作選合適模型。
+- **上下文工程框架：** 在合適時間提供正確資訊。
+- **需求探索手冊：** 建置前如何訪談客戶或團隊。
+- **安全與權限手冊：** 存取控制、稽核紀錄、風險管理。
+
+這些分別對應 3M 的不同環節，先使用主框架，需要深度時再擴充。
+
+---
+
+> *改編自 The Three Ms of AI™。© 2026 Nate Herk。保留所有權利。*
+> *含圖解與範例的完整說明：[待原作者發布後補上配套 YouTube 影片／公開頁面連結]。*

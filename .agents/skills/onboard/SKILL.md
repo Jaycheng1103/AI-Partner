@@ -1,111 +1,119 @@
 ---
 name: onboard
-description: Use on Day 1 of an AI Partner install, when someone says "set me up", "onboard me", "let's get started", "fill in my AI Partner", or has just cloned the kit. Combined wizard — runs the 7-question intake AND scaffolds the Day-1 file set at the end. Idempotent — re-run any time after editing aios-intake.md.
+description: 在首次安裝 AI Partner、使用者要求初始設定、onboard、開始使用、填入系統資料，或剛下載套件時使用。整合 7 題訪談與初始檔案建立，可在編輯 aios-intake.md 後重複執行。
 ---
 
-## What this skill does
+## 技能用途
 
-Single combined wizard. Reads or writes `aios-intake.md` (the canonical intake), conducts the 7-question interview if the file isn't filled, then scaffolds the Day-1 file set inline at the end of the run. No separate `/scaffold-from-intake` skill — this is one flow.
+這是一個整合精靈。先讀取或寫入正式訪談來源 `aios-intake.md`；尚未填寫時進行 7 題訪談，接著在同一流程建立初始檔案，不另設 `/scaffold-from-intake`。
 
-**The wow moment:** at the end, suggest the closing prompt *"Try this — ask me: what should I focus on this week?"* The user runs it once. That's the wow. There's no `/today` skill to save — the prompt itself plants the Mindset framework (Default Shift) for them to internalize.
+**完成後的體驗：** 建議使用者問：「這週我應該先處理什麼？」讓他立即用新背景資料取得回答。沒有獨立的 `/today` 技能；這個問題用來培養預設先想 AI 的習慣。
 
-## When NOT to run this
+## 不適用的情況
 
-- If the user has already onboarded and wants to refresh: still run, but skip questions already answered (idempotent).
-- If the user wants to add a new connection: that's not onboarding — point them at `connections.md` to edit directly, or schedule a `/level-up` Phase 2 walk.
+- 已完成設定、只是想更新：仍使用本技能，但跳過已回答的題目，確保可重複執行。
+- 只想新增連線：引導編輯 `connections.md`，或安排 `/level-up` 第 2 階段，不重跑初始訪談。
 
-## Execution
+## 執行流程
 
-### Existing projects and portable installation
+### 既有專案與可攜式安裝
 
-Read the applicable `AGENTS.md` and `CLAUDE.md` first. The paths below are starter-kit defaults; use an established project's equivalent canonical context, voice, and connection sources instead of creating parallel sources of truth. Preserve unrelated operating rules and routing, and synchronize shared manual edits where required. Onboarding updates selected personal context, not the entire operating manual.
+先讀適用的 `AGENTS.md`、`CLAUDE.md`。以下為套件預設位置；既有專案應使用對應的正式背景、語氣及連線來源，不另建重複資料。保留無關規則與索引，依需求同步手冊。初始設定只更新指定個人背景，不重寫整份操作手冊。
 
-If `aios-intake.md` is missing, use the bundled [intake template](assets/aios-intake.md). Populate only answers explicitly supported by existing sources, with references; leave unknowns for the interview. Installing this skill does not itself run onboarding or change the user's context.
+若缺少 `aios-intake.md`，使用內附的[訪談範本](assets/aios-intake.md)。只有既有來源明確支持的回答才能預填，並附來源；未知事項留給訪談。安裝技能本身不代表開始訪談或改動背景。
 
-### Step 1: Read the intake
+### 步驟 1：讀取訪談表
 
-Read `aios-intake.md`. Check which Q1-Q7 sections have content vs. `[Your answer here]` placeholders.
+讀取 `aios-intake.md`，檢查 Q1–Q7 哪些已填、哪些仍為 `[Your answer here]` 占位。
 
-- **All filled** → skip Step 2, jump to Step 3 (scaffold).
-- **Some filled** → ask the user: "I see Q1, Q3, Q4 are answered. Want to fill the rest now, or scaffold from what's there?" Their call.
-- **None filled (fresh clone)** → run Step 2 conversationally.
+- **全部填完：** 跳過步驟 2，直接建立檔案。
+- **部分填完：** 詢問：「Q1、Q3、Q4 已有答案，要先補完其他題，還是先用現有資料設定？」依使用者選擇。
+- **全空白：** 進入步驟 2，以對話方式訪談。
 
-### Step 2: The interview (7 questions, hard cap)
+### 步驟 2：訪談（最多 7 題）
 
-Ask one at a time. Write each answer into `aios-intake.md` as you go (so the user can resume if interrupted).
+一次問一題。每次回答後寫入 `aios-intake.md`，方便中斷後續接。
 
-**Q1 — Who are you, what do you sell, who do you sell it to?**
-Identity, offer, ICP. One paragraph each is fine.
+**Q1：你是誰？提供什麼產品或服務？服務誰？**
 
-**Q2 — Paste 1-2 things you've written recently. Don't edit them.**
-*This is the only question with a hard rule.* Voice samples MUST be pasted, not typed mid-conversation. If the user starts typing fresh prose, refuse:
+身分、方案、理想客戶輪廓，各一小段即可。
 
-> *"Stop — paste it raw. If you type it here while we're talking, the sample is already shaped by our conversation. Open your last email or LinkedIn post in another tab and paste the unedited text. This is the one rule I can't bend."*
+**Q2：貼上最近寫過的 1–2 段文字，不要修改。**
 
-Ask for two samples. One email, one post. Or two of either.
+這題有固定要求：語氣範例必須貼原文，不能在對話中現寫。使用者開始現寫時，說明：
 
-**Q3 — What are your 2-3 biggest priorities for the next 90 days?**
-Quarterly priorities. Push back if they say "grow my business" — make them name a number, a deadline, or a deliverable.
+> 「請先貼原文。在這段對話中現寫，文字會受我們的談話影響。請打開最近的 Email 或 LinkedIn 貼文，貼上未修改的內容，這樣才能看出你原本的語氣。」
 
-**Q4 — Where does revenue actually land, and where is it tracked?**
-Multiple answers OK. Map to Tier-1 Domain 1 (Revenue/Financials).
+請提供兩份範例，可各一份 Email 與貼文，也可以兩份同類型。
 
-**Q5 — Where do you talk to customers, your team, and the outside world day-to-day?**
-Email (Gmail/Outlook), Slack/Teams/Discord, DMs. Map to Domains 2 + 4.
+**Q3：未來 90 天最重要的 2–3 件事是什麼？**
 
-**Q6 — Where do meeting recordings, notes, and important docs live?**
-Map to Domains 6 + 7.
+寫季度優先事項。只有「讓業務成長」時，請補上數字、期限或成果。
 
-**Q7 — What's the one task that eats your week, and where do you currently track work?**
-Capture top_pain (used by `/level-up` Day-14) + Domain 5 (tasks).
+**Q4：收入實際進到哪裡？在哪裡記錄？**
 
-Domain 3 (Calendar) is auto-inferred from Q5: Gmail → Google Cal; Outlook → Outlook Cal. Confirm in Step 3.
+可多個答案，對應第 1 類領域（收入／財務）。
 
-### Step 3: Scaffold the Day-1 file set
+**Q5：平常透過什麼管道與客戶、團隊及外部聯絡？**
 
-Once the intake is complete, generate these files (or update if re-running). Back up originals to `archives/intake-{YYYY-MM-DD-HHMM}/` if any exist.
+Email（Gmail／Outlook）、Slack／Teams／Discord、私訊等，對應第 2、4 類。
 
-1. **`context/about-me.md`** — from Q1 (identity, role) + Q7 (top_pain). One short paragraph each.
-2. **`context/about-business.md`** — from Q1 (offer, ICP) + Q4 (revenue model). One paragraph.
-3. **`context/priorities.md`** — from Q3. Numbered list, one line per priority.
-4. **`references/voice.md`** — from Q2. Paste samples verbatim with a short header explaining their use ("Match this register when drafting; don't fake voice on external content without showing me first").
-5. **`connections.md`** — populate the 7-row table from Q4-Q7 answers. Each row gets `mechanism: not yet connected`, `auth: —`, `last checked: —`. The user wires connections on Day 2.
-6. **Operating manual (`AGENTS.md` / `CLAUDE.md`)**: fill applicable `{{...}}` placeholders with the user's name, priority, voice summary, and connections summary. In an established manual, update only the selected context or its route; preserve other instructions. Keep shared guidance synchronized when required by the project.
+**Q6：會議錄影、筆記與重要文件放在哪裡？**
 
-### Step 4: The closing screen
+對應第 6、7 類。
 
-Print one screen. Three lines max:
+**Q7：哪項工作最占用你一週時間？目前在哪裡追蹤工作？**
 
+記錄 `top_pain`（供第 14 天 `/level-up` 使用）與第 5 類任務資料。
+
+第 3 類行事曆依 Q5 推測：Gmail → Google Calendar，Outlook → Outlook Calendar；需在步驟 3 確認。
+
+### 步驟 3：建立初始檔案
+
+訪談完成後，產生下列檔案；重新執行則更新。已有檔案先備份到 `archives/intake-{YYYY-MM-DD-HHMM}/`。
+
+1. **`context/about-me.md`：** Q1 的身分、角色與 Q7 的 `top_pain`，各一小段。
+2. **`context/about-business.md`：** Q1 的方案、理想客戶與 Q4 收入模式，整理成一段。
+3. **`context/priorities.md`：** Q3 優先事項，編號條列，每項一行。
+4. **`references/voice.md`：** 逐字保留 Q2 範例，簡短說明用途：「撰稿時參考此語氣；對外模仿使用者語氣前，先提供草稿。」
+5. **`connections.md`：** 依 Q4–Q7 填入 7 列清單。每列設定 `mechanism: not yet connected`、`auth: —`、`last checked: —`，工具連線留到第 2 天。
+6. **操作手冊（`AGENTS.md`／`CLAUDE.md`）：** 以姓名、優先事項、語氣摘要及連線摘要填入適用的 `{{...}}` 占位。既有手冊只更新指定背景或入口，保留其他規則；依專案要求保持共用指引一致。
+
+### 步驟 4：完成畫面
+
+輸出一個畫面，保持精簡（原指引要求最多三行；以下保留原範例資訊）：
+
+```text
+✓ 第 1 天完成。AI Partner 已知道你是誰、提供什麼、這季重視什麼，以及你的語氣。
+
+今天：問我「這週我應該先處理什麼？」
+明天：從 connections.md 選一個工具接通（手動安裝 MCP，或寫小型 API 腳本並保存 references/{tool}-api.md）。
+第 7 天：執行 /audit 查看分數。
 ```
-✓ Day 1 done. Your AI Partner knows who you are, what you sell, what matters this quarter, and how you sound.
 
-Today: ask me — "what should I focus on this week?"
-Tomorrow: pick one tool from connections.md and wire it up (manual MCP install or write a small API script + save references/{tool}-api.md).
-Day 7: run /audit to see your score.
-```
+使用者提出完成畫面的問題時，只用剛建立的背景檔案回答：
 
-When the user runs the closing prompt ("what should I focus on this week?"), respond using only the new context files. Hit:
-- 3-bullet priority list, in their voice register from Q2
-- Each bullet ties back to a stated 90-day priority from Q3
-- Final line: *"If I had to pick one thing for Monday, it'd be [X], because [reason from priorities]. Want me to draft the first email? And — where could the Default Shift apply here? To what extent could AI be leveraged on this task?"*
+- 以 Q2 的語氣列出 3 項優先事項。
+- 每項連結 Q3 中一項 90 天目標。
+- 最後說：「如果星期一只能先做一件事，我會選 [X]，因為 [根據優先事項的理由]。要我先擬第一封 Email 嗎？也可以一起看，這件事有多少部分能交給 AI。」
 
-The Default Shift question seeds the Mindset framework before `/level-up` formally introduces it on Day 14.
+這個問題會在正式 `/level-up` 前，先建立預設先想 AI 的思考習慣。
 
-## Critical implementation rules
+## 實作規則
 
-1. **The 7-question cap is non-negotiable.** Don't add Q8 in conversation.
-2. **Voice paste cannot be skipped.** If the user types samples mid-chat, refuse and tell them to paste from real writing.
-3. **One-shot scaffold.** After Step 2 ends, write Step 3 files in a single batch. No multi-turn confirmation. The user iterates by editing `aios-intake.md` and re-running.
-4. **Idempotent.** Re-running with an edited intake refreshes context files; backs up originals to `archives/intake-{ts}/`. Skips questions already answered unless the user wants to revise.
-5. **Closing screen is three lines.** Not a menu.
-6. **No extra skills generated.** Don't scaffold `/today`, `/draft`, `/connect`, etc. The kit ships four skills: `/onboard`, `/audit`, `/level-up`, and `/link`; the user authors more via `/level-up`.
-7. **Read-only on `references/3ms-framework.md`.** It already ships in the kit. Don't overwrite.
-8. **No `.env` writes.** Don't ask for API keys on Day 1. Connections come Day 2.
+1. **最多 7 題，** 不增加 Q8。
+2. **不可跳過貼原始語氣範例。** 使用者現寫時，請改貼真實既有文字。
+3. **一次建立初始檔案。** 訪談結束後，一批完成步驟 3，不反覆確認。使用者可編輯 `aios-intake.md` 後重跑。
+4. **可重複執行。** 修改訪談表後重新更新背景，原檔備份到 `archives/intake-{ts}/`。除非使用者想改，不重問已答題目。
+5. **完成畫面最多三行，** 不是選單。
+6. **不額外產生技能。** 不建立 `/today`、`/draft`、`/connect`。原流程以 `/onboard`、`/audit`、`/level-up`、`/link` 為核心，其他需求經 `/level-up` 處理。
+7. **`references/3ms-framework.md` 唯讀。** 套件已附，不在初始設定中覆寫。
+8. **不寫 `.env`。** 第 1 天不索取 API key，連線留到第 2 天。
 
-## Verification (for the implementer)
+## 實作者驗證
 
-- Cold-test: clone a fresh kit, run `/onboard`, fill 7 answers, scaffold runs, ask the wow prompt, response cites Q1 + Q3 + Q7 specifically. Generic = fail.
-- Idempotency: re-run `/onboard` with one Q3 priority changed. Expected: only `context/priorities.md` and `CLAUDE.md`'s priority section update; backup created in `archives/intake-{ts}/`.
-- Voice rejection: type a sample mid-chat. Expected: skill refuses, asks for paste.
+- 從新下載的套件執行 `/onboard`，填 7 題、建立初始檔案，再詢問完成畫面的問題；回答應引用 Q1、Q3、Q7 的具體資訊，泛泛回答視為失敗。
+- 修改 Q3 一項後重跑：預期只更新 `context/priorities.md` 及 `CLAUDE.md` 優先事項區，並建立備份。
+- 現寫語氣範例時，預期要求改貼原始文字。
 
-> *Adapted from The Three Ms of AI™ © 2026 Nate Herk. The Mindset language used in the closing screen comes from `references/3ms-framework.md`.*
+> *改編自 The Three Ms of AI™，© 2026 Nate Herk。完成畫面的思維用語出自 `references/3ms-framework.md`。*

@@ -1,6 +1,6 @@
 interface:
-  display_name: "3D Brain"
-  short_description: "Build a personalized, interactive AIOS knowledge globe"
-  default_prompt: "Use $3d-brain to turn my AIOS into a named 3D knowledge globe with categories I choose."
+  display_name: "3D 知識球體"
+  short_description: "建立個人化的互動式知識球體"
+  default_prompt: "使用 $3d-brain，把我的 AI Partner 建立成有名稱與自選分類的 3D 知識球體。"
 policy:
   allow_implicit_invocation: false

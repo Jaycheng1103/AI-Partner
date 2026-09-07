@@ -1,20 +1,20 @@
-# Acceptance checklist
+# 驗收清單
 
-Package checks: run `node <skill-directory>/scripts/test-package.mjs`. It builds a separate fictional AIOS, scaffolds the app, checks personalized data and source links, verifies the read-only server and path boundaries, and checks the real growth modules. It never uses the author's private notes.
+套件檢查：執行 `node <skill-directory>/scripts/test-package.mjs`。它會另建虛構工作系統、生成應用、檢查個人化資料與來源連結、驗證唯讀伺服器及路徑邊界，並檢查真正的成長模組。不使用原作者的私人筆記。
 
-For an actual skill run, retain a small local verification report beside the generated app. Do not include its private graph or screenshots in the public skill.
+實際執行技能後，在生成應用旁保留精簡的本機驗證報告。不要把私人圖譜或截圖放進公開技能。
 
-- [ ] Exact chosen name appears in document title, header, splash, and demo caption.
-- [ ] Categories reflect approved folders; notices identify missing/unsupported data.
-- [ ] All node IDs are unique; all edges have existing endpoints; duplicate basenames stay distinct.
-- [ ] Sample note readback matches originals, including Codex topic boundaries.
-- [ ] Search, solo filter, restore, and inventory work.
-- [ ] At growth start, a single node and the central orb appear, followed by the first real edge.
-- [ ] Mid-growth shows branching and increasing counts; no old label is stranded in the center.
-- [ ] Drag, zoom, and background/node clicks preserve active growth.
-- [ ] Completion reaches the real visible-node count; all final positions match the globe; Replay starts cleanly.
-- [ ] Cinema, pause/resume, reduced-motion behavior, and narrow layout work.
-- [ ] Console errors are checked; the server is loopback only; arbitrary filesystem paths are not exposed.
-- [ ] Public package contains only runtime/template files and fictional fixtures, not personal data.
+- [ ] 文件標題、頁首、啟動畫面與示範說明顯示指定的完整名稱。
+- [ ] 分類對應已核准的資料夾，通知指出缺失或未支援資料。
+- [ ] 所有節點 ID 唯一，所有連線端點存在，同名檔案仍能區分。
+- [ ] 抽樣讀回與原始筆記相符，包含 Codex 主題章節邊界。
+- [ ] 搜尋、單一來源篩選、還原與完整清單可用。
+- [ ] 成長開始時顯示單一節點與中央球體，接著出現第一條真實連線。
+- [ ] 中期有分支與持續增加的數量，中央不殘留舊標籤。
+- [ ] 拖曳、縮放與點擊背景／節點不會中止成長。
+- [ ] 完成時達到真實可見節點數，最終位置與球體一致，Replay 可乾淨重播。
+- [ ] Cinema、暫停／繼續、減少動態偏好與窄螢幕版面可用。
+- [ ] 已檢查主控台錯誤；伺服器只使用本機回環位址，不開放任意檔案路徑。
+- [ ] 公開套件只有執行／範本檔案與虛構測試資料，沒有個人資料。
 
-If a capability cannot be verified on the available host, report that exact limitation. Do not substitute implementer confidence for a browser check.
+主機無法驗證的能力，需精確回報限制。不能用實作者的信心代替瀏覽器檢查。

@@ -1,21 +1,21 @@
-# Package verification
+# 套件驗證紀錄
 
-Verified September 6, 2026, on Windows with Node.js 24.15.0.
+以下為原作者的歷史驗證紀錄：2026 年 9 月 6 日，在 Windows、Node.js 24.15.0 執行。不是本次繁中翻譯的測試結果。
 
-## Automated checks
+## 自動檢查
 
-The installed Claude package passed the larger fictional fixture: **188 notes, five configured categories, and 545 connections**. The installed Codex copy passed the smaller eight-note fixture. One category was intentionally missing to verify an honest warning and zero count.
+已安裝的 Claude 套件通過較大的虛構測試資料：**188 筆筆記、5 個設定分類、545 條連線**。已安裝的 Codex 副本通過較小的 8 筆筆記測試。其中一個分類刻意缺失，以確認警告與零筆數如實呈現。
 
-Checks covered config validation, new-directory scaffolding and overwrite refusal, custom branding/categories, unique IDs, duplicate basenames, valid edge endpoints, relative-link targets, exact Codex sections, private-file exclusions, growth parent ordering and final positions, every note's HTTP readback, static/API path boundaries, Host/Origin rejection, and unchanged source files. Runtime startup required no npm installation.
+檢查涵蓋設定驗證、新目錄建立與拒絕覆寫、自訂名稱／分類、唯一 ID、同名檔案、有效連線端點、相對連結目標、精確 Codex 章節、私人檔案排除、成長父節點順序與最終位置、每筆筆記的 HTTP 讀回、靜態／API 路徑邊界、Host／Origin 拒絕，以及來源檔案未被修改。執行時不需安裝 npm 套件。
 
-## Browser checks
+## 瀏覽器檢查
 
-A separate fictional Atlas Brain app was inspected at desktop and 390-pixel widths. Search, note reading, a relative Markdown link opening Launch Plan, category solo/restore, inventory notices, and mobile Sources controls worked. Branding appeared in the title, header, splash, and growth caption.
+另建虛構的 Atlas Brain，檢查桌面及 390 像素寬度。搜尋、筆記閱讀、開啟 Launch Plan 的相對 Markdown 連結、單一分類／還原、清單通知與手機 Sources 控制均可用。指定名稱出現在標題、頁首、啟動畫面與成長說明。
 
-Cinema growth was observed early, mid-growth, and at all 188 notes. The central orb was visible early; virtual drag and zoom preserved playback; completion offered Replay; restarting cleared the old labels. The browser reported no error-level console entries during the checked flows.
+Cinema 成長初期、中期與完整 188 筆狀態均經觀察。中央球體初期可見；虛擬拖曳與縮放不會停止播放；完成後出現 Replay；重新開始會清除舊標籤。受檢查流程沒有瀏覽器主控台錯誤等級的紀錄。
 
-The final bundle also received a browser regression check for relative-link navigation and filter restoration. Layout, animation, and graph placement modules were unchanged by that final link-reader fix.
+最終程式包另做相對連結導覽與篩選還原的瀏覽器回歸檢查。最後的連結閱讀器修正沒有變動版面、動畫或圖譜排列模組。
 
-## Limits
+## 限制
 
-This verifies the packaged app and fictional fixtures on this host. A conversational skill run, other operating systems, Node 22, reduced-motion OS emulation, and graphs at the configured maximum were not independently tested here. Each user's real source paths and category mappings still require the acceptance checklist. Screenshots and fixture files remain local test artifacts, outside this public package.
+上述只驗證該主機上的套件應用與虛構資料。對話式技能執行、其他作業系統、Node 22、作業系統減少動態模擬及最大設定節點量，未在此獨立測試。每位使用者的真實路徑與分類對應仍需依驗收清單檢查。截圖與測試資料保留在本機，不包含於公開套件。

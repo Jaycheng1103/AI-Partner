@@ -1,22 +1,22 @@
-# Your 3D Brain
+# 你的 3D 知識球體
 
-A local, read-only view of the knowledge sources selected in `brain.config.json`.
+這是 `brain.config.json` 所選知識來源的本機唯讀視圖。
 
-Run `node serve.mjs` from this folder, then open the printed localhost link. Node.js 22 or newer is required. The prebuilt renderer is included, so no installation is needed to run it. To edit the renderer, run `npm ci`, edit `src/`, and run `npm run build:js`.
+在本資料夾執行 `node serve.mjs`，再開啟終端顯示的 localhost 連結。需要 Node.js 22 以上；內附已建置的繪圖程式，不用安裝套件即可執行。若要修改，先執行 `npm ci`、編輯 `src/`，再執行 `npm run build:js`。
 
-The name, categories, colors, source paths, and port come from `brain.config.json`. Rebuild from disk refreshes notes and connections. Restart the server after changing code or the port. Missing or inaccessible sources appear as notices in the inventory, not invented notes.
+名稱、分類、顏色、來源路徑與連接埠均來自 `brain.config.json`。Rebuild from disk（從磁碟重建）會更新筆記與連線；修改程式或連接埠後需重啟伺服器。缺失或無法存取的來源會顯示在清單通知中，不會變成虛構筆記。
 
-- Drag to orbit, scroll to zoom, and click a node to read it. `/` focuses search.
-- Source buttons toggle categories. Shift-click solos one; click the last active source to restore all.
-- Play demo (`D`) grows the graph through real connections over about 29 seconds. Orbit and zoom still work during growth. The central orb is visible immediately. Replay starts again after completion.
-- Cinema (`C`) hides surrounding UI. Escape exits it.
-- Pause motion freezes rotation and animated accents. Reduced-motion settings are honored.
-- Only selected neighborhoods get bright paths; overview links are sampled to stay readable. The inventory retains full counts.
+- 拖曳旋轉、捲動縮放、點擊節點閱讀。按 `/` 聚焦搜尋。
+- 來源按鈕切換分類；Shift＋點擊只顯示一類，點擊最後一個啟用來源可還原全部。
+- Play demo（`D`）會沿真實連線成長，約 29 秒完成。過程中仍可旋轉與縮放，一開始就能看到中央球體。完成後可用 Replay 重播。
+- Cinema（`C`）隱藏周邊介面，Escape 離開。
+- Pause motion 暫停旋轉與動畫效果，並尊重系統的減少動態偏好。
+- 只有選定鄰近節點的路徑會亮起；總覽連線採抽樣以維持清楚，清單保留完整數量。
 
-The replay shows connectivity, not historical creation dates. Unknown relationships remain disconnected. Exact-title mentions are labeled `mention`; explicit Markdown links and wikilinks take precedence. Duplicate basenames with ambiguous links are reported instead of silently assigned.
+重播展示關聯，不代表歷史建立日期。未知關係維持不相連。完整標題提及標記為 `mention`；明確 Markdown 連結與 wikilink 優先。同名檔案造成的模糊連結會回報，不擅自指定。
 
-Markdown and text files are supported directly, including local meeting notes, wiki pages, project notes, skills, and Claude memory. The Codex adapter reads curated memory summaries, topic groups, recaps, and workflow notes. It excludes raw session logs and duplicate raw-memory exports. Remote systems, PDFs, databases, and raw meeting JSON need an explicit local export or an additional adapter; this app does not claim to ingest them automatically.
+直接支援 Markdown 與文字檔，包括本機會議筆記、知識庫、專案、技能及 Claude 記憶。Codex 轉接器讀取整理後的記憶摘要、主題群、回顧與工作流程筆記，排除原始對話日誌及重複原始記憶匯出。遠端系統、PDF、資料庫與原始會議 JSON 需明確的本機匯出或額外轉接器，本應用不宣稱能自動匯入。
 
-The server binds to `127.0.0.1`. It exposes only indexed note IDs and approved static assets, rejects cross-origin API requests, and sanitizes rendered Markdown. Native pointer lock and cursor capture are disabled. Source files are never modified. The local config and generated graph are gitignored. Cinema hides controls, not private information; review the visible notes before recording or sharing screenshots.
+伺服器綁定 `127.0.0.1`，只開放已索引筆記 ID 與核准的靜態資源，拒絕跨來源 API 請求，並清理渲染的 Markdown。原生指標鎖定與游標擷取已停用。來源檔案不會被修改，個人設定與生成圖譜由 Git 忽略。Cinema 只隱藏控制項，不會隱藏私人內容；錄影或分享截圖前先檢查可見筆記。
 
-Third-party dependency licenses are included in `THIRD-PARTY-NOTICES.txt`.
+第三方相依套件授權見 `THIRD-PARTY-NOTICES.txt`。

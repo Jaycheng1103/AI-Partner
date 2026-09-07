@@ -1,172 +1,178 @@
 ---
 name: level-up
-description: Use when someone asks to level up their AIOS, close an audit gap, find what to automate next, or improve one workflow. Walks the 3Ms from choosing the constraint to shipping one useful artifact or verified repair.
+description: 使用者想改善 AI 工作系統、解決檢查缺口、找下一項自動化或改善一個流程時使用。依 3M 從選擇限制，到完成一項有用成果或經驗證的修正。
 ---
 
-> *Adapted from The Three Ms of AI™. © 2026 Nate Herk. All rights reserved.*
-> *The Three Ms of AI™ is a trademark of Nate Herk.*
+> *改編自 The Three Ms of AI™。© 2026 Nate Herk。保留所有權利。*
+> *The Three Ms of AI™ 為 Nate Herk 的商標。*
 
-## What this skill does
+## 技能用途
 
-Walks the user through the 3Ms each week to surface and ship one new automation. **One interview = one artifact.** It also installs the 3Ms framework into the user's head over time — after 4-6 runs, the user starts spotting opportunities mid-week without prompting because the questions have become internal defaults.
+每週帶使用者走過 3M，找出並完成一項新自動化。**一次訪談，一項成果。** 原框架預期，反覆執行 4–6 次後，使用者能逐漸把提問內化，在週中自行發現改善機會。
 
-This is the brain-rewire mechanism. The kit doesn't need cron jobs to anchor behavior; it needs `/level-up` running every Friday.
+透過每週五執行 `/level-up` 培養習慣，不必靠 cron 排程來建立思考方式。
 
-## What `/level-up` is NOT
+## 與其他工作區分
 
-- Not `/audit`. `/audit` is structural ("is the AIOS built right?"). `/level-up` is functional ("what business leverage am I missing?"). Run `/audit` first if structure is messy.
-- Not a multi-candidate planner. One run = one shipped artifact.
-- Not a coach. The user does the thinking. The skill conducts the interview.
+- `/audit` 檢查「系統是否建得可靠」，`/level-up` 找出「還有哪些業務改善機會」。架構混亂時先執行 `/audit`。
+- 不同時規劃多個候選方案，每次只交付一項成果。
+- 由使用者思考，技能負責訪談，不代替使用者做教練式決定。
 
-## When `/level-up` runs
+## 執行時機
 
-- **First run: Day 14.** After the user has connected ≥1 MCP/script and run `/audit` once. Earlier yields trivial output.
-- **Cadence: weekly, Friday afternoon.** Review the week, surface one automation, ship Monday.
-- **On-demand any time.** Mid-week if a manual task itches.
+- **首次：第 14 天。** 使用者至少接通一個 MCP／腳本，且執行過一次 `/audit`；太早執行容易只得到表面建議。
+- **每週五下午：** 回顧本週，選一項自動化，星期一完成。
+- **隨時按需：** 週中遇到反覆手動工作，也可以執行。
 
-## Inputs the skill reads
+## 讀取來源
 
-First read the applicable operating manual. The paths below are starter-kit defaults: resolve priorities, identity, and connections through the current project's declared routes when it uses different locations. Do not create duplicate context files because these defaults are absent. Use `references/3ms-framework.md` if present; otherwise read the bundled [3Ms framework](references/3ms-framework.md). Ask only for information unavailable in the existing sources.
+先讀適用操作手冊。下列為套件預設位置；若專案有其他正式路徑，依其入口取得優先事項、身分及連線，不因預設檔案缺失就建立重複背景。優先使用專案的 `references/3ms-framework.md`，沒有才讀內附的 [3M 框架](references/3ms-framework.md)。只詢問既有來源無法回答的資訊。
 
-- `context/priorities.md` — what the user said matters
-- `context/about-me.md` — top_pain, role
-- `connections.md` — what's reachable, by what mechanism
-- `references/3ms-framework.md` — the framework (used to quote principles back)
-- `decisions/log.md` — recent decisions (what's already shipped or considered)
-- `.agents/skills/*/SKILL.md` frontmatter — what capabilities exist
-- Recent `audits/audit-{date}.md` if present
+- `context/priorities.md`：使用者認為重要的事。
+- `context/about-me.md`：`top_pain` 與角色。
+- `connections.md`：可存取的系統與連線方式。
+- `references/3ms-framework.md`：供引用原則的框架。
+- `decisions/log.md`：近期決策、已完成或考慮過的項目。
+- `.agents/skills/*/SKILL.md` 的 frontmatter：現有能力。
+- 若有，近期 `audits/audit-{date}.md`。
 
-## Execution — three phases
+## 執行：三階段
 
-### Coming from an audit
+### 從檢查結果開始
 
-If the user supplies an `/audit` finding or a recent report is available, carry its evidence, affected route/workflow, and completion check into Phase 1. Use that gap as the first candidate; ask only for missing context instead of restarting a generic interview. Do not chase points or assume an unverified connection is broken.
+使用者提供 `/audit` 發現，或有近期報告時，把證據、受影響入口／流程與完成判準帶進第 1 階段。先以該缺口為候選，只補問缺失背景，不重跑泛用訪談。不追求分數，也不把未驗證連線當成故障。
 
-For a routing-only fix, use `/link` when available and the user has requested the edit. For a selected workflow repair, improve that existing workflow rather than creating a duplicate skill. A verified repair counts as the one artifact for this run. Preserve the Method reasoning, relevant scope/permissions, and validation steps. A practical measure can be fewer failed retrievals, fewer missed runs, or less time finding a source.
+純索引修正若有 `/link` 且使用者已要求編輯，就使用它。選定流程修正時，改善原流程，不另建重複技能；經驗證的修正就是本次成果。保留方法推理、相關範圍／權限與驗證步驟。衡量方式可用減少檢索失敗、漏跑或找資料時間。
 
-For repairs, skip creation-only scaffolding. The scaffold headers below apply to new workflow artifacts, never to operating manuals or routing indexes.
+修正既有內容時，跳過只適用新建成果的架構。下方 frontmatter 只用於新流程成果，不加到操作手冊或索引。
 
-Close with the repair's acceptance evidence and recommend `/audit` again. Do not claim a higher score until the new audit verifies it; repeated-use and due-run evidence must accumulate through actual use.
+結尾提供驗收證據，建議再跑 `/audit`。新檢查尚未驗證前，不宣稱分數提升；重複使用與應執行排程的證據需靠真實使用累積。
 
-### Phase 1 — Mindset interview (find the candidate)
+### 第 1 階段：思維訪談（找候選機會）
 
-Surface 1-3 candidates ranked by leverage. Ask these in order, conversationally:
+依改善價值排出 1–3 個候選，按順序自然詢問：
 
-1. *"Walk me through your week. What did you do 3+ times?"* (frequency)
-2. *"Anything that felt manual, boring, or copy-paste?"* (drudgery)
-3. *"Anything where you thought 'a smart intern could handle this'?"* (delegation)
-4. *"If 500 new clients showed up tomorrow, what would break first?"* (constraint)
-5. *"What would give you 500 more clients tomorrow?"* (growth lever)
+1. 「回顧這一週，哪些事你做了 3 次以上？」（頻率）
+2. 「有哪些事很手動、無聊，或一直複製貼上？」（重複勞務）
+3. 「哪些事讓你覺得，聰明的實習生就能處理？」（委派）
+4. 「如果明天多 500 位客戶，哪裡會先撐不住？」（限制）
+5. 「什麼事情能讓你明天多 500 位客戶？」（成長機會）
 
-Quote relevant Mindset principles when they fit:
-- *"Sounds like the Default Shift applies — to what extent could AI be leveraged here?"*
-- *"This is the Function Breakdown — you're not automating the whole job, just this one piece."*
-- *"AI is better than you think and improving faster than you think. If it couldn't do this last quarter, it might be ready now."*
+合適時引用思維原則：
 
-**Output of Phase 1:** numbered list of 1-3 candidate opportunities, one-line "why this is leverage" per candidate. Ask: *"Pick one to scope."*
+- 「這適合先想 AI：這件事有多少部分能交給 AI？」
+- 「這是功能拆解：先自動化其中一小部分，不必整份工作一起做。」
+- 「原框架提醒，AI 能力持續進步。上季做不到的事，現在可以重新測試。」
 
-### Phase 2 — Method interview (scope one)
+**階段成果：** 編號列出 1–3 個機會，每項用一句話說明改善價值，再問：「選一個來界定範圍。」
 
-User picks one candidate. Walk the 5-step Method pipeline:
+### 第 2 階段：方法訪談（選定一項）
 
-**Step 1 — Find the constraint.** Which bottleneck does this solve, or which growth lever does it open? Tie back to Phase 1 answers.
+使用者選定後，依五步方法進行。
 
-**Step 2 — EAD: Eliminate / Automate / Delegate.**
-- **Eliminate first:** *"What happens if we just stop doing this?"* If the answer is "nothing breaks" → skill exits cheerfully. *"Don't automate waste."* This is a win, log to `decisions/log.md` and stop.
-- **Automate second:** apply 60/30/10 framing. ~60% deterministic, ~30% AI-assisted, ~10% manual.
-- **Delegate third:** if too complex/variable/judgment-heavy → suggest a person. Skill exits with a delegation suggestion, log it.
+**步驟 1：找限制。** 這能解決哪個瓶頸，或增加哪種成長機會？對應第 1 階段回答。
 
-**Step 3 — Map the process.** Five elements:
-- Trigger (what kicks it off)
-- Data sources (where info comes from)
-- Data transformations (how data changes shape)
-- Decision points (where it branches)
-- Destination (where output goes)
+**步驟 2：EAD，刪除／自動化／委派。**
 
-If the user can't articulate any of the five: *"If you can't explain it to a person, you can't explain it to an AI. Sketch it on paper first, then come back."* Skill stops.
+- **先刪除：**「如果不做這件事，會怎樣？」若不影響工作，記錄到 `decisions/log.md` 後結束。不要把浪費自動化，刪除本身就是成果。
+- **再自動化：** 用 60／30／10 作為規劃方式，約 60% 固定規則、30% AI 輔助、10% 手動。
+- **最後委派：** 太複雜、多變或依賴判斷時，建議交給人，記錄後結束。
 
-**Step 4 — Pick the autonomy level.**
+**步驟 3：畫流程。** 必須說清楚：
 
-| Level | Name | What happens |
+- 觸發條件：什麼時候開始？
+- 資料來源：資訊從哪裡來？
+- 資料轉換：資料如何改變形式？
+- 決策點：在哪裡分支？
+- 目的地：結果送去哪裡？
+
+任何一項說不清楚，就提醒：「要能先說清楚給人聽，才能說清楚給 AI。先畫在紙上，再回來繼續。」並停止。
+
+**步驟 4：選自主程度。**
+
+| 等級 | 名稱 | 運作方式 |
 |---|---|---|
-| L0 | Manual | No AI |
-| L1 | Suggested | AI suggests, human decides every step |
-| L2 | Drafted | AI drafts, human reviews and edits |
-| L3 | Supervised | AI runs, human validates periodically |
-| L4 | Autonomous | AI handles end-to-end |
+| L0 | 手動 | 不使用 AI |
+| L1 | 建議 | AI 建議，每步由人決定 |
+| L2 | 草稿 | AI 起草，人審閱與修改 |
+| L3 | 監督 | AI 執行，人定期驗證 |
+| L4 | 自主 | AI 全程處理 |
 
-**Default = lowest level that solves the problem.** Push back on L4 unless the user has explicitly run lower levels first. *"Workflows beat agents. If a decision doesn't HAVE to be made by AI, don't let AI make it."*
+**預設選能解決問題的最低等級。** 使用者未先跑過較低等級時，對 L4 提出質疑。可靠流程優先；不需要 AI 做的決策，就用固定規則。
 
-**Step 5 — Tie to a KPI.** Which of the Three Buckets does this move?
-- More customers
-- More value per customer
-- Less cost
+**步驟 5：連結 KPI。** 改善下列哪一類？
 
-Plus a specific metric (response time, error rate, conversion rate, time-to-completion). **If the user can't name a bucket and a metric, skill stops.** *"If your automation doesn't move a number, why are you building it?"*
+- 更多客戶。
+- 更高的每位客戶價值。
+- 更低成本。
 
-**Output of Phase 2:** scoped automation spec written to `decisions/log.md` as a dated entry with all five answers + autonomy level + KPI. Durable record of what was decided and why.
+再選具體指標，如回應時間、錯誤率、轉換率或完成時間。**說不出類別與指標時就停止，** 先釐清為什麼值得建立。
 
-### Phase 3 — Machine handoff (build it)
+**階段成果：** 在 `decisions/log.md` 新增帶日期的自動化規格，包含五步答案、自主程度與 KPI，保存決策及原因。
 
-Ask: *"How do you want to ship this?"* Options ordered by Boring-is-Beautiful default:
+### 第 3 階段：系統建置
 
-1. **Prompt-only** — saved prompt template the user runs by hand. Zero infrastructure. Highest manual involvement.
-2. **Deterministic skill** — SKILL.md that runs a script (no AI step). Best for transformations with clear rules.
-3. **AI-assisted skill** — SKILL.md with one AI call inside. Drafts, classifies, summarizes.
-4. **Sub-agent** — multi-step agent. Last resort. Only if the work genuinely needs reasoning + tool use.
+詢問：「你想用哪種方式完成？」依簡單可靠優先排列：
 
-**Default selected = highest non-AI option that solves the problem.** User has to explicitly choose more autonomy.
+1. **只有提示詞：** 保存成範本，使用者手動執行，無基礎設施，人工參與最多。
+2. **固定規則技能：** `SKILL.md` 執行腳本，沒有 AI 步驟，適合規則明確的轉換。
+3. **AI 輔助技能：** `SKILL.md` 含一次 AI 呼叫，用來起草、分類或摘要。
+4. **子代理：** 多步驟代理，只有工作確實需要推理與工具使用時才採用，作為最後選項。
 
-Once chosen, route to the appropriate scaffolder:
-- `skill-creator` if available globally (Anthropic-shipped)
-- `skill-builder` if user has it locally
-- Otherwise write a SKILL.md / agent file inline with frontmatter, location, and contents
+**預設選能解決問題、盡量不依賴 AI 的方式。** 更高自主程度需使用者明確選擇。
 
-**Every scaffolded artifact ships with these two headers at top:**
+選定後使用合適建立工具：
+
+- 若全域有 Anthropic 提供的 `skill-creator`，就使用。
+- 若本機有 `skill-builder`，可使用。
+- 否則直接寫出 `SKILL.md`／代理檔案，包含 frontmatter、位置與內容。
+
+**每個新建成果頂部加入以下兩個欄位：**
 
 ```markdown
 ---
-bike-method-phase: 1  # Phase 1 — Training wheels. Run manually first.
+bike-method-phase: 1  # 第 1 階段：輔助輪，先手動執行。
 three-ms-attribution: |
   Adapted from The Three Ms of AI™ © 2026 Nate Herk.
 ---
 ```
 
-This locks the user into Phase 1 of the Bike Method on first build. They can't silently skip manual validation. Phase advances only by explicit edit.
+新成果從腳踏車法第 1 階段開始，不可默默跳過人工驗證。只有明確編輯才能提升階段。
 
-Surface the Machine principles when scaffolding:
-- **Lego Principle** — smallest steps, zero-AI first if possible
-- **Validation Chain** — test each step before chaining
-- **Iteration Mindset** — ship the POC, expand from real usage
+建置時提示：
 
-## Output contract
+- **樂高原則：** 最小步驟，能不用 AI 的部分先完成。
+- **驗證鏈：** 每步驗證後再串接。
+- **反覆改善：** 先完成概念驗證，再依真實使用擴充。
 
-Every `/level-up` run produces:
+## 交付要求
 
-1. **One `decisions/log.md` entry** — dated, with the Method spec
-2. **One delivered improvement**: a prompt, skill, or agent file, or a verified repair of the selected existing workflow/routing
-3. **A one-screen close** — what was scoped, what was built, and the Bike Method Phase 1 reminder
+每次 `/level-up` 產出：
 
-## Critical implementation rules
+1. 一筆帶日期、含方法規格的 `decisions/log.md` 紀錄。
+2. 一項已交付改善：提示詞、技能、代理檔案，或選定流程／索引的已驗證修正。
+3. 一個畫面的結尾：界定了什麼、完成了什麼，以及腳踏車法第 1 階段提醒。
 
-1. **One interview = one artifact.** No multi-candidate parallel scoping.
-2. **Mindset phase always runs first.** Even if user comes in with a pre-formed idea.
-3. **EAD enforces "eliminate first."** If the answer is Eliminate, exit cheerfully — that's a win, not a failure.
-4. **Default to the lowest autonomy level that works.** Push back on L4.
-5. **Boring-is-Beautiful default in Machine handoff.** Default = highest non-AI option.
-6. **Tie-to-KPI is mandatory.** If user can't name bucket + metric, skill stops.
-7. **Bike Method ships into every artifact.** `bike-method-phase: 1` in frontmatter.
-8. **Limit edits to `decisions/log.md` and the selected artifact.** An explicitly selected audit repair may update its existing workflow or routing files; preserve unrelated content. Other files remain read-only.
-9. **Trademark + attribution on output.** Every report and every scaffolded artifact references the framework.
+## 實作規則
 
-## Verification (for the implementer)
+1. 一次訪談一項成果，不同時替多個候選界定範圍。
+2. 使用者已有想法，仍先進行思維階段。
+3. EAD 一律先考慮刪除；選擇刪除就記錄並結束，這也是成功。
+4. 選最低有效自主等級，對直接使用 L4 提出質疑。
+5. 建置預設簡單可靠，優先不依賴 AI 的選項。
+6. 必須連結 KPI；說不出類別與指標就停止。
+7. 每項新成果的 frontmatter 都有 `bike-method-phase: 1`。
+8. 只改 `decisions/log.md` 與選定成果。明確選定的檢查修正可改既有流程或索引，保留無關內容；其他檔案唯讀。
+9. 每份報告與新建成果保留框架歸屬及商標聲明。
 
-- **Dry run on Nate's Herk-2** with no prompt. Expected: skill surfaces 2-3 candidates pulled from his recent activity, priorities, and top_pain. Generic output ("you should build a brief") = fail.
-- **Eliminate-first test.** Feed an obviously eliminate-able candidate. Expected: skill suggests Eliminate, exits, logs the win.
-- **L4 push-back test.** User asks for autonomous email-replier on first build. Expected: skill insists on L1/L2 first, won't ship L4 without explicit override.
-- **Boring-is-Beautiful test.** Candidate solvable with deterministic Python. Expected: skill recommends `(2) deterministic skill` as default.
-- **Bike Method anti-skip.** User scaffolds, asks to advance to Phase 4 immediately. Expected: skill makes them read what each phase means and confirm they've validated lower phases.
+## 實作者驗證
+
+- **原作者 Nate 的 Herk-2 無提示測試：** 預期從近期活動、優先事項、`top_pain` 提出 2–3 個具體候選；只說「建立摘要」等泛用建議視為失敗。
+- **先刪除測試：** 提供明顯可刪除的工作，預期建議刪除、記錄並結束。
+- **L4 質疑測試：** 首次就要求自動回 Email，預期先建議 L1／L2；沒有明確覆寫要求不建立 L4。
+- **簡單可靠測試：** 固定規則 Python 可解決時，預設建議第 2 項固定規則技能。
+- **腳踏車法防跳級：** 建立後立即要求第 4 階段，預期先說明各階段，確認較低階段已驗證。
 
 ---
 
-> *The Three Ms of AI™ is a trademark of Nate Herk. © 2026 Nate Herk. All rights reserved.*
+> *The Three Ms of AI™ 為 Nate Herk 的商標。© 2026 Nate Herk。保留所有權利。*

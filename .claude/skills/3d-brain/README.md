@@ -1,19 +1,19 @@
-# 3D Brain skill
+# 3D 知識球體技能
 
-Build a named, interactive globe from an AI Partner's saved knowledge. The skill asks for the brain's display name and main categories, maps them to selected local folders, and creates the bundled app under `apps/3d-brain/`.
+從 AI Partner 已保存的知識建立有名稱的互動球體。技能會詢問顯示名稱與主要分類，對應指定的本機資料夾，再於 `apps/3d-brain/` 建立內附應用。
 
-- Claude Code: `/3d-brain`
-- Codex: select **3D Brain**, or type `$3d-brain`
-- Natural language: “Build a 3D brain from my AI Partner.”
+- Claude Code：`/3d-brain`
+- Codex：選擇 **3D 知識球體**，或輸入 `$3d-brain`
+- 自然語言：「從我的 AI Partner 建立 3D 知識球體。」
 
-Node.js 22+ is required. The renderer is included, so generated apps run with `node serve.mjs` without an npm install. Building a modified renderer requires `npm ci` and `npm run build:js` in the generated app.
+需要 Node.js 22 以上。內附已建置的繪圖程式，生成應用後執行 `node serve.mjs` 即可，不需先安裝 npm 套件。若要修改繪圖程式，請在生成的應用中執行 `npm ci`，修改後再執行 `npm run build:js`。
 
-The app includes a spherical layout, central orb, colored categories, search, a note reader, source filters, inventory, Cinema, and interactive growth replay. Drag and zoom remain available during growth. Connections come from the selected notes; the animation illustrates connectivity, not historical creation dates.
+應用包含球面排列、中央球體、分類配色、搜尋、筆記閱讀器、來源篩選、完整清單、Cinema 展示模式與互動式成長重播。成長播放時仍可拖曳、縮放。連線來自所選筆記，動畫展示關聯，不是建立日期的歷史紀錄。
 
-Markdown/text and curated Codex memory are supported directly. Claude memory uses its selected Markdown folder. Meeting and video knowledge can come from saved Markdown exports. Other formats and online services require an export or a tested adapter.
+直接支援 Markdown／文字與整理後的 Codex 記憶。Claude 記憶使用指定的 Markdown 資料夾；會議與影片知識可使用本機 Markdown 匯出。其他格式與線上服務需先匯出或使用已測試的轉接器。
 
-To install separately, copy this entire folder, including `assets`, `scripts`, `references`, and `agents`, to the target AI Partner's `.claude/skills/3d-brain/`. In AI Partner, run `bash scripts/sync-codex-skills.sh 3d-brain` to generate the Codex copy. Do not copy only `SKILL.md` or include a generated user's config/data.
+獨立安裝時，把整個技能資料夾（包括 `assets`、`scripts`、`references`、`agents`）複製到目標系統的 `.claude/skills/3d-brain/`。在本套件中執行 `bash scripts/sync-codex-skills.sh 3d-brain`，生成 Codex 副本。不能只複製 `SKILL.md`，也不要夾帶已生成的個人設定或資料。
 
-Package validation: `node scripts/test-package.mjs`. For a larger fictional visual fixture, add `--keep --demo --out <scratch-folder>`.
+套件驗證：`node scripts/test-package.mjs`。需要較大的虛構視覺測試資料時，加上 `--keep --demo --out <scratch-folder>`。
 
-See [SKILL.md](SKILL.md) for the workflow, [the portable spec](references/portable-spec.md) for the implementation contract, and [the config guide](references/config.md) for adapters and limits.
+操作流程見 [SKILL.md](SKILL.md)，實作規格見[可攜式規格](references/portable-spec.md)，轉接器與限制見[設定指南](references/config.md)。

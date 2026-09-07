@@ -1,80 +1,82 @@
 ---
 name: grill-me
-description: Interview the user relentlessly about a plan, design, or topic, checkpointing every answer to a brainstorm file so nothing is lost. Use when the user wants to stress-test a plan, get grilled on a design, run a brainstorm or discovery session, extract what's in their head into a doc, build up their AI OS context over time, or says "grill me".
+description: 深入訪談計畫、設計或主題，每個回答立即保存到腦力激盪檔案。適用於檢驗計畫、設計提問、探索訪談、把腦中想法整理成文件、持續建立 AI 工作系統背景，或使用者說「grill me」。
 ---
 
-# Grill Me
+# 深入訪談
 
-Relentlessly interview the user about every aspect of the topic until you reach shared understanding. Walk down each branch of the decision tree, resolving dependencies one by one. The real goal is to **extract what's in their head into a durable, organized markdown file** so nothing is lost as context fills up.
+持續詢問主題的各個面向，直到形成共識。沿決策樹逐一探索，依序解決依賴事項。目的是**把使用者腦中的內容存成可長期使用、有組織的 Markdown**，避免對話變長後遺失。
 
-## The capture file is the whole point
+## 訪談檔案是正式紀錄
 
-Long interviews fill up context. If you hold answers only in your head, you will eventually misremember, conflate, or drop something. So you **checkpoint to disk after every single answer**. The file, not your context, is the source of truth. Never make the user ask you to save progress.
+長訪談會用完上下文；只靠助理記住答案，最終可能記錯、混淆或遺漏。因此**每個回答後都立即寫入磁碟**。以檔案為準，不以助理上下文為準，也不要等使用者提醒才儲存。
 
-## Existing context and scope
+## 既有背景與範圍
 
-Read the applicable `AGENTS.md` and `CLAUDE.md`, then only the context pages and prior captures relevant to the topic. Starter-kit context lives in `context/`, but follow an established project's declared routes instead of creating a duplicate knowledge store. Reuse facts already supplied; ask about gaps, changes, decisions, and tradeoffs. Installing the skill does not start an interview.
+先讀適用的 `AGENTS.md`、`CLAUDE.md`，再只讀與主題相關的背景頁及舊訪談。套件預設使用 `context/`；既有專案依其正式入口，不另建知識庫。沿用已知事實，詢問缺口、變動、決策及取捨。安裝技能不代表開始訪談。
 
-## Setup (do this BEFORE the first question)
+## 訪談前準備（第一題之前完成）
 
-1. **Create the capture file** at `brainstorms/{YYYY-MM-DD}-{topic-slug}.md` (create the `brainstorms/` folder if it doesn't exist). Every brainstorm capture lives here. One predictable home, regardless of topic. Do NOT scatter captures into project folders. If a session later produces a polished deliverable (a plan, a map, a spec), that artifact can move into the relevant `projects/` folder, but the raw capture always stays in `brainstorms/`.
-   - Get today's actual date using the available clock or shell (`Get-Date -Format yyyy-MM-dd` in PowerShell, `date +%F` in Bash).
-   - Never overwrite an existing capture. For a new session with the same date/topic, add a time or unique suffix and create exclusively. Resume an existing capture only when the user requests or clearly refers to that session; read it first and continue its question numbering.
-   - If no topic is supplied or inferable, create an `untitled-discovery` capture with goal pending, then ask what to explore. Record the chosen topic and goal in that same file.
-2. **Create the file immediately** with a header: title, date, the goal of the session, and an empty "Open flags" section.
-3. **Tell the user where you're saving**, in one line. Then ask Q1.
+1. **建立紀錄檔：** `brainstorms/{YYYY-MM-DD}-{topic-slug}.md`，沒有資料夾就建立。所有原始訪談都放這裡，不散落到專案資料夾。後續整理成的計畫、圖表或規格可以放入相關 `projects/`，原始紀錄留在 `brainstorms/`。
+   - 用可用的時鐘或 shell 取得真實日期：PowerShell 用 `Get-Date -Format yyyy-MM-dd`；Bash 用 `date +%F`。
+   - 不覆寫舊訪談。同日同主題的新訪談加時間或唯一後綴，使用不覆寫的建立方式。只有使用者要求或明確提到續接時才讀取舊檔，延續題號。
+   - 沒有主題且無法推知時，建立 `untitled-discovery` 紀錄，目標標為待定，再問想探索什麼；把確定的主題與目標記在同一份檔案。
+2. **立即建立檔頭：** 標題、日期、訪談目標，以及空白的「待釐清事項」。
+3. **用一句話告知儲存位置，** 再問 Q1。
 
-## The checkpoint rule (non-negotiable)
+## 每次回答的保存規則
 
-After EVERY user answer, BEFORE you ask the next question:
-- Append a structured entry to the capture file: the question topic, the key facts and decisions from their answer (in their words where the wording matters), and any flags (things they couldn't answer plus who should).
-- Update the running summary when a later answer changes it. Preserve the original Q&A entry, mark it superseded, and link to the correcting answer so the reasoning remains traceable.
-- Read back the saved entry before continuing. If saving fails, explain the failure and keep the answer visible in chat; do not claim it was saved or continue collecting answers without a working checkpoint.
-- Only then ask the next question.
+每次使用者回答後，問下一題之前：
 
-Never batch multiple answers into one write. Checkpoint one answer at a time. The point is that if context is lost at any moment, the file already holds everything said so far.
+- 追加結構化紀錄：問題主題、回答中的重要事實與決策（措辭重要時保留原話），以及無法回答的事項與適合回答的人。
+- 新答案修正前文時，更新摘要；原始問答保留，標示已被取代並連到修正答案，讓理由可追溯。
+- 讀回剛儲存的紀錄。寫入失敗時說明原因，把答案留在對話中；不能宣稱已保存，也不能在沒有可靠保存機制時繼續收集答案。
+- 完成上述步驟才問下一題。
 
-## Interview method
+不要累積多個答案再一起寫；一次保存一個回答，確保任何時刻上下文遺失，檔案仍已保存全部進度。
 
-- Ask **one question at a time**. For decisions, provide a suggested answer grounded in context and label it as a suggestion. For personal or business facts, ask neutrally; do not lead the user with invented facts or save your inference as their answer.
-- Keep user-confirmed facts, tentative ideas, assistant suggestions, and unresolved questions distinguishable in the capture.
-- Resolve dependencies in order: settle the upstream decision before the ones that depend on it.
-- If a question can be answered by **exploring the codebase or reading a file/doc**, do that instead of asking. If the user hands you a doc (e.g. a Google Doc), read it and only surface what's net-new.
-- When the user **can't answer** something, capture it as a flag with the right owner and move on. Don't stall.
-- Keep going until the user says you're done, needs a pause, or you've covered the useful branches. Respect an explicit stop immediately; do not add a new question. Offer a completeness backstop near the end ("anything we haven't touched?").
+## 訪談方式
 
-## Capture file structure
+- **一次只問一題。** 決策題可以依背景提出建議答案，並標明是建議。個人與業務事實採中性提問，不用虛構事實引導，也不把推論當作使用者答案。
+- 清楚區分已確認事實、暫定想法、助理建議及未解問題。
+- 先解決上游決策，再處理依賴它的問題。
+- 能透過**程式碼或文件查到**的答案，先自行讀取。使用者提供文件（例如 Google 文件）時，先讀完再只提出新問題。
+- 使用者**無法回答**時，記下待釐清事項與適合負責的人，繼續其他部分。
+- 持續到使用者表示結束、需要暫停，或已涵蓋有用分支。明確要求停止時立刻停止，不再加題；接近結尾可問「還有什麼沒談到？」。
 
-```
-# {Topic}: Brainstorm / Discovery Notes
-Date: {date} · Goal: {one line}
-Status: in progress / paused / complete
-Context sources: {relevant existing pages, if any}
+## 紀錄結構
 
-## Summary / key decisions
-(running synthesis, updated as you go)
+```markdown
+# {主題}：腦力激盪／探索紀錄
+日期：{日期} · 目標：{一句話}
+狀態：進行中／暫停／完成
+背景來源：{相關既有頁面，若有}
 
-## Q&A log
-### Q1 - {topic}
-- Asked: {question}
-- Captured: {user-confirmed facts, decisions, in their words where it matters}
-- Tentative / suggested: {unconfirmed ideas, clearly labeled}
-- Flags: {open item -> owner}
+## 摘要／重要決策
+（隨訪談持續更新）
+
+## 問答紀錄
+### Q1：{主題}
+- 問題：{完整問題}
+- 已記錄：{使用者確認的事實與決策，措辭重要時保留原話}
+- 暫定／建議：{尚未確認的想法，清楚標示}
+- 待釐清：{事項 → 負責人}
 ...
 
-## Open flags (pending input)
-- {item} -> {who can answer}
+## 待釐清事項
+- {事項} → {能回答的人}
 ```
 
-## At the end or on pause
-- Read the capture for contradictions or gaps. Mark unresolved conflicts explicitly; do not choose a business fact on the user's behalf. Update the session status and resume point.
-- For sessions explicitly about building or updating AI OS context, merge user-confirmed durable facts and preferences into the appropriate existing context page, with a dated link back to the capture. Preserve unrelated content. Record confirmed meaningful decisions in the existing decision log without duplicating entries. Unknowns, brainstorm ideas, and assistant suggestions stay labeled in the capture until confirmed.
-- For a plan/design interview without a request to update canonical context, keep the raw capture as the output. Suggest `/link` for routing a useful result, or `/level-up` for turning a selected opportunity into one improvement. Do not run either automatically.
-- Ensure the operating manual or an existing index routes to `brainstorms/` when capture routing is absent, using the project's conventions and preserving shared manual parity. Individual captures do not each need a root-manual entry. Raw captures are dated interview evidence, not automatically current business truth.
-- Give a short recap with a clickable capture path, context pages actually updated, remaining flags, and the next step or resume point.
+## 結束或暫停時
 
-## Boundaries and verification
+- 重讀紀錄，找出矛盾與缺口，明確標示未解衝突，不替使用者決定業務事實。更新狀態與續接位置。
+- 訪談明確為建立或更新工作系統背景時，將已確認、可長期使用的事實及偏好合併到適當既有頁面，附日期與訪談連結，保留無關內容。重要決策加入既有決策紀錄，避免重複；未知事項、腦力激盪及助理建議留在訪談中並保留標示，直到確認。
+- 計畫／設計訪談若未要求更新正式背景，以原始紀錄為成果。可建議 `/link` 加入索引，或 `/level-up` 把選定機會轉成一項改善，但不自行執行。
+- 若尚無 `brainstorms/` 入口，在操作手冊或既有索引加入，遵守專案慣例並維持共用手冊一致。不必為每份訪談新增根目錄入口。訪談是帶日期的證據，不自動等同目前業務事實。
+- 簡短回報可點擊的紀錄路徑、實際更新的背景頁、未解事項及下一步／續接位置。
 
-- Local interview capture and requested context updates are the scope. No global-memory edits, publication, messages, or external-system changes. Do not request or save credentials; use references or redactions for secrets.
-- The starter kit ignores `brainstorms/` in Git by default. This does not remove captures already tracked in an existing repository.
-- Validate a fresh session, same-day name collision, resume, a correcting answer, a stop request, and a failed write. Verify that only confirmed facts reach canonical context and that earlier answers remain traceable.
+## 邊界與驗證
+
+- 範圍限本機訪談紀錄及使用者要求的背景更新，不修改全域記憶、不發布、不發送訊息或改動外部系統。不索取或保存憑證；敏感資訊用參照或遮蔽。
+- 套件預設由 Git 忽略 `brainstorms/`，但不會移除既有 repo 已追蹤的訪談。
+- 驗證新訪談、同日撞名、續接、修正答案、停止要求及寫入失敗。確認只有已確認事實進入正式背景，舊答案仍可追溯。

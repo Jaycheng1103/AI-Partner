@@ -1,78 +1,76 @@
-# EXPANSIONS — what to add as you grow
+# 擴充指南：隨著需求增加什麼
 
-The kit ships lean on purpose: six skills and a small set of context and reference files. As you grow, use `/link` to add new sources to the right route, and `/audit` to check that the information remains findable and current.
+套件刻意保持精簡：6 個技能，以及少量背景與參考檔案。擴充時，用 `/link` 把新來源加入適當入口，再用 `/audit` 確認資料仍然找得到、沒有過期。
 
-The AIOS structure should look like a small, well-run business. Not a hoarder's basement.
+AI Partner 的架構應該像一家規模小、運作順暢的公司，不該像堆滿雜物的地下室。
 
 ---
 
-## What ships in the kit (don't remove)
+## 套件原有內容（請保留）
 
-| Folder / file | Purpose |
+| 資料夾／檔案 | 用途 |
 |---|---|
-| `context/` | About you, your business, your priorities. Filled by `/onboard`. |
-| `references/` | Frameworks, voice samples, API guides, SOPs as you build them. |
-| `decisions/log.md` | Append-only record of what was decided and why. |
-| `brainstorms/` | Saved `/grill-me` interviews; created on first use. Confirmed context is linked back to its capture. |
-| `archives/` | Old files. Don't delete — move here. |
-| `connections.md` | Registry of every system your AIOS can reach. |
-| `.claude/skills/` | Your skills: `/onboard`, `/audit`, `/level-up`, `/link`, `/grill-me`, `/3d-brain`. Add more only when they solve a real need. |
-| `aios-intake.md` | Source-of-truth for `/onboard`. Edit and re-run any time. |
-| `CLAUDE.md` | Root operating manual. Filled by `/onboard`. Edit when your role/voice changes. |
+| `context/` | 個人、業務與優先事項，由 `/onboard` 填入。 |
+| `references/` | 框架、語氣範例、API 指南與逐步建立的 SOP。 |
+| `decisions/log.md` | 只追加的決策與理由紀錄。 |
+| `brainstorms/` | `/grill-me` 訪談紀錄，首次使用時建立。已確認的背景資料會連回訪談。 |
+| `archives/` | 舊檔案移到這裡，不直接刪除。 |
+| `connections.md` | AI Partner 可存取的系統清單。 |
+| `.claude/skills/` | 技能：`/onboard`、`/audit`、`/level-up`、`/link`、`/grill-me`、`/3d-brain`。只有實際需求出現時才增加。 |
+| `aios-intake.md` | `/onboard` 的正式來源，可隨時編輯後重新執行。 |
+| `CLAUDE.md` | 根目錄操作手冊，由 `/onboard` 填入。角色或語氣改變時更新。 |
 
 ---
 
-## What to add as you grow
+## 隨著需求擴充
 
-| Folder / file | Add when | Why |
+| 資料夾／檔案 | 何時加入 | 理由 |
 |---|---|---|
-| `projects/` | You start running 2+ ongoing workstreams that have their own context | Active projects need scoped context separate from the evergreen `context/` files |
-| `templates/` | You catch yourself copy-pasting the same prompts or doc scaffolds | Reusable, parameterized starting points; reduces drift |
-| `brand-assets/` | You generate visual content (carousels, slides, thumbnails, images) | Centralizes logos, palettes, fonts, voice/tone — the AIOS reaches in instead of guessing |
-| `references/sops/` | You document how recurring processes run | Standard operating procedures the AIOS reads to run things consistently |
-| `references/{tool}-api.md` | You connect a new API or MCP and figure out how it works | Researched-once-saved-forever. `/audit` rewards this; future skills don't re-research. |
-| `scripts/` | You write Python or Bash to hit APIs not covered by MCPs | Most people's second connection is a script, not an MCP |
-| `.claude/agents/` | You need a sub-assistant for repeatable, multi-step research/writing | Agents run on cheaper models in their own context — keep your main session lean |
-| Sub-OS folders (e.g. `youtube-os/`) | You have a vertical with its own data, sheets, transcripts, scripts | Isolation pattern — vertical workflows get their own scoped operating manual + skills |
+| `projects/` | 同時進行 2 項以上、各有獨立背景的工作 | 進行中專案的背景需要與長期有效的 `context/` 資料分開 |
+| `templates/` | 經常複製同樣的提示詞或文件架構 | 建立可重複使用、可帶入參數的起點，減少版本偏差 |
+| `brand-assets/` | 開始製作輪播、投影片、縮圖或其他視覺內容 | 集中保存 Logo、配色、字型與語氣，讓 AI Partner 有來源可用 |
+| `references/sops/` | 開始記錄重複執行的流程 | 讓 AI Partner 依標準作業程序一致地執行 |
+| `references/{tool}-api.md` | 接通新 API 或 MCP，並確認使用方法時 | 把研究保存下來，供檢查與後續技能使用，不必反覆研究 |
+| `scripts/` | 需要用 Python 或 Bash 呼叫 MCP 尚未支援的 API | 原作者觀察，許多人的第二個連線會用腳本完成 |
+| `.claude/agents/` | 需要處理可重複、多步驟研究或寫作的子助理 | 子代理可在獨立上下文使用較省成本的模型，讓主要對話維持精簡 |
+| 子系統資料夾，例如 `youtube-os/` | 某一領域有自己的資料、試算表、逐字稿與腳本 | 讓該領域有獨立範圍的操作手冊與技能 |
 
 ---
 
-## Suggested cadences
+## 建議維護頻率
 
-When each surface gets routinely touched:
-
-- `decisions/log.md` — every meaningful decision (`/level-up` Phase 2 captures these automatically)
-- `archives/` — quarterly cleanup; move stale projects, deprecated skills, old intake versions
-- `references/sops/` — when a process gets re-run by someone new, write the SOP
-- `connections.md` — every time a new tool gets wired in, add a row
-- `references/{tool}-api.md` — same time as `connections.md` update; capture the API once
-- `CLAUDE.md` — quarterly review; rewrite the persona/priorities section after `/level-up` Q90
+- `decisions/log.md`：每次重要決策後更新；`/level-up` 第 2 階段會自動記錄。
+- `archives/`：每季整理，移入過期專案、退役技能與舊訪談版本。
+- `references/sops/`：流程要交給新的人重做時，寫成 SOP。
+- `connections.md`：每接通一個新工具，就新增一列。
+- `references/{tool}-api.md`：與連線清單一起更新，保存 API 用法。
+- `CLAUDE.md`：每季檢查；完成 `/level-up` 的 Q90 訪談後，更新角色與優先事項。
 
 ---
 
-## What NOT to add
+## 不建議加入的內容
 
-Anti-patterns. These look helpful but rot the structure:
+以下做法看似方便，卻容易讓架構失去用途：
 
-- **Don't dump raw email/Slack archives into `references/`.** The wiki is not a doc dump. Interpreted facts only.
-- **Don't build folder-of-folders for organization theater.** Flat with good naming beats deep nesting. If you need a folder hierarchy to find something, you have a search problem, not an organization problem.
-- **Don't add `notes/`, `misc/`, `tmp/`, or `inbox/`.** Graveyards. Use `archives/` if it's old, write a real file in the right place if it's new.
-- **Don't pre-create folders you don't need yet.** Empty folders are noise. The AIOS will tell you when it's time.
-- **Don't have parallel `decisions.md` and `decisions/log.md`.** Pick one. The kit ships `decisions/log.md`.
-- **Don't fork your operating manual.** One `CLAUDE.md` at the root. Sub-OS folders can have their own scoped CLAUDE.md, but the root is canonical.
-
----
-
-## How to tell when it's time to add a folder
-
-Ask three questions:
-
-1. **Is this conceptually new?** Or does it fit somewhere existing?
-2. **Will I touch this 3+ times in the next month?** If not, it's premature.
-3. **Could `/level-up` route a future skill into here naturally?** If yes, the AIOS will use it. If no, you're organizing for yourself, not for the system.
-
-Two yeses = add. One yes = wait.
+- **不要把原始 Email／Slack 歷史直接倒進 `references/`。** 知識庫不是文件堆積區，放入整理過的事實。
+- **不要為了看起來整齊而建立層層資料夾。** 命名清楚的淺層結構，通常比深層巢狀結構好找。若只能靠層級才能找到資料，應先改善搜尋。
+- **不要新增 `notes/`、`misc/`、`tmp/` 或 `inbox/`。** 這些容易成為無人整理的地方。舊資料放 `archives/`，新資料放到正式位置。
+- **不要預先建立尚未需要的資料夾。** 空資料夾會增加干擾，等到有需求再新增。
+- **不要同時維護 `decisions.md` 與 `decisions/log.md`。** 選一個正式來源；套件預設使用後者。
+- **不要把根目錄操作手冊拆成多份互相競爭的版本。** 根目錄只有一份正式 `CLAUDE.md`；子系統可以有自己範圍的 `CLAUDE.md`。
 
 ---
 
-> *Your AIOS structure should look like a small, well-run business — not a hoarder's basement. When you can't find something, that's a signal to consolidate, not to add another folder.*
+## 何時該新增資料夾
+
+先問三件事：
+
+1. **這是新的資料類型嗎？** 還是能放進既有位置？
+2. **下個月會使用 3 次以上嗎？** 如果不會，可能還太早。
+3. **未來 `/level-up` 建立的技能，能自然地使用這個位置嗎？** 如果可以，系統就能用到；如果不行，可能只是為了個人整理偏好。
+
+有兩個肯定答案就新增；只有一個就先等等。
+
+---
+
+> *AI Partner 的架構應該像一家規模小、運作順暢的公司。找不到資料時，先整合既有內容，不急著再加一個資料夾。*

@@ -1,65 +1,65 @@
-# Automatic audit history
+# 自動保留檢查歷史
 
-Read this at the start of every AIOS audit. The dated reports are the durable history; each new report carries the finding ledger forward. Do not maintain a separate editable score database or depend on this conversation. Writing reports does not schedule future audits or repair the inspected system.
+每次系統檢查開始時閱讀。日期報告是長期紀錄，每份新報告延續發現清單；不另建可編輯分數資料庫，也不依賴目前對話。寫入報告不代表排程未來檢查或修正系統。
 
-## 1. Select prior evidence
+## 1. 選取先前證據
 
-1. Resolve the audited project's root and its existing `audits/` directory. Inspect report names and metadata first, not every audit's full contents. The folder may also contain cost, code, or security audits: these are not AIOS baselines.
-2. Use `audit_kind: aios`, project identity, run timestamp, report status, rubric version, and coverage to select reports. For legacy reports without metadata, read their headings/scope and identify them explicitly as legacy; never guess scores, IDs, or dates from memory. Do not change historical files to match the new format.
-3. Read the latest applicable report's ledger, plus the most recent complete comparable report if different. Start with at most two full reports. Follow older links only for unresolved identity/evidence or older comparable scope; note limits if that is not possible. Exclude fixture/example reports. Inspect overlapping/parallel runs when present so one branch's unresolved findings do not disappear.
-4. Compare scores only for the same project, rubric, and materially equivalent scope: runtimes, domains, workflows, and retrieval probes. A moved checkout of the same project may qualify when identity is verified. Different projects, changed scoring anchors, narrower/broader samples, and partial reports do not support a simple score delta. Finding-level comparisons can still be valid where targets/checks match.
-5. Record the previous report link(s) and separately the score baseline, if any. No eligible saved report means **first recorded baseline**. Do not treat any unsaved audit as freshly verified evidence. Historical imports require an explicit request and a clearly labeled source/date.
+1. 確認專案根目錄與既有 `audits/`，先看報告名稱及 metadata，不一次讀全部。成本、程式碼或安全稽核可能也在此，不可當作 AI 工作系統評分基準。
+2. 依 `audit_kind: aios`、專案身分、執行時間、狀態、規準版本與範圍選取。舊報告沒有 metadata 時，讀標題／範圍並標為舊格式，不憑記憶猜分數、ID 或日期，也不修改歷史檔案來符合新格式。
+3. 讀最新適用報告的追蹤清單，必要時另讀最近一份完整且可比較報告，最初最多兩份全文。只有身分／證據未解或需要更早同範圍基準時才追舊連結，做不到就註明限制。排除虛構／示例報告；若有重疊或平行執行，需一併檢視，避免其中一支的未解發現消失。
+4. 分數只比較同專案、同規準及實質相同範圍：環境、領域、流程、檢索題目。搬移 checkout 但身分已確認可比較；不同專案、評分錨點改變、樣本縮小／擴大、部分報告，不能直接算差值。目標與檢查一致時，仍可比較單一發現。
+5. 記錄前次報告連結，另列分數基準。沒有合格已存報告就是**首次記錄的基準**。未儲存的檢查不當作新驗證證據；匯入歷史需明確要求並標示來源／日期。
 
-## 2. Maintain finding identity and status
+## 2. 維持發現身分與狀態
 
-Give each new underlying finding a stable ID such as `AIOS-<run-id>-01`. Preserve the original ID on later runs, matching by affected route/workflow, runtime, and failure mode. Record verified renames/moves instead of minting duplicate findings. If identity is ambiguous, explain it before merging. Class (defect, verification gap, opportunity, intentional difference), evidence confidence, and progress status are separate fields.
+每個新根本問題給固定 ID，例如 `AIOS-<run-id>-01`。後續按受影響入口／流程、環境與失敗模式比對，沿用原 ID。改名／搬移有證據就記錄，不重建重複項目。身分模糊先說明再合併。類別（缺陷、待驗證、機會、刻意差異）、證據信心及進度是分開欄位。
 
-Carry the previous report's complete tracked ledger into the new report, including unresolved items outside today's sample and compact entries for previously closed items. Keep original first-seen and last-verified timestamps. An item omitted from the three recommended actions is not closed. Use these progress labels:
+新報告延續完整清單，包括本次樣本外未解項目與已結案項目的精簡紀錄。保留首次發現與最近驗證時間。沒有排進前三項建議不等於結案。狀態識別值保留英文，中文解釋如下：
 
-| Status | Evidence required |
+| 狀態 | 所需證據 |
 |---|---|
-| New | First observed in this history. Say newly detected, not newly introduced, unless prior evidence establishes the latter. |
-| Still open | Rechecked and the defect/verification gap remains, or a tracked opportunity is confirmed pending. |
-| Resolved | The original completion check passes with current evidence. A proposed edit, changed timestamp, installed copy, or self-reported success alone does not establish resolution. |
-| Reopened | Previously resolved; the same failure is demonstrated again. Keep the ID and reference its prior closure. |
-| Not rechecked | Not covered, inaccessible, or insufficient evidence today. Preserve last verified state; never imply resolution or a new failure. |
-| No longer applicable | Explicitly changed requirements, retired workflow, or other evidenced scope change. Explain why; this is not a successful repair. |
+| New（新增） | 首次在此歷史中觀察到。除非前次證據支持剛發生，否則只說新發現，不說新引入。 |
+| Still open（仍未解決） | 重新檢查後，缺陷／待驗證仍存在，或確認改善機會尚待處理。 |
+| Resolved（已解決） | 以目前證據通過原完成檢查。建議修改、時間戳更新、安裝副本或自稱成功都不足。 |
+| Reopened（重新出現） | 先前已解決，但同樣失敗再次有證據。保留 ID，連到前次結案。 |
+| Not rechecked（未重新檢查） | 本次未涵蓋、無法存取或證據不足。保留最近驗證狀態，不暗示已解決或新故障。 |
+| No longer applicable（不再適用） | 明確需求改變、流程退役或有證據的範圍變更。說明原因，不算修正成功。 |
 
-A previously resolved finding not checked today is `Not rechecked` with last verified state `Resolved`, not a reopened defect. If a prior suspected defect is disproved or found intentional, record the correction and evidence in the new report; do not call it a repair or erase the old observation.
+先前已解決、本次未查的項目，狀態是 `Not rechecked`，最近驗證狀態仍為 `Resolved`，不是重新開啟缺陷。原疑似缺陷被證明不存在或屬刻意設計時，在新報告記錄更正與證據，不稱為修復，也不擦除舊觀察。
 
-For each tracked finding record: ID, class, affected target/runtime, first seen, prior status, current status, last verified timestamp/state, evidence link(s), and completion check. The current state is always as of this run, not guaranteed live between audits.
+每項記錄 ID、類別、目標／環境、首次發現、前次狀態、目前狀態、最近驗證時間／狀態、證據連結與完成檢查。目前狀態只代表這次檢查，不保證兩次之間持續即時有效。
 
-## 3. Explain progress honestly
+## 3. 如實說明進展
 
-Use a compact transition table and short narrative:
+用精簡表格與短說明：
 
-| Finding ID | Prior state | This run | Evidence / practical change | Next check |
+| 發現 ID | 前次狀態 | 本次狀態 | 證據／實際變化 | 下次檢查 |
 |---|---|---|---|---|
-| Existing stable ID | Prior recorded state | One status above | Current evidence, or reason not rechecked | Original acceptance check or justified revision |
+| 既有固定 ID | 前次紀錄 | 上述狀態之一 | 新證據或未重查原因 | 原驗收或有理由的修訂 |
 
-- Separate **actual fixes**, **newly verified evidence**, **regressions**, and **coverage or rubric changes**. More logs can justify more credit without any system improvement; a newly discovered defect may lower the score without a recent regression.
-- For a valid score comparison, show prior/current four subtotals, raw totals, caps, and final totals. Explain which criterion evidence changed and any cap effect. Otherwise say **scores not directly comparable** and explain why; do not show a misleading delta or trend.
-- Show unique finding counts by progress state, with rechecked versus carried-forward coverage. Treat no-longer-applicable and corrected classifications separately from verified repairs. Do not claim improvement merely because the score rose or the open count shrank.
-- Prioritize the next checks by user impact, including important unresolved prior items. Do not rerun paid workflows, send alerts, or make repairs just to earn resolution credit.
+- 分開**實際修正、新增驗證證據、退步、範圍／規準改變**。日誌增加可能提高分數而未改系統；新發現缺陷也可能讓分數下降，但不代表近期退步。
+- 可比較時，列前後四項小計、原始總分、上限與最終分，指出條件證據與上限如何改變。否則明說**分數不能直接比較**及原因，不呈現誤導差值或趨勢。
+- 依狀態統計不重複項目數，說明本次重查與延續範圍。不再適用與分類更正，不列為驗證修復；分數升高或未解數減少，不自動代表改善。
+- 依使用者影響排下次檢查，包括重要未解舊項目。不為取得結案分數而重跑付費流程、發通知或修正。
 
-## 4. Save every run safely
+## 4. 安全保存每次紀錄
 
-1. Use [the report template](templates/report.md). Generate a real UTC timestamp and collision-resistant run ID, for example a timestamp plus random suffix. Default filename: `audits/audit-YYYY-MM-DD-HHMMSS-<suffix>.md`, using UTC. Include timezone-aware timestamps and the exact audited root in metadata. These are local records, not public uploads.
-2. Fill every required report section with actual evidence, or an explicit not-checked/partial explanation. Keep full criterion arithmetic, the current finding ledger, prior-report links, comparison limits, and proposed completion checks. Do not leave sample placeholders or invented results.
-3. Create the file without overwriting an existing path; use exclusive creation or equivalent collision protection, retrying with a fresh suffix if necessary. Never silently replace an earlier same-day run. Preserve parallel runs. Do not rewrite historical reports when a later run resolves an issue; later reports document the transition.
-4. Read back the saved report. Verify metadata, links to prior reports, score arithmetic, finding IDs/statuses, redaction, and that the saved content agrees with the reported result. Resolve relative links from the report's directory. Link the saved absolute file path in chat, with a concise progress summary.
-5. If the audit stops early, save observed evidence as `report_status: partial`, with unavailable scores set to `null`, reasons, and unchecked findings carried forward. A partial run is not a full-score baseline. Unexpected process termination may prevent saving; never claim otherwise.
-6. If the filesystem cannot be written, say **report not saved**, return the report in chat, and describe the specific blocker. Do not substitute a secret-bearing log dump, silently save elsewhere, or claim history was updated. An explicit user instruction not to save takes precedence; say **not saved at your request**.
+1. 使用[報告範本](templates/report.md)，產生真實 UTC 時間及不易碰撞的 run ID，例如時間加隨機後綴。預設檔名 `audits/audit-YYYY-MM-DD-HHMMSS-<suffix>.md`，使用 UTC；metadata 包含時區及精確受檢根目錄。只存本機，不公開上傳。
+2. 每個必要章節填真實證據，或明確未查／部分說明。保留完整評分算式、目前追蹤清單、舊報告連結、比較限制與完成檢查，不留下示例占位或虛構結果。
+3. 以排他建立或等效防碰撞方式建立檔案，不覆寫現有路徑；必要時換新後綴重試。保留同日及平行執行。後續解決問題只在新報告記轉換，不重寫舊報告。
+4. 讀回確認 metadata、舊報告連結、評分算式、ID／狀態、敏感資訊遮蔽，以及檔案與回報一致。相對連結以報告目錄為基準。聊天提供已存的絕對路徑連結與精簡進展。
+5. 提早停止時，保存已觀察證據並設 `report_status: partial`，不可用分數設 `null`，說明原因並延續未查項目。部分報告不能當完整評分基準。意外終止可能來不及保存，不能宣稱已存。
+6. 無法寫入時，明說**報告未儲存（report not saved）**，在聊天提供報告及具體阻礙。不用帶憑證的日誌傾倒替代、不默默改存別處、不宣稱歷史已更新。使用者要求不存時優先遵守，說明**依要求未儲存（not saved at your request）**。
 
-The audited workspace remains unchanged apart from the new report and its directory. Do not add an audit entry to business memory, alter `decisions/log.md` on each audit, or update the manuals automatically. Existing reports are point-in-time evidence, never canonical current business facts.
+除了新報告及其資料夾，工作區不變。不把檢查寫進業務記憶、不每次改 `decisions/log.md`，不自動更新操作手冊。既有報告是當下證據，不是目前業務的正式事實來源。
 
-## Calibration checks
+## 校準檢查
 
-- First run: one real report saved; no invented baseline, score delta, or repaired finding.
-- Second run: original report unchanged; carry IDs forward; resolve only with passing evidence.
-- Same-second or parallel runs: distinct filenames; neither replaces the other.
-- Reduced scope: omitted prior findings remain visible as not rechecked; no automatic resolution.
-- Scope/rubric change: finding transitions may be shown; whole-score improvement is not claimed.
-- Previously resolved finding fails again: reopened with the original ID and current evidence.
-- Permission failure or explicit no-save: no false saved confirmation.
-- Partial report or fixture: never used as a completed score baseline.
+- 首次執行：保存一份真實報告，不虛構基準、分差或已修正發現。
+- 第二次：舊報告不變，沿用 ID，只有通過證據才能結案。
+- 同秒或平行執行：不同檔名，不互相覆寫。
+- 範圍縮小：舊項目保留未重查，不自動結案。
+- 範圍／規準改變：可列個別轉換，不宣稱整體分數改善。
+- 已解決問題再失敗：沿用原 ID、新證據，標重新出現。
+- 權限失敗或要求不存：不假稱已保存。
+- 部分或示例報告：不得作完整分數基準。

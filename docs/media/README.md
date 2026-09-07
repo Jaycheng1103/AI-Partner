@@ -1,7 +1,7 @@
-# 3D Brain demo
+# 3D 知識球體示範
 
-`3d-brain-demo.mp4` is the supplied 35.87-second, 1080p HerkBrain recording. It is preserved unchanged.
+`3d-brain-demo.mp4` 是套件提供的 HerkBrain 錄影，長度 35.87 秒、解析度 1080p，保留原始內容。
 
-`3d-brain-preview.gif` is a 640-pixel-wide, five-frame-per-second preview of that recording. The main README shows this looping preview and links it to the full video.
+`3d-brain-preview.gif` 是這段錄影的預覽，寬度 640 像素、每秒 5 幀。首頁 README 會循環播放此預覽，並連到完整影片。
 
-The recording illustrates the result. Its notes and category counts belong to the example; a skill run uses the student's chosen name and actual local sources.
+錄影用來展示成果。片中的筆記與分類數量屬於範例；實際執行技能時，使用學員選擇的名稱與真實本機來源。

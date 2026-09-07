@@ -20,43 +20,43 @@ scores:
   final: null
 ---
 
-# AIOS Audit: <project and date>
+# AI Partner 系統檢查：<專案與日期>
 
-## Conclusion and scope
+## 結論與範圍
 
-<What works, most consequential mismatch, inspected runtimes/workflows/domains/probes, counts, exclusions, and verification limits. Mark partial runs explicitly.>
+<有效部分、影響最大的差異、受檢環境／流程／領域／檢索題目、數量、排除項目與驗證限制。部分執行需明確標示。>
 
-## AGENTS.md / CLAUDE.md findings
+## AGENTS.md／CLAUDE.md 發現
 
-<Exact checked/missing/not-checked manuals, shared guidance comparison, finding IDs and file references, scoped coverage, and whether manuals changed.>
+<精確列出已檢查／缺失／未檢查手冊，共用指引比較、發現 ID 與檔案參照、局部範圍，以及手冊是否變動。>
 
-## Routing and migration compatibility
+## 索引與遷移相容性
 
-<Compatibility matrix and unique findings grouped by confirmed defect, verification gap, intentional difference, and improvement opportunity. Include source/target evidence and discovery versus execution coverage.>
+<相容性表及不重複發現，依確認缺陷、待驗證、刻意差異、改善機會分類。包含來源／目標證據，以及可發現性與執行的不同覆蓋範圍。>
 
-## Routing probes
+## 檢索測試
 
-<Five selected questions, attempted routes, sources, and direct/fallback/unresolved results.>
+<五個事先選定的問題、嘗試入口、來源，以及直接找到／補救搜尋／未解結果。>
 
-## What works
+## 有效部分
 
-<Up to three evidenced strengths.>
+<最多三項有證據的優點。>
 
-## Verified operational reliability
+## 已驗證的運作可靠度
 
-<All 20 criterion IDs and awarded points, four subtotals, raw total, caps with reasons, final score, and stage. Distinguish defects from unverified evidence. This measures verified operational reliability, not overall usefulness. Partial/unscored entries remain null.>
+<全部 20 個條件 ID 與分數、四項小計、原始總分、上限及理由、最終分數與階段。區分缺陷與未驗證。此分數不是整體用途評等，部分／未評分欄位保留 null。>
 
-## Progress since the previous audit
+## 相較前次檢查的進展
 
-<Clickable previous-report links and score baseline, or first recorded baseline. Show transitions, actual repairs versus evidence-only gains, regressions, and coverage/rubric changes. Include comparable score arithmetic only when justified.>
+<可點擊的舊報告及分數基準，或首次記錄基準。列狀態轉換、實際修正、僅證據增加、退步、範圍／規準變更；有正當比較依據時才列分數算式。>
 
-## Finding ledger
+## 發現追蹤清單
 
-| ID | Class | Target / runtime | First seen | Prior status | Current status | Last verified date / state | Evidence | Completion check |
+| ID | 類別 | 目標／環境 | 首次發現 | 前次狀態 | 目前狀態 | 最近驗證日期／狀態 | 證據 | 完成檢查 |
 |---|---|---|---|---|---|---|---|---|
 
-<Populate current findings plus all carried findings, including not-rechecked items and compact prior closures. No findings is valid when supported by inspected scope.>
+<填入本次及所有延續發現，包括未重查及已結案的精簡紀錄。受檢範圍有證據支持時，沒有發現也合理。>
 
-## Top improvements and next run
+## 優先改善與下次執行
 
-<Up to three prioritized repair/verify/optional actions with benefit, finding IDs, and acceptance checks. Include a scoped next-run prompt and unresolved verification limits.>
+<最多三項依優先度排序的修正／驗證／選用改善，附效益、發現 ID、驗收條件。包含有範圍的下次提示及未解驗證限制。>

@@ -1,96 +1,96 @@
 ---
 name: audit
-description: Use when someone asks to audit their AIOS, score the Four Cs, find stale paths or unlinked projects, compare AGENTS.md and CLAUDE.md, check Claude/Codex skill compatibility, or assess migration readiness. Automatically saves dated reports and tracks evidence-backed improvements across runs.
+description: 使用者要求檢查 AI 工作系統、評估 4C、找過期路徑或未索引專案、比較 AGENTS.md 與 CLAUDE.md、檢查 Claude/Codex 技能相容性或遷移準備時使用。自動儲存日期報告，依證據追蹤歷次改善。
 ---
 
-# AIOS Audit
+# AI Partner 系統檢查
 
-Check whether this AIOS can find the right information and do useful work reliably, and identify changes that would make the user's work easier. Score **Context, Connections, Capabilities, and Cadence out of 25 each**, using [rubric.md](rubric.md). This is rubric **v2**. Label the number **verified operational reliability**, not overall usefulness or percentage of work the AIOS can do. A folder, installed skill, API key, or confident claim is not proof of a working system.
+檢查系統是否能找到正確資訊、可靠完成有用工作，並找出能減輕使用者負擔的改善。依[評分規準](rubric.md)，**Context、Connections、Capabilities、Cadence 各 25 分**，採 **v2** 規準。分數名稱是**已驗證的運作可靠度**，不代表整體用途或可代辦工作的百分比。資料夾、已安裝技能、API key 或有信心的說法，都不等於系統有效運作。
 
-Run locally in the current project. Do not launch subagents unless the user requests them. Audit first; `/link` repairs a route, and `/level-up` helps close one meaningful gap. Never inflate or deliberately depress a score to encourage another run. Improvement comes from better evidence and behavior.
+在目前專案本機執行。除非使用者要求，不啟動子代理。先檢查，再用 `/link` 修索引，或 `/level-up` 解決一個重要缺口。不能為鼓勵再次執行而刻意拉高或壓低分數，改善應來自證據與行為。
 
-**Every audit automatically saves its report in the audited project's `audits/` folder.** Read [history.md](history.md) for prior-report selection, finding transitions, comparison rules, and safe persistence. Saving the local audit record is part of this skill, not a separate approval step. An explicit user request not to save overrides this default. The inspected system remains unchanged.
+**每次自動將報告儲存在受檢專案的 `audits/`。** 先讀[歷史規則](history.md)，了解基準選取、狀態轉換、比較及安全保存。儲存本機報告是技能的一部分，不另外要求核准；使用者明確要求不儲存時優先遵守。受檢系統本身保持不變。
 
-## 1. Establish scope and evidence
+## 1. 確認範圍與證據
 
-- Get the current date and project root. Read applicable `AGENTS.md`, `CLAUDE.md`, and local overrides; follow the runtime's instruction hierarchy. Read both manuals when both exist. Check for conflicting routing and promised synchronization, without assuming distinct runtime instructions must be identical.
-- Load the relevant prior AIOS report and carried finding ledger using [history.md](history.md), before selecting probes. Recheck important prior findings alongside current priorities; do not assume earlier results remain true. Identify the comparison baseline and scope changes before scoring.
-- Use the manual's routing rules first. Read its project and knowledge indexes before listing their immediate child folders. Inspect only relevant scoped manuals. Skip dependencies, caches, generated output, and archives unless a route points there or an archived/current ambiguity needs checking.
-- Identify the user's role, main objective, current priorities, and up to three important workflows from actual context. Unfilled template placeholders do not count. Do not require business revenue data from someone whose work has no revenue function.
-- Inspect the supported skill/agent registries, connection references, and actual scheduler configuration/run evidence. Accept scripts, MCPs, exports, local data, and equivalent mechanisms equally. Count inventories for orientation only.
-- Record each finding as **verified**, **documented but unverified**, **missing**, **stale**, or **conflicting**, with a file/line, source URL, or dated run reference. File modification times and last-checked labels alone do not prove a successful refresh or execution.
-- Start with targeted reads. If a time budget or local page limit prevents verification, mark it unverified and state coverage. Never award full points because there was no time to check. Do not claim an exhaustive audit from a sample.
+- 取得真實日期與專案根目錄，讀適用的 `AGENTS.md`、`CLAUDE.md` 與局部覆寫，遵守執行環境的指令優先順序。兩份手冊都存在就都讀，檢查索引衝突與同步承諾；不要假設不同環境的所有指令必須相同。
+- 選檢索題目前，依[歷史規則](history.md)載入相關舊報告與追蹤清單。依目前優先事項重新檢查重要舊發現，不假設仍然成立；評分前先確認比較基準及範圍變動。
+- 先循操作手冊入口，讀專案／知識索引，再列出直接子資料夾。只讀相關局部手冊。依賴、快取、生成輸出與封存預設略過，除非有入口指向或需確認封存／現行歧義。
+- 從真實背景確認角色、主要目標、目前優先事項及最多三個重要流程。未填占位不算個人背景；沒有營收職能的工作，不強制要求營收資料。
+- 檢查支援的技能／代理清單、連線文件、實際排程設定與執行證據。腳本、MCP、匯出、本機資料與等效方式一視同仁；數量只供盤點，不直接評分。
+- 每項標為**已驗證、已有文件但未驗證、缺失、過期、衝突**，附檔案／行號、來源網址或帶日期執行紀錄。修改時間與「最近檢查」標籤本身不能證明更新或執行成功。
+- 從精準讀取開始。時間或頁數上限阻止驗證時，標示未驗證並說明覆蓋範圍；不能因為沒時間查就給滿分，也不能把抽樣說成全面檢查。
 
-## 2. Test routing and context retrieval
+## 2. 測試索引與背景檢索
 
-Make a compact map: **user need → manual/index → specific source → freshness rule**. Include applicable business context, people, priorities/commitments, original records, project deliverables, specialist knowledge bases, media/assets, and external systems. A generic folder or provider name is insufficient when it leaves the relevant source unclear.
+建立精簡對照：**使用需求 → 手冊／索引 → 具體來源 → 更新規則**。涵蓋適用的業務背景、人員、優先事項／承諾、原始紀錄、專案成果、專門知識庫、影音素材及外部系統。只有資料夾或供應商名稱，無法指出相關來源時，不算完整入口。
 
-Compare the maps with immediate folders to find important unindexed projects, outdated counts, broken paths, ambiguous aliases, duplicate sources of truth, and retired material presented as active. Distinguish confirmed gaps from folders whose relevance is unknown. Check whether supplied routes work from the current checkout, including references inside skills and generated mirrors where that runtime uses them.
+把入口與直接子資料夾比較，找出重要但未索引的專案、過期數量、壞路徑、模糊別名、重複正式來源及被當成現行的退役資料。區分確認缺口與用途未知資料夾。檢查路徑能否從目前 checkout 使用，包含技能內參照及該環境使用的生成副本。
 
-Follow the declared routes for these five questions, adapted to the user's real work:
+依真實工作調整以下五題，沿正式入口查找：
 
-1. What does this person/business do, for whom, and what matters now?
-2. Where is the authoritative current priority, commitment, or status, and how would I verify it?
-3. Where is the latest deliverable and next step for an important active project?
-4. Where is a previous decision, lesson, or subject-specific knowledge item and its supporting source?
-5. Where is one commonly needed external record, asset, or original document, and how is it accessed?
+1. 這個人／業務做什麼、服務誰、目前重視什麼？
+2. 最新正式優先事項、承諾或狀態在哪裡，如何驗證？
+3. 重要進行中專案的最新成果與下一步在哪裡？
+4. 先前決策、經驗或專門知識，以及佐證來源在哪裡？
+5. 常用的外部紀錄、素材或原始文件在哪裡，怎麼存取？
 
-Select relevant examples before searching for answers. If a category does not apply, record why and substitute a different real retrieval need, keeping five probes. For each, show the question, route attempted, source, result, and whether it was found directly, only by fallback search, or not found. A broad search can recover an answer, but it does not prove the declared route works. Mark external access unverified if not checked; a documented access path earns only documentation credit. Score only the evidence actually observed.
+先選與工作相關的題目，再搜尋答案。不適用的類別要說明原因，換成另一個真實需求，維持五題。每題列出問題、嘗試入口、來源、結果，以及直接找到／只能靠補救搜尋／找不到。廣泛搜尋能找回答案，不代表原入口有效。外部存取沒測過就標未驗證；只有文件入口只能得到文件分。只依實際證據給分。
 
-**Check freshness and authority explicitly:**
+**明確檢查時效與權威性：**
 
-- An optional `_hot.md`, briefing, or cache earns no points just for existing. Do not recommend creating one by default. Check whether it duplicates canonical pages, has a real refresh mechanism, and presents stale numbers or past deadlines as current. A recently edited header does not refresh every fact inside it.
-- If a cache adds duplication without reliable upkeep, recommend bypassing it in retrieval and using the relevant index/source directly. Never automatically remove it. No cache is a valid architecture.
-- Stable context can live in a wiki; current metrics and task status should resolve to the appropriate live system or dated export. Exact terms should resolve to original records. Check source dates and flag conflicts rather than treating the wiki as automatically authoritative for every type of fact.
-- Check whether a fresh session could understand the user, resume the selected project, and find evidence without depending on this conversation. Praise compact, accurate routing; do not reward manual length, exhaustive root catalogs, or reading every wiki page.
+- 選用的 `_hot.md`、摘要或快取不因存在就加分，也不預設建議新增。檢查是否重複正式資料、有真實更新機制，或把舊數字／過期期限當目前資訊。標題剛修改，不代表每個事實已更新。
+- 快取增加重複且無可靠維護時，建議檢索直接走索引／來源，不自動刪除快取。沒有快取也是有效架構。
+- 穩定背景可放知識庫；即時數字與任務狀態應指向線上系統或帶日期匯出；精確條款回到原始紀錄。檢查日期與衝突，不把知識庫當所有事實的唯一權威。
+- 檢查新對話能否不依賴目前聊天，理解使用者、續接專案並找到證據。肯定精簡準確的入口，不因手冊長、根目錄目錄表完整或讀完所有頁面而加分。
 
-## 3. Verify the other three Cs
+## 3. 驗證另外三個 C
 
-First run the required [routing and cross-runtime compatibility checks](compatibility.md). This covers stale/broken paths, important unlinked work, differences between operating manuals, and skill availability across the runtimes in use or targeted for migration. Compare shared behavior and required resources, not raw file equality alone. Record expected runtime differences separately from defects. The protocol also defines the mandatory compatibility table, evidence labels, and calibration cases.
+先執行必要的[索引與跨環境相容性檢查](compatibility.md)，涵蓋壞路徑、過期路徑、重要未索引工作、手冊差異，以及實際使用或指定遷移環境的技能可用性。比較共用行為與必要資源，不只看檔案是否完全相同。預期的環境差異與缺陷分開；該文件也定義必要表格、證據標籤與校準案例。
 
-**Connections:** Identify applicable domains: finances, customer interactions, calendar, communication, tasks, meetings, and knowledge/files; add content or specialist domains when material. Record each domain's relevance, mechanism, specific access route, successful-read evidence, date, and limitations. One tool may cover multiple domains only when each has evidence. A configured MCP or `.env` key does not establish authentication. Use narrow, safe read-only checks when available, or dated successful-run evidence within the source's expected refresh interval. With no documented interval, use 30 days and explain why highly volatile data may require a fresh read. Do not print secret values or bulk private records. Do not run unknown scripts before checking their side effects.
+**Connections，連線：** 確認收入／財務、客戶互動、行事曆、溝通、任務、會議、知識／檔案哪些適用，必要時加入內容或專門領域。記錄每類的關聯性、連線方式、具體入口、成功讀取證據、日期及限制。一個工具要涵蓋多領域，每類都需證據。已設定 MCP 或 `.env` key 不證明授權有效。可用時做小範圍安全唯讀測試，或採符合預期更新區間的成功紀錄。沒有明定區間時用 30 天，並說明高度變動資料可能需即時讀取。不要印出憑證或大量私人紀錄；先檢查副作用，再考慮未知腳本。
 
-**Capabilities:** Select up to three workflows tied to the identified priorities, not merely the most polished demos. Examine triggers, inputs, output destination, examples of actual usable outputs, verification, failure handling, and repeated use. Missing workflows remain gaps. Check discoverability, needed supporting files, and canonical/mirror consistency after documented transforms. Agents are optional; quantity, complexity, and custom naming earn no bonus. Use existing outputs or safe bounded checks; do not start paid generation or substantive work just to audit it.
+**Capabilities，能力：** 選最多三個對應優先事項的流程，不只挑最好看的示範。檢查觸發、輸入、輸出目的地、實際可用成果、驗證、失敗處理及重複使用。缺失流程保留為缺口。確認可發現性、支援檔案，以及依明定轉換後的主要版本／副本一致性。代理是選用，數量、複雜度、自訂名稱不加分。使用既有成果或安全小範圍測試，不為檢查啟動付費生成或大量實質工作。
 
-**Cadence:** Inspect actual enabled schedules, event triggers, hooks, or explicitly defined human-run rituals and their execution records. Identify the host/runtime, trigger, expected output, last due execution, success/failure evidence, and stop/recovery controls. A skill named `daily-*`, a template, or recently edited files does not establish cadence. A useful manual ritual gets limited credit; label it manual. Do not call a local job unattended or laptop-independent without evidence for that environment. Judge monthly or quarterly routines against their real due dates rather than a fixed weekly window.
+**Cadence，執行節奏：** 檢查真正啟用的排程、事件、hook 或明確人工例行工作及執行紀錄。記錄主機／環境、觸發、預期成果、最近應執行時間、成功／失敗證據、停止／復原控制。`daily-*` 技能名稱、範本或新修改檔案不等於固定執行。有效人工流程可得有限分數，但標示人工。沒有環境證據，不宣稱本機工作能無人值守或電腦闔上後執行。月／季工作依實際到期日評估，不套固定一週窗口。
 
-## 4. Score and prioritize
+## 4. 評分與排序
 
-Read the complete [rubric.md](rubric.md). Assign all 20 criterion scores, then apply its caps. Show the four subtotals, raw sum, any cap and reason, final score, and stage. Missing evidence earns no verified credit, but distinguish **unverified** from **known broken**. Record excluded domains with reasons; do not exclude a domain merely because it is disconnected.
+讀完整[評分規準](rubric.md)，為 20 個條件評分後套用上限。列四個小計、原始總分、上限與理由、最終分數及階段。缺證據不給已驗證分，但區分**未驗證**與**確認故障**。不適用領域需附理由，不能只因未連線就排除。
 
-Rank gaps by likely effect on the user's work, with wrong/stale answers and missing source access ahead of cosmetic tidiness. Give up to three concrete fixes with an exact affected route/workflow, supporting evidence, and a clear completion check. Do not invent three faults in a healthy system. Distinguish a repair from a check needed to resolve uncertainty.
+依對真實工作的影響排序，錯誤／過期答案、來源無法存取優先於外觀整理。最多三項具體修正，附精確入口／流程、證據及完成檢查。健康系統不必硬找三個問題；區分實際修正與釐清不確定性所需的檢查。
 
-Group findings into **confirmed defects**, **verification gaps**, and **improvement opportunities**; list intentional differences separately. Keep severity distinct from confidence. Assign each underlying issue a stable ID and reuse it across sections. Do not count one missing mirror or bad route as multiple independent defects. State which existing rubric criteria it affects; do not introduce a migration score or change the v2 anchors. Explain score limitations, including manual-cadence limits when relevant. Unchecked evidence is not proof of failure, and optional enhancements are not defects merely because they are absent.
+發現分成**已確認缺陷、待驗證項目、改善機會**，另列刻意差異。嚴重度與信心分開。每個根本問題使用固定 ID，在不同章節沿用，不把一個缺副本或壞路徑算成多項獨立缺陷。指出影響哪個既有條件，不新增遷移分數或改 v2 評分錨點。說明分數限制，必要時包含人工執行上限。沒檢查不等於失敗，選用改善缺席也不等於缺陷。
 
-## 5. Return a concise, reviewable report
+## 5. 回報精簡、可檢閱的結果
 
-Use this structure, keeping the evidence ledger compact:
+使用以下結構，證據清單保持精簡：
 
-1. **AIOS Audit: date, project, rubric v2.** Scope, runtimes, verification limits, and a plain-language conclusion. Lead with what works and the most consequential mismatch. Report unique finding counts by class, not as an exhaustive total outside the inspected scope.
-2. **AGENTS.md / CLAUDE.md findings:** always include the dedicated section specified below, even when no issues are found. Do not bury operating-manual findings in the general fixes or routing table.
-3. **Routing and migration compatibility:** the coverage/matrix and actionable findings from [compatibility.md](compatibility.md), including confirmed defects, verification gaps, intentional differences, and improvement opportunities. Reference existing finding IDs instead of repeating full manual findings. State whether sampled migration is blocked, needs verification, or passed the inspected checks; do not imply the whole system is portable from a sample.
-4. **Routing check:** five probe results, including source references and direct/fallback/unresolved status.
-5. **What works:** up to three evidence-backed strengths.
-6. **Verified operational reliability:** four rows, each `/25`; raw total, caps, final `/100`, and stage. Include criterion IDs and awarded points so arithmetic is reproducible. Explain separately how confirmed defects and unverified evidence limited credit. This is not an overall usefulness grade.
-7. **Top improvements:** up to three ranked actions, each labeled repair, verify, or optional improvement, with evidence, exact next action, expected practical benefit, and what would prove it complete. Refer to finding IDs instead of repeating them in full.
-8. **Progress since the previous audit:** link the baseline, show finding transitions and evidence from [history.md](history.md), and explain any comparable score change. Separate actual repairs, newly verified evidence, regressions, and coverage/rubric changes. No prior comparable report means a new baseline, not an invented improvement.
-9. **Next run:** a ready-to-use `/level-up` prompt carrying the highest-value gap, evidence, and acceptance check; use `/link <target> <purpose>` for a routing-only fix. Recommend these commands only if installed; otherwise give the equivalent plain-language task. `/grill-me`, if available, is useful for genuinely missing context, not for facts already stored elsewhere.
-10. **Saved record:** write and read back the complete report using [templates/report.md](templates/report.md). Link the actual saved file in the final reply. The chat can be concise; the saved record must retain the score breakdown, evidence, compatibility checks, and carried finding ledger. Never say saved without confirming it.
+1. **系統檢查：日期、專案、v2。** 範圍、環境、驗證限制及白話結論。先交代有效部分與影響最大的差異。依類別列不重複發現數，不把範圍外也算成全面統計。
+2. **AGENTS.md／CLAUDE.md 發現：** 無問題也必須有下方指定的獨立章節，不埋進一般修正或索引表。
+3. **索引與遷移相容性：** 按[相容性文件](compatibility.md)提供覆蓋／比較表，包含確認缺陷、待驗證、刻意差異、改善機會；引用既有 ID，不重複整段手冊問題。說明抽樣遷移是受阻、待驗證或通過受檢項目，不以抽樣推論全系統可攜。
+4. **索引測試：** 五題結果、來源及直接／補救搜尋／未解狀態。
+5. **有效部分：** 最多三項有證據的優點。
+6. **已驗證的運作可靠度：** 四項各 `/25`，列原始分、上限、最終 `/100` 與階段。保留條件 ID 及分數，讓算式可重現；分別說明缺陷與未驗證如何限制分數，不把它當整體用途評等。
+7. **優先改善：** 最多三項，標示修正／驗證／選用改善，含證據、精確下一步、實際效益、完成判準，引用發現 ID。
+8. **相較前次的進展：** 連結基準，依[歷史規則](history.md)列狀態轉換及證據，解釋可比較的分數變化。分開實際修正、新驗證、退步、範圍／規準改變。沒有可比較報告就是新基準，不虛構進步。
+9. **下一次執行：** 提供含最重要缺口、證據及驗收的 `/level-up` 提示。純索引修正用 `/link <target> <purpose>`。只推薦已安裝命令，否則給等效白話任務。若有 `/grill-me`，用於真正缺少的背景，不重問其他地方已存的事實。
+10. **儲存紀錄：** 依[報告範本](templates/report.md)寫入並讀回完整報告，最終回覆連到真實檔案。聊天可精簡，檔案需保留評分、證據、相容性與延續追蹤清單；未確認不能說已儲存。
 
-### Required section: AGENTS.md / CLAUDE.md findings
+### 必要章節：AGENTS.md／CLAUDE.md 發現
 
-Start by naming the exact root manuals inspected and the scoped manuals sampled. Mark each root manual **checked**, **missing**, or **not checked**, with a reason where needed. State whether their shared guidance agrees, conflicts, or intentionally differs. Do not imply that inspecting one file verifies the other; a setup with only one applicable manual does not need a duplicate merely to pass.
+先列真正檢查的根手冊及抽樣局部手冊。根手冊分別標為**已檢查、缺失、未檢查**，必要時附原因。說明共用規則一致、衝突或刻意不同。看過一份不代表另一份已驗證；只有一份適用手冊的設定，不必為通過而複製。
 
-Then show a compact findings table:
+接著提供精簡表格：
 
-| File and section/line | Rule or missing route | Finding and practical effect | Recommended change |
+| 檔案與章節／行號 | 規則或缺少的入口 | 發現及實際影響 | 建議修改 |
 |---|---|---|---|
-| Exact clickable file reference | Short quote or precise paraphrase; label omissions explicitly | What was verified, stale, conflicting, broken, or unverified, and how that affects finding or using information | Specific edit or verification step |
+| 可點擊的精確檔案 | 短引文或精準改述，缺失需明說 | 已驗證、過期、衝突、損壞或未驗證，以及對資料查找／使用的影響 | 具體編輯或驗證步驟 |
 
-Separate **problems in the manual itself** from **problems in files it routes to**. For example, a stale target index is a downstream maintenance gap unless the manual also directs readers to the wrong index. Name the downstream file and the route that reaches it. Include one brief statement about what the manuals already do well. If no issues are found, explicitly say "No operating-manual issues found in the inspected scope" and state any coverage limits; do not invent findings to fill the table.
+區分**手冊本身問題**與**手冊指向檔案的問題**。例如下游索引過期，除非手冊也指錯位置，否則是下游維護缺口；列下游檔案及抵達入口。簡短說明手冊已有的優點。沒有問題就明確寫「受檢範圍內未發現操作手冊問題」，列覆蓋限制，不硬填表格。
 
-Finish the section with whether any manuals were changed. In a standard read-only audit, say **"No operating manuals were changed."** These findings inform the existing Four-Cs criteria and caps; do not add a fifth score or double-count deductions. Apply this section to both chat reports and saved reports.
+最後說明手冊是否變動。標準唯讀檢查應寫：**「未修改任何操作手冊。」** 這些發現只影響原有 4C 條件與上限，不新增第五項或重複扣分。聊天與檔案報告都需此章節。
 
-Recommend rerunning `/audit` after the selected fix and weekly during active setup, then at a sensible maintenance interval. Compare with a previous saved report only when scope and rubric match; v1 scores need a new baseline. Scores can decrease when evidence becomes stale. Do not promise a higher score from another run alone.
+選定修正後建議重跑 `/audit`，積極建置時每週檢查，之後改為合理維護頻率。只有範圍與規準一致才比較；v1 需新基準。證據過期時分數可能下降，不能承諾只要再跑就會升分。
 
-The audit is read-only toward inspected systems: no repairs, file moves, installation, scheduler changes, messages, or external writes. Its sole default write is a new local audit report under `audits/` (create the directory if needed). Preserve earlier reports, redact secrets and unnecessary private records, and do not update business memory or source-of-truth files from audit observations. On an incomplete run, save a clearly marked partial report when possible; do not present it as a completed audit or fabricate a score. If saving fails, report that explicitly and return the report in chat.
+對受檢系統保持唯讀：不修正、不搬檔、不安裝、不改排程、不傳訊息、不外部寫入。唯一預設寫入是 `audits/` 下的新本機報告，必要時建立資料夾。保留舊報告，遮蔽憑證與不必要私人紀錄，不把檢查觀察寫進業務記憶或正式來源。未完成時盡可能保存明確標示的部分報告，不冒充完整檢查或虛構分數。儲存失敗需明說並在對話提供報告。
