@@ -1,10 +1,10 @@
-# AIS-OS: AI Operating System starter kit for Claude Code and Codex
+# 傑少 AI 工作系統｜學員版
 
-A free, MIT-licensed starter kit that turns Claude Code or Codex into your personal **AI Operating System (AI OS)**. Audience: anyone building automations — solopreneurs, small business operators, managers, creators, AI consultants. Pairs with a companion masterclass video.
+由傑少提供給學員的 **AI 工作系統（AI OS）起始套件**，支援 Claude Code 與 Codex。你可以透過設定訪談，建立自己的工作背景、工具連線與日常工作流程。套件採 MIT 授權，可免費下載使用。
 
 The kit personalizes itself to you via an `/onboard` interview. Use `/grill-me` whenever you want to deepen its understanding of your business, preferences, or plans. Use `/link` to make new information findable, `/audit` to verify the system, `/level-up` to close one useful gap at a time, and `/3d-brain` to explore your saved knowledge as an interactive globe.
 
-> **AIS-OS** stands for **AI Automation Society OS** — the way Nate designed this AI OS to be set up for members of his community, [AI Automation Society](https://www.skool.com/ai-automation-society). The kit is universal (it works for anyone), but the structure mirrors how AIS members run their own businesses on top of it.
+> 本學員版以 [Nate Herk 的 AIS-OS](https://github.com/nateherkai/AIS-OS) 為基礎，保留原始功能、檔案結構與 Git 歷史，調整首頁名稱與下載入口。AIS-OS 原名為 AI Automation Society OS。原作者版權、框架歸屬與授權聲明保留於本套件。
 
 ---
 
@@ -102,9 +102,9 @@ The kit includes setup, ongoing context interviews, routing, verification, a wee
 
 Turn your growing collection of notes, projects, and assistant memories into one place you can explore. See which ideas connect, search for something you remember, open the original note, and spot knowledge that needs attention. The growth replay also gives you a visual way to show someone what your AI OS contains.
 
-[![Watch the 3D Brain grow from one idea into a connected knowledge globe](docs/media/3d-brain-preview.gif)](https://github.com/nateherkai/AIS-OS/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)
+[![Watch the 3D Brain grow from one idea into a connected knowledge globe](docs/media/3d-brain-preview.gif)](https://github.com/Jaycheng1103/AIS-OS/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)
 
-The preview above plays the full growth sequence. **[Download the original 36-second video](https://github.com/nateherkai/AIS-OS/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)** for full-resolution playback. This recording shows Nate's HerkBrain. The skill builds yours with the name, categories, and saved knowledge you choose.
+The preview above plays the full growth sequence. **[Download the original 36-second video](https://github.com/Jaycheng1103/AIS-OS/raw/refs/heads/main/docs/media/3d-brain-demo.mp4)** for full-resolution playback. This recording shows Nate's HerkBrain. The skill builds yours with the name, categories, and saved knowledge you choose.
 
 Run `/3d-brain` in Claude Code or `$3d-brain` in Codex. It asks what to call your brain and which categories to show, with suggested source folders. Then it creates `apps/3d-brain/` using the included application template. Your name, categories, colors, and paths live in a local config.
 
@@ -122,7 +122,19 @@ The six skills are also installed under `.agents/skills/`. Use the skill picker 
 
 ### First-time setup
 
-1. **Clone the repo** to a working folder on your machine.
+1. **下載傑少學員版**到電腦上的新資料夾：
+
+   ```bash
+   gh repo clone Jaycheng1103/AIS-OS
+   ```
+
+   沒有安裝 GitHub CLI，也可以使用 Git：
+
+   ```bash
+   git clone https://github.com/Jaycheng1103/AIS-OS.git
+   ```
+
+   接著開啟下載的 `AIS-OS` 資料夾。設定訪談請填寫你自己的資料。
 2. **Open it in Claude Code or Codex.** Run `/onboard` in Claude Code, or select `$onboard` in Codex. Answer the 7 questions honestly. Voice samples must be pasted, not described. Takes ~15 minutes. Day-1 file set drops at the end.
 3. **Use it for a week.** Bring real questions. Make real decisions. Ask your assistant to record meaningful decisions in `decisions/log.md`.
 4. **Day 7:** run `/audit`. Read the Four-Cs gap report. Pick one gap to close.
@@ -173,4 +185,4 @@ MIT License. © 2026 Nate Herk.
 
 The Three Ms of AI™ and The Four Cs of an AI OS™ are trademarks of Nate Herk. Both frameworks ship in this repo with attribution. Use freely; don't repackage as your own.
 
-The companion masterclass video walks you through the kit step by step. Link will land here once it ships.
+學員版由傑少提供。原始專案與原作者的教學資訊請見 [nateherkai/AIS-OS](https://github.com/nateherkai/AIS-OS)。
